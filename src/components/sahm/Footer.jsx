@@ -96,15 +96,23 @@ export default function Footer({ lang }) {
               <p className="mt-4 max-w-2xl text-base text-white/80 sm:text-lg">{copy.bannerText}</p>
             </div>
             <div className="shrink-0">
-              <a
-                href={buildWhatsAppMessageUrl(copy.bannerMessage)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-shimmer inline-flex w-full items-center justify-center gap-2 rounded-full bg-sahm-yellow px-7 py-3 text-sm font-black uppercase tracking-[0.1em] text-slate-900 transition hover:-translate-y-0.5 sm:w-auto"
-              >
-                <WhatsAppIcon />
-                {copy.bannerPrimary}
-              </a>
+              <div className="grid w-full gap-3 sm:flex sm:flex-wrap sm:justify-end">
+                <a
+                  href={buildWhatsAppMessageUrl(copy.bannerMessage)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-shimmer inline-flex w-full items-center justify-center gap-2 rounded-full bg-sahm-yellow px-7 py-3 text-sm font-black uppercase tracking-[0.1em] text-slate-900 transition hover:-translate-y-0.5 sm:w-auto"
+                >
+                  <WhatsAppIcon />
+                  {copy.bannerPrimary}
+                </a>
+                <a
+                  href="#productos"
+                  className="inline-flex w-full items-center justify-center rounded-full border border-white/20 bg-white/10 px-7 py-3 text-sm font-black uppercase tracking-[0.1em] text-white transition hover:bg-white/20 sm:w-auto"
+                >
+                  {copy.bannerSecondary}
+                </a>
+              </div>
             </div>
           </div>
         </div>
