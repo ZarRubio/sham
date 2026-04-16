@@ -216,13 +216,13 @@ export default function Confianza({ lang }) {
                   href={buildWhatsAppMessageUrl(copy.ctaMessage)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center rounded-full bg-sahm-yellow px-6 py-3 text-sm font-black uppercase tracking-[0.1em] text-slate-900 transition hover:-translate-y-0.5"
+                  className="btn-shimmer inline-flex items-center justify-center rounded-full bg-sahm-yellow px-6 py-3 text-sm font-black uppercase tracking-[0.1em] text-slate-900 transition hover:-translate-y-0.5 hover:brightness-105 active:scale-[0.97]"
                 >
                   {copy.ctaPrimary}
                 </a>
                 <a
                   href="#productos"
-                  className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/10 px-6 py-3 text-sm font-black uppercase tracking-[0.1em] text-white transition hover:bg-white/15"
+                  className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/10 px-6 py-3 text-sm font-black uppercase tracking-[0.1em] text-white transition hover:bg-white/15 active:scale-[0.97]"
                 >
                   {copy.ctaSecondary}
                 </a>
@@ -237,10 +237,11 @@ export default function Confianza({ lang }) {
             <h2 className="mt-3 text-3xl font-black leading-tight text-slate-900 sm:text-4xl">{copy.testimonialsTitle}</h2>
 
             <div className="mt-8 grid gap-3 sm:grid-cols-3 xl:grid-cols-1">
-              {copy.testimonialStats.map(stat => (
+              {copy.testimonialStats.map((stat, index) => (
                 <article
                   key={stat.label}
-                  className="rounded-[1.5rem] border border-sahm-purple/10 bg-white px-5 py-4 shadow-lg shadow-sahm-purple/10"
+                  style={{ transitionDelay: visible ? `${index * 100}ms` : '0ms' }}
+                  className={`rounded-[1.5rem] border border-sahm-purple/10 bg-white px-5 py-4 shadow-lg shadow-sahm-purple/10 transition-all duration-500 ease-out hover:-translate-y-0.5 hover:shadow-xl hover:shadow-sahm-purple/15 ${visible ? 'translate-y-0 opacity-100' : 'translate-y-5 opacity-0'}`}
                 >
                   <p className="text-3xl font-black text-sahm-purple">{stat.value}</p>
                   <p className="text-xs font-bold uppercase tracking-[0.13em] text-slate-500">{stat.label}</p>
@@ -250,13 +251,14 @@ export default function Confianza({ lang }) {
           </div>
 
           <div className="grid gap-4 md:grid-cols-3">
-            {copy.testimonials.map(item => (
+            {copy.testimonials.map((item, index) => (
               <article
                 key={item.author}
-                className="flex h-full flex-col rounded-[1.75rem] border border-sahm-purple/15 bg-white p-6 shadow-lg shadow-sahm-purple/10"
+                style={{ transitionDelay: visible ? `${index * 110}ms` : '0ms' }}
+                className={`flex h-full flex-col rounded-[1.75rem] border border-sahm-purple/15 bg-white p-6 shadow-lg shadow-sahm-purple/10 transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-xl hover:shadow-sahm-purple/15 ${visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'}`}
               >
                 <div className="flex items-center gap-3">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-sahm-yellow text-base font-black text-sahm-purple">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-sahm-yellow text-base font-black text-sahm-purple transition duration-300 group-hover:scale-110">
                     {item.initials}
                   </div>
                   <div>
@@ -291,6 +293,8 @@ export default function Confianza({ lang }) {
                     onClick={() => setOpenIndex(isOpen ? -1 : index)}
                     className="flex w-full items-center justify-between gap-4 px-5 py-5 text-left"
                     aria-expanded={isOpen}
+                    aria-controls={`faq-answer-${index}`}
+                    id={`faq-question-${index}`}
                   >
                     <span className="text-lg font-black text-slate-900">{item.q}</span>
                     <span
@@ -300,7 +304,12 @@ export default function Confianza({ lang }) {
                     </span>
                   </button>
 
-                  <div className={`grid transition-all duration-300 ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
+                  <div
+                    id={`faq-answer-${index}`}
+                    role="region"
+                    aria-labelledby={`faq-question-${index}`}
+                    className={`grid transition-all duration-300 ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}
+                  >
                     <div className="overflow-hidden">
                       <p className="px-5 pb-5 text-sm leading-relaxed text-slate-600">{item.a}</p>
                     </div>

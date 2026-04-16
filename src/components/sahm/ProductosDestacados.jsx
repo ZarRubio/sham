@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useFadeIn } from '../../hooks/useFadeIn'
 import { buildWhatsAppMessageUrl } from '../../config/site'
+import { ChevronLeftIcon, ChevronRightIcon } from './icons'
 
 const COPY = {
   es: {
@@ -152,7 +153,7 @@ export default function ProductosDestacados({ lang }) {
     <section
       id="productos"
       ref={ref}
-      className={`px-6 py-20 transition-all duration-700 ${visible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+      className="px-6 py-20"
     >
       <div className="mx-auto max-w-7xl rounded-[2rem] border border-sahm-purple/20 bg-[#fff9df] p-8 shadow-2xl shadow-sahm-purple/10 md:p-10">
         <div className="mb-8 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
@@ -179,8 +180,14 @@ export default function ProductosDestacados({ lang }) {
           />
 
           <div className="grid flex-1 grid-cols-3 gap-5">
-            {visibles.map(item => (
-              <ProductoCard key={`${item.id}-${start}`} producto={item} copy={copy} />
+            {visibles.map((item, index) => (
+              <div
+                key={`${item.id}-${start}`}
+                style={{ transitionDelay: visible ? `${index * 90}ms` : '0ms' }}
+                className={`transition-all duration-500 ease-out ${visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'}`}
+              >
+                <ProductoCard producto={item} copy={copy} />
+              </div>
             ))}
           </div>
 
@@ -219,7 +226,7 @@ function ProductoCard({ producto, copy }) {
   const waUrl = buildWhatsAppMessageUrl(`${copy.waProduct} ${producto.codigo} - ${producto.nombre}`)
 
   return (
-    <article className="group overflow-hidden rounded-[1.75rem] border border-sahm-purple/15 bg-white shadow-lg shadow-sahm-purple/10 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-sahm-purple/15">
+    <article className="card-shine group overflow-hidden rounded-[1.75rem] border border-sahm-purple/15 bg-white shadow-lg shadow-sahm-purple/10 transition duration-300 hover:-translate-y-1 hover:border-sahm-purple/25 hover:shadow-xl hover:shadow-sahm-purple/20 cursor-default">
       <div className="overflow-hidden">
         <img
           src={producto.image}
@@ -234,14 +241,14 @@ function ProductoCard({ producto, copy }) {
           {producto.tag}
         </span>
         <h3 className="mt-4 text-xl font-black text-slate-900">{producto.nombre}</h3>
-        <p className="mt-1 text-3xl font-black tracking-[0.12em] text-sahm-purple">{producto.codigo}</p>
+        <p className="mt-1 font-mono text-xs tracking-wide text-slate-400">Ref: {producto.codigo}</p>
         <p className="mt-3 min-h-[72px] text-sm leading-relaxed text-slate-600">{producto.description}</p>
 
         <a
           href={waUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-5 inline-flex w-full items-center justify-center rounded-xl bg-sahm-yellow py-3 text-xs font-black uppercase tracking-[0.1em] text-slate-900 transition hover:-translate-y-0.5"
+          className="btn-shimmer mt-5 inline-flex w-full items-center justify-center rounded-xl bg-sahm-yellow py-3 text-xs font-black uppercase tracking-[0.1em] text-slate-900 transition hover:-translate-y-0.5 hover:brightness-105 active:scale-[0.97]"
         >
           {copy.askAvailability}
         </a>
@@ -256,9 +263,10 @@ function NavBtn({ onClick, direction, label }) {
       type="button"
       onClick={onClick}
       aria-label={label}
-      className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-slate-300 bg-white text-lg font-black text-slate-700 transition hover:border-sahm-purple hover:text-sahm-purple"
+      className="inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 transition hover:border-sahm-purple hover:text-sahm-purple focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sahm-purple focus-visible:ring-offset-2"
     >
-      {direction === 'left' ? '<' : '>'}
+      {direction === 'left' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
     </button>
   )
 }
+

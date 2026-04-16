@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useFadeIn } from '../../hooks/useFadeIn'
+import { ChevronLeftIcon, ChevronRightIcon } from './icons'
 
 const COPY = {
   es: {
@@ -94,7 +95,7 @@ export default function Categorias({ lang }) {
     <section
       id="categorias"
       ref={ref}
-      className={`relative px-6 py-20 transition-all duration-700 ${visible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+      className="relative px-6 py-20"
     >
       <div className="mx-auto max-w-7xl">
         <p className="text-xs font-bold uppercase tracking-[0.16em] text-sahm-purple">{copy.kicker}</p>
@@ -106,8 +107,14 @@ export default function Categorias({ lang }) {
         </div>
 
         <div className="mt-8 hidden gap-6 md:grid md:grid-cols-2 xl:grid-cols-4">
-          {copy.items.map(cat => (
-            <CategoriaCard key={cat.nombre} cat={cat} copy={copy} />
+          {copy.items.map((cat, index) => (
+            <div
+              key={cat.nombre}
+              style={{ transitionDelay: visible ? `${index * 100}ms` : '0ms' }}
+              className={`transition-all duration-600 ease-out ${visible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+            >
+              <CategoriaCard cat={cat} copy={copy} />
+            </div>
           ))}
         </div>
 
@@ -136,7 +143,7 @@ export default function Categorias({ lang }) {
 
 function CategoriaCard({ cat, copy }) {
   return (
-    <article className="group relative overflow-hidden rounded-[1.9rem] border border-sahm-purple/20 bg-slate-900 shadow-2xl shadow-sahm-purple/15">
+    <article className="card-shine group relative overflow-hidden rounded-[1.9rem] border border-sahm-purple/20 bg-slate-900 shadow-2xl shadow-sahm-purple/15">
       <img
         src={cat.image}
         alt={cat.nombre}
@@ -163,7 +170,7 @@ function CategoriaCard({ cat, copy }) {
 
         <a
           href={cat.href}
-          className="mt-5 inline-flex items-center gap-2 rounded-full bg-sahm-yellow px-4 py-2 text-xs font-black uppercase tracking-[0.12em] text-sahm-purple transition hover:-translate-y-0.5"
+          className="btn-shimmer mt-5 inline-flex items-center gap-2 rounded-full bg-sahm-yellow px-4 py-2 text-xs font-black uppercase tracking-[0.12em] text-sahm-purple transition hover:-translate-y-0.5 hover:brightness-105 active:scale-[0.97]"
         >
           {copy.cta}
           <ArrowIcon />
@@ -179,9 +186,9 @@ function NavButton({ onClick, direction, label }) {
       type="button"
       onClick={onClick}
       aria-label={label}
-      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-700"
+      className="inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 transition hover:border-sahm-purple hover:text-sahm-purple focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sahm-purple focus-visible:ring-offset-2"
     >
-      {direction === 'left' ? '<' : '>'}
+      {direction === 'left' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
     </button>
   )
 }

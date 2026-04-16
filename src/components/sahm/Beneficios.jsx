@@ -66,15 +66,19 @@ export default function Beneficios({ lang }) {
   const copy = COPY[lang]
 
   return (
-    <section
-      ref={ref}
-      className={`px-6 py-16 transition-all duration-700 ease-out ${visible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
-    >
+    <section id="beneficios" ref={ref} className="px-6 py-16">
       <div className="mx-auto max-w-7xl">
-        <p className="text-xs font-bold uppercase tracking-[0.16em] text-sahm-purple">{copy.kicker}</p>
+        <p
+          className={`text-xs font-bold uppercase tracking-[0.16em] text-sahm-purple transition-all duration-500 ease-out ${visible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
+        >
+          {copy.kicker}
+        </p>
 
         <div className="mt-4 grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
-          <article className="relative overflow-hidden rounded-[2rem] border border-sahm-purple/20 bg-sahm-purple p-8 text-white shadow-2xl shadow-sahm-purple/20 sm:p-10">
+          <article
+            className={`relative overflow-hidden rounded-[2rem] border border-sahm-purple/20 bg-sahm-purple p-8 text-white shadow-2xl shadow-sahm-purple/20 sm:p-10 transition-all duration-600 ease-out ${visible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+            style={{ transitionDelay: visible ? '60ms' : '0ms' }}
+          >
             <div className="soft-grid absolute inset-0 opacity-20" />
             <div className="relative">
               <h2 className="max-w-xl text-3xl font-black leading-tight sm:text-4xl">{copy.introTitle}</h2>
@@ -97,10 +101,10 @@ export default function Beneficios({ lang }) {
             {copy.items.map((item, index) => (
               <article
                 key={item.title}
-                style={{ transitionDelay: `${index * 70}ms` }}
-                className="group rounded-[1.75rem] border border-sahm-purple/15 bg-white p-6 shadow-lg shadow-sahm-purple/10 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-sahm-purple/15"
+                style={{ transitionDelay: visible ? `${100 + index * 90}ms` : '0ms' }}
+                className={`card-shine group rounded-[1.75rem] border border-sahm-purple/15 bg-white p-6 shadow-lg shadow-sahm-purple/10 transition-all duration-500 ease-out hover:-translate-y-1 hover:border-sahm-purple/30 hover:shadow-xl hover:shadow-sahm-purple/20 ${visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'}`}
               >
-                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-sahm-yellow text-sahm-purple shadow-lg shadow-sahm-yellow/30 transition duration-300 group-hover:scale-105">
+                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-sahm-yellow text-sahm-purple shadow-lg shadow-sahm-yellow/30 transition duration-300 group-hover:rotate-6 group-hover:scale-110">
                   <Icon type={item.icon} />
                 </div>
                 <h3 className="text-xl font-black text-slate-900">{item.title}</h3>
