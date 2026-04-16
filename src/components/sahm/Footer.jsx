@@ -267,10 +267,10 @@ export default function Footer({ lang }) {
       <ComingSoonModal
         open={showSocialSoon}
         onClose={() => setShowSocialSoon(false)}
-        title={lang === 'es' ? 'Redes proximamente' : 'Social channels coming soon'}
+        title={lang === 'es' ? 'Redes próximamente' : 'Social channels coming soon'}
         message={
           lang === 'es'
-            ? 'Estamos preparando los perfiles oficiales. Estaran disponibles pronto.'
+            ? 'Estamos preparando los perfiles oficiales. Estarán disponibles pronto.'
             : 'We are preparing the official profiles. They will be available soon.'
         }
         buttonLabel={lang === 'es' ? 'Entendido' : 'Got it'}
