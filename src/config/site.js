@@ -1,4 +1,4 @@
-﻿const FALLBACK_WHATSAPP_NUMBER = '51999999999'
+const FALLBACK_WHATSAPP_NUMBER = '51987881821'
 
 const envNumber = import.meta.env.VITE_WHATSAPP_NUMBER || ''
 const cleanNumber = String(envNumber).replace(/\D/g, '')

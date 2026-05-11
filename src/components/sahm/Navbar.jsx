@@ -21,7 +21,7 @@ const UI_TEXT = {
 
 export default function Navbar({ lang, setLang }) {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [activeHref, setActiveHref] = useState('#inicio')
+  const [activeHref, setActiveHref] = useState('#/productos')
   const scrollY = useScrollY()
   const navLinks = NAV_LINKS_BY_LANG[lang]
   const text = UI_TEXT[lang]
@@ -30,7 +30,7 @@ export default function Navbar({ lang, setLang }) {
   useEffect(() => {
     const sectionIds = navLinks
       .map(link => link.href)
-      .filter(href => href.startsWith('#'))
+      .filter(href => href.startsWith('#') && !href.startsWith('#/'))
       .map(href => href.slice(1))
 
     const sections = sectionIds
@@ -40,8 +40,15 @@ export default function Navbar({ lang, setLang }) {
     if (sections.length === 0) return undefined
 
     const updateActive = () => {
+      const route = window.location.hash || '#/productos'
+      const routeLink = navLinks.find(link => link.href === route)
+      if (routeLink) {
+        setActiveHref(routeLink.href)
+        return
+      }
+
       const marker = window.scrollY + 180
-      let current = '#inicio'
+      let current = '#/productos'
 
       sections.forEach(section => {
         if (marker >= section.offsetTop) current = `#${section.id}`
@@ -53,16 +60,18 @@ export default function Navbar({ lang, setLang }) {
     updateActive()
     window.addEventListener('scroll', updateActive, { passive: true })
     window.addEventListener('resize', updateActive)
+    window.addEventListener('hashchange', updateActive)
     return () => {
       window.removeEventListener('scroll', updateActive)
       window.removeEventListener('resize', updateActive)
+      window.removeEventListener('hashchange', updateActive)
     }
   }, [navLinks])
 
   return (
     <nav className={`sticky top-0 z-50 border-b border-sahm-purple/20 bg-sahm-yellow/95 backdrop-blur-xl transition-shadow duration-300 ${scrolled ? 'shadow-lg shadow-sahm-purple/15' : ''}`}>
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <a href="#inicio" className="select-none text-3xl font-black italic tracking-tight text-sahm-purple">
+        <a href="#/productos" className="select-none text-3xl font-black italic tracking-tight text-sahm-purple">
           SAHM
         </a>
 
@@ -100,7 +109,7 @@ export default function Navbar({ lang, setLang }) {
 
         <button
           type="button"
-          className="rounded-md p-1 text-slate-700 lg:hidden"
+          className="cursor-pointer rounded-md p-2.5 text-slate-700 lg:hidden"
           onClick={() => setMenuOpen(o => !o)}
           aria-label={text.menuLabel}
         >
@@ -148,7 +157,7 @@ function LanguageSwitch({ lang, setLang, label, compact = false }) {
         type="button"
         onClick={() => setLang('es')}
         aria-pressed={lang === 'es'}
-        className={`rounded-full px-3 py-1 text-xs font-black uppercase tracking-[0.1em] transition ${lang === 'es' ? 'bg-sahm-purple text-white' : 'text-sahm-purple/80 hover:bg-sahm-purple/10'}`}
+        className={`cursor-pointer rounded-full px-3 py-1 text-xs font-black uppercase tracking-[0.1em] transition ${lang === 'es' ? 'bg-sahm-purple text-white' : 'text-sahm-purple/80 hover:bg-sahm-purple/10'}`}
       >
         ES
       </button>
@@ -156,7 +165,7 @@ function LanguageSwitch({ lang, setLang, label, compact = false }) {
         type="button"
         onClick={() => setLang('en')}
         aria-pressed={lang === 'en'}
-        className={`rounded-full px-3 py-1 text-xs font-black uppercase tracking-[0.1em] transition ${lang === 'en' ? 'bg-sahm-purple text-white' : 'text-sahm-purple/80 hover:bg-sahm-purple/10'}`}
+        className={`cursor-pointer rounded-full px-3 py-1 text-xs font-black uppercase tracking-[0.1em] transition ${lang === 'en' ? 'bg-sahm-purple text-white' : 'text-sahm-purple/80 hover:bg-sahm-purple/10'}`}
       >
         EN
       </button>

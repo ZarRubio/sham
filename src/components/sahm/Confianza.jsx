@@ -257,7 +257,7 @@ export default function Confianza({ lang }) {
                   {copy.ctaPrimary}
                 </a>
                 <a
-                  href="#categorias"
+                  href="#/categorias"
                   className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/10 px-6 py-3.5 text-sm font-black uppercase tracking-[0.1em] text-white transition hover:bg-white/15 active:scale-[0.97]"
                 >
                   {copy.ctaSecondary}
@@ -344,7 +344,7 @@ export default function Confianza({ lang }) {
                   <button
                     type="button"
                     onClick={() => setOpenIndex(isOpen ? -1 : index)}
-                    className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
+                    className="flex w-full cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left"
                     aria-expanded={isOpen}
                     aria-controls={`faq-answer-${index}`}
                     id={`faq-question-${index}`}

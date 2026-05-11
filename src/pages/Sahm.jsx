@@ -1,35 +1,33 @@
-﻿import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import Navbar from '../components/sahm/Navbar'
-import TrustBar from '../components/sahm/TrustBar'
 import Hero from '../components/sahm/Hero'
+import TrustBar from '../components/sahm/TrustBar'
 import Beneficios from '../components/sahm/Beneficios'
 import Confianza from '../components/sahm/Confianza'
-import Categorias from '../components/sahm/Categorias'
 import ProductosDestacados from '../components/sahm/ProductosDestacados'
 import Footer from '../components/sahm/Footer'
 import FloatingWhatsApp from '../components/sahm/FloatingWhatsApp'
 import ScrollProgress from '../components/sahm/ScrollProgress'
 
-const LANGUAGE_STORAGE_KEY = 'sahm_lang'
+const PAGE_TITLE = {
+  es: 'SAHM — Llantas, cámaras y repuestos para moto',
+  en: 'SAHM — Motorcycle tires, tubes and spare parts',
+}
 
-export default function Sahm() {
-  const [lang, setLang] = useState(() => localStorage.getItem(LANGUAGE_STORAGE_KEY) || 'es')
-
+export default function Sahm({ lang, setLang }) {
   useEffect(() => {
-    localStorage.setItem(LANGUAGE_STORAGE_KEY, lang)
-    document.documentElement.lang = lang
+    document.title = PAGE_TITLE[lang]
   }, [lang])
 
   return (
     <div className="min-h-screen overflow-x-hidden font-sans antialiased text-slate-900">
       <ScrollProgress />
       <Navbar lang={lang} setLang={setLang} />
-      <TrustBar lang={lang} />
       <Hero lang={lang} />
+      <TrustBar lang={lang} />
+      <ProductosDestacados lang={lang} />
       <Beneficios lang={lang} />
       <Confianza lang={lang} />
-      <Categorias lang={lang} />
-      <ProductosDestacados lang={lang} />
       <Footer lang={lang} />
       <FloatingWhatsApp lang={lang} />
     </div>

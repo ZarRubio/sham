@@ -7,7 +7,7 @@ import ComingSoonModal from './ComingSoonModal'
 // ─── Business info ───────────────────────────────────────────────────────────
 // Replace these values with real data before going live.
 const BUSINESS = {
-  whatsapp: '+51 999 999 999',
+  whatsapp: '+51 987 881 821',
   email: 'ventas@sahm.pe',
   address: 'Lima, Perú',
   hours: {
@@ -107,7 +107,7 @@ export default function Footer({ lang }) {
                   {copy.bannerPrimary}
                 </a>
                 <a
-                  href="#productos"
+                href="#/productos"
                   className="inline-flex w-full items-center justify-center rounded-full border border-white/20 bg-white/10 px-7 py-3 text-sm font-black uppercase tracking-[0.1em] text-white transition hover:bg-white/20 sm:w-auto"
                 >
                   {copy.bannerSecondary}
@@ -122,7 +122,7 @@ export default function Footer({ lang }) {
 
           {/* Brand */}
           <div>
-            <a href="#inicio" className="text-4xl font-black italic tracking-tight text-sahm-yellow">
+            <a href="#/productos" className="text-4xl font-black italic tracking-tight text-sahm-yellow">
               SAHM
             </a>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-300">{copy.brandText}</p>
@@ -248,13 +248,14 @@ export default function Footer({ lang }) {
               ))}
             </div>
 
-            <a
-              href="#inicio"
-              className="mt-10 inline-flex items-center gap-2 text-sm font-black uppercase tracking-[0.1em] text-sahm-yellow transition hover:text-white"
+            <button
+              type="button"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="cursor-pointer mt-10 inline-flex items-center gap-2 text-sm font-black uppercase tracking-[0.1em] text-sahm-yellow transition hover:text-white"
             >
               {copy.backToTop}
               <ArrowUpIcon />
-            </a>
+            </button>
           </div>
         </div>
 
@@ -281,7 +282,7 @@ export default function Footer({ lang }) {
 
 function SocialButton({ icon, href, label, enabled, onDisabledClick }) {
   const baseClass =
-    'inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-300 transition hover:border-sahm-yellow hover:text-sahm-yellow'
+    'cursor-pointer inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-300 transition hover:border-sahm-yellow hover:text-sahm-yellow'
 
   if (enabled) {
     return (
