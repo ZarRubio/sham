@@ -39,7 +39,7 @@ const COPY = {
       'Distribución comercial de llantas, cámaras y repuestos para moto. Atendemos compradores directos, talleres y flotas en todo el Perú.',
     navigation: 'Navegación',
     services: 'Líneas de producto',
-    contact: 'Contacto',
+    contact: 'Atención',
     hoursLabel: 'Horario de atención',
     addressLabel: 'Ubicación',
     emailLabel: 'Email',
@@ -47,7 +47,12 @@ const COPY = {
     socialLabel: 'Síguenos',
     backToTop: 'Volver arriba',
     rights: '2026 SAHM. Todos los derechos reservados.',
-    serviceItems: ['Llantas', 'Cámaras', 'Frenos y control', 'Mantenimiento'],
+    serviceItems: [
+      { label: 'Llantas', href: '#/productos/llantas' },
+      { label: 'Cámaras', href: '#/productos/camaras' },
+      { label: 'Repuestos', href: '#/productos/repuestos' },
+      { label: 'Accesorios', href: '#/productos/accesorios' },
+    ],
     badges: ['Despacho nacional', 'Stock confirmado', 'Atención bilingüe'],
   },
   en: {
@@ -62,7 +67,7 @@ const COPY = {
       'Commercial distribution of motorcycle tires, tubes and spare parts. We serve direct buyers, workshops and fleets across Peru.',
     navigation: 'Navigation',
     services: 'Product lines',
-    contact: 'Contact',
+    contact: 'Support',
     hoursLabel: 'Business hours',
     addressLabel: 'Location',
     emailLabel: 'Email',
@@ -70,7 +75,12 @@ const COPY = {
     socialLabel: 'Follow us',
     backToTop: 'Back to top',
     rights: '2026 SAHM. All rights reserved.',
-    serviceItems: ['Tires', 'Tubes', 'Brakes and control', 'Maintenance'],
+    serviceItems: [
+      { label: 'Tires', href: '#/productos/llantas' },
+      { label: 'Tubes', href: '#/productos/camaras' },
+      { label: 'Spare Parts', href: '#/productos/repuestos' },
+      { label: 'Accessories', href: '#/productos/accesorios' },
+    ],
     badges: ['Nationwide shipping', 'Confirmed stock', 'Bilingual support'],
   },
 }
@@ -107,7 +117,7 @@ export default function Footer({ lang }) {
                   {copy.bannerPrimary}
                 </a>
                 <a
-                href="#/productos"
+                  href="#/productos"
                   className="inline-flex w-full items-center justify-center rounded-full border border-white/20 bg-white/10 px-7 py-3 text-sm font-black uppercase tracking-[0.1em] text-white transition hover:bg-white/20 sm:w-auto"
                 >
                   {copy.bannerSecondary}
@@ -178,7 +188,11 @@ export default function Footer({ lang }) {
             <h4 className="mt-8 text-xs font-black uppercase tracking-[0.18em] text-slate-400">{copy.services}</h4>
             <ul className="mt-4 space-y-3">
               {copy.serviceItems.map(item => (
-                <li key={item} className="text-sm text-slate-300">{item}</li>
+                <li key={item.label}>
+                  <a href={item.href} className="text-sm text-slate-300 transition hover:text-sahm-yellow">
+                    {item.label}
+                  </a>
+                </li>
               ))}
             </ul>
           </div>

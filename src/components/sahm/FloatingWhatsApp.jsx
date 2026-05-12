@@ -31,6 +31,8 @@ export default function FloatingWhatsApp({ lang }) {
         target="_blank"
         rel="noopener noreferrer"
         aria-label={copy.label}
+        aria-hidden={!visible}
+        tabIndex={visible ? undefined : -1}
         className="group relative flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-2xl shadow-[#25D366]/50 transition-transform duration-200 hover:scale-110 active:scale-95"
       >
         {/* Pulse ring */}

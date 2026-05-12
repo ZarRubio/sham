@@ -10,22 +10,22 @@ const COPY = {
     items: [
       {
         title: 'Compatibilidad sin errores',
-        subtitle: 'Validamos medidas, aro y uso antes de cotizar para evitar compras equivocadas. Sin costo de asesoría.',
+        subtitle: 'Te ayudamos a elegir la medida correcta antes de comprar.',
         icon: 'fit',
       },
       {
         title: 'Stock con respuesta real',
-        subtitle: 'Confirmamos disponibilidad y tiempos antes del pago. Sin promesas vacías ni sorpresas al cerrar el pedido.',
+        subtitle: 'Confirmamos disponibilidad y tiempo de entrega antes de avanzar con tu pedido.',
         icon: 'stock',
       },
       {
         title: 'Cobertura nacional',
-        subtitle: 'Lima en 24–48h. Regiones en 48–72h. Seguimiento comercial durante todo el envío.',
+        subtitle: 'Despacho a Lima y provincias con atención rápida y seguimiento.',
         icon: 'route',
       },
       {
         title: 'Postventa que responde',
-        subtitle: 'Acompañamos dudas, reposiciones y nuevas compras para que sigas operando sin fricción.',
+        subtitle: 'Te acompañamos incluso después de tu compra.',
         icon: 'shield',
       },
     ],
@@ -39,22 +39,22 @@ const COPY = {
     items: [
       {
         title: 'Fitment without mistakes',
-        subtitle: 'We validate size, rim and use case before quoting so you do not order the wrong part. No advisory fee.',
+        subtitle: 'We help you choose the right size before you buy.',
         icon: 'fit',
       },
       {
         title: 'Real stock response',
-        subtitle: 'We confirm availability and timing before payment. No empty promises or surprises at checkout.',
+        subtitle: 'We confirm availability and delivery time before moving forward with your order.',
         icon: 'stock',
       },
       {
         title: 'Nationwide coverage',
-        subtitle: 'Lima in 24–48h. Regions in 48–72h. Commercial follow-up throughout the entire shipment.',
+        subtitle: 'Shipping to Lima and provinces with fast response and tracking.',
         icon: 'route',
       },
       {
         title: 'After-sales that answers',
-        subtitle: 'We support follow-up questions, replacements and repeat purchases so you keep moving.',
+        subtitle: 'We support you even after your purchase.',
         icon: 'shield',
       },
     ],

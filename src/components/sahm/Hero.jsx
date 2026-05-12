@@ -9,11 +9,11 @@ const HERO_IMAGE = 'https://images.unsplash.com/photo-1487754180451-c456f719a1fc
 const COPY = {
   es: {
     badge: 'Distribuidor autorizado · Lima y despacho nacional',
-    titleA: 'Llantas, cámaras',
-    titleB: 'y repuestos de moto.',
-    desc: 'Escríbenos el modelo de tu moto o la medida que necesitas. En minutos tienes stock confirmado, precio real y despacho coordinado a tu ciudad.',
+    titleA: 'Llantas, cámaras y repuestos para tu moto',
+    titleB: 'en un solo lugar.',
+    desc: 'Cotiza por WhatsApp, valida compatibilidad y recibe atención personalizada antes de comprar.',
     ctaPrimary: 'Cotizar por WhatsApp',
-    ctaSecondary: 'Ver catálogo',
+    ctaSecondary: 'Ver productos',
     features: ['Compatibilidad validada', 'Despacho a todo el Perú', 'Atención para taller y flota'],
     fastReplyLabel: 'Respuesta en',
     fastReplyValue: '8 min',
@@ -35,11 +35,11 @@ const COPY = {
   },
   en: {
     badge: 'Authorized distributor · Lima and nationwide shipping',
-    titleA: 'Tires, tubes',
-    titleB: 'and motorcycle parts.',
-    desc: 'Send us your bike model or the part size you need. In minutes you get real stock, exact pricing and shipping coordinated to your city.',
+    titleA: 'Tires, tubes and spare parts for your motorcycle',
+    titleB: 'all in one place.',
+    desc: 'Quote on WhatsApp, validate fitment and receive personalized guidance before you buy.',
     ctaPrimary: 'Quote on WhatsApp',
-    ctaSecondary: 'Browse catalog',
+    ctaSecondary: 'View products',
     features: ['Fitment validated', 'Nationwide shipping', 'Workshop and fleet service'],
     fastReplyLabel: 'Reply in',
     fastReplyValue: '8 min',
@@ -122,7 +122,7 @@ export default function Hero({ lang }) {
               {copy.ctaPrimary}
             </a>
             <a
-              href="#/categorias"
+              href="#/productos"
               className="btn-shimmer inline-flex w-full items-center justify-center gap-2 rounded-full border border-slate-300 bg-white px-7 py-3.5 text-sm font-bold uppercase tracking-[0.08em] text-slate-700 transition hover:border-slate-400 active:scale-[0.97] sm:w-auto"
             >
               {copy.ctaSecondary}

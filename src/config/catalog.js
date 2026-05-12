@@ -64,3 +64,7 @@ export function getProductLabel(productItem, lang = 'es') {
 export function getProductWhatsAppMessage(productItem, prefix, lang = 'es') {
   return `${prefix} ${getProductLabel(productItem, lang)} - ${productItem.subcategory}`
 }
+
+export function getCategoryBySlug(slug) {
+  return CATALOG_CATEGORIES.find(cat => cat.id === slug)
+}

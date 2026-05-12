@@ -3,14 +3,18 @@ import Navbar from '../components/sahm/Navbar'
 import Footer from '../components/sahm/Footer'
 import FloatingWhatsApp from '../components/sahm/FloatingWhatsApp'
 import ScrollProgress from '../components/sahm/ScrollProgress'
+import ProductCard from '../components/sahm/ProductCard'
 import { WhatsAppIcon } from '../components/sahm/icons'
 import { buildWhatsAppMessageUrl } from '../config/site'
+import { useCart } from '../context/CartContext'
 import {
   CATALOG_PRODUCTS,
   getProductById,
   getProductLabel,
   getProductWhatsAppMessage,
 } from '../config/catalog'
+
+const ADDED_MS = 1500
 
 const COPY = {
   es: {
@@ -22,7 +26,10 @@ const COPY = {
     zoomEnable: 'Activar lupa',
     zoomDisable: 'Quitar zoom',
     zoomHint: 'Haz click o toca la imagen para acercar; vuelve a tocar para alejar',
-    askAvailability: 'Consultar precio y stock',
+    addToCart: 'Agregar al carrito',
+    added: '✓ Agregado',
+    inCart: 'En carrito',
+    askAvailability: 'Consultar por WhatsApp',
     waProductPrefix: 'Hola, quiero consultar precio y disponibilidad de',
     notFoundTitle: 'Producto no encontrado',
     notFoundText: 'La referencia que buscas no está disponible en el catálogo actual.',
@@ -37,7 +44,10 @@ const COPY = {
     zoomEnable: 'Enable magnifier',
     zoomDisable: 'Reset zoom',
     zoomHint: 'Click or tap the image to zoom in; tap again to zoom out',
-    askAvailability: 'Check price and stock',
+    addToCart: 'Add to cart',
+    added: '✓ Added',
+    inCart: 'In cart',
+    askAvailability: 'Ask on WhatsApp',
     waProductPrefix: 'Hi, I want to check price and availability for',
     notFoundTitle: 'Product not found',
     notFoundText: 'The reference you are looking for is not available in the current catalog.',
@@ -49,8 +59,19 @@ export default function ProductDetail({ productId, lang, setLang }) {
   const [activeImage, setActiveImage] = useState(0)
   const [zoomed, setZoomed] = useState(false)
   const [zoomPosition, setZoomPosition] = useState({ x: 50, y: 50 })
+  const [added, setAdded] = useState(false)
+  const { addToCart, items } = useCart()
   const copy = COPY[lang]
   const product = getProductById(productId)
+
+  const inCart = product ? items.find(i => i.productId === product.id) : null
+
+  const handleAddToCart = () => {
+    if (!product) return
+    addToCart(product.id)
+    setAdded(true)
+    setTimeout(() => setAdded(false), ADDED_MS)
+  }
 
   useEffect(() => {
     setActiveImage(0)
@@ -178,11 +199,20 @@ export default function ProductDetail({ productId, lang, setLang }) {
                   </div>
                 </div>
 
+                <button
+                  type="button"
+                  onClick={handleAddToCart}
+                  className={`btn-shimmer cursor-pointer mt-8 inline-flex w-full items-center justify-center gap-2 rounded-xl py-4 text-sm font-black uppercase tracking-[0.1em] transition hover:-translate-y-0.5 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sahm-purple focus-visible:ring-offset-1 ${
+                    added ? 'bg-green-500 text-white' : 'bg-sahm-yellow text-slate-900 hover:brightness-105'
+                  }`}
+                >
+                  {added ? copy.added : inCart ? `${copy.inCart} (${inCart.qty})` : copy.addToCart}
+                </button>
                 <a
                   href={buildWhatsAppMessageUrl(getProductWhatsAppMessage(product, copy.waProductPrefix, lang))}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-shimmer mt-8 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-sahm-yellow py-4 text-sm font-black uppercase tracking-[0.1em] text-slate-900 transition hover:-translate-y-0.5 hover:brightness-105 active:scale-[0.97]"
+                  className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-sahm-purple/20 bg-white py-3 text-sm font-black uppercase tracking-[0.1em] text-sahm-purple transition hover:-translate-y-0.5 hover:border-sahm-purple active:scale-[0.97]"
                 >
                   <WhatsAppIcon size={14} />
                   {copy.askAvailability}
@@ -195,22 +225,7 @@ export default function ProductDetail({ productId, lang, setLang }) {
                 <h2 className="text-2xl font-black text-slate-900">{copy.relatedTitle}</h2>
                 <div className="mt-4 grid gap-4 md:grid-cols-3">
                   {relatedProducts.map(item => (
-                    <a
-                      key={item.id}
-                      href={item.productUrl}
-                      className="group rounded-2xl border border-sahm-purple/15 bg-white p-4 shadow-lg shadow-sahm-purple/10 transition hover:-translate-y-1 hover:border-sahm-purple/30"
-                    >
-                      <div className="flex h-40 items-center justify-center rounded-xl bg-slate-50 p-3">
-                        <img
-                          src={item.images[0].card}
-                          alt={getProductLabel(item, lang)}
-                          className="h-full w-full object-contain transition group-hover:scale-105"
-                          loading="lazy"
-                        />
-                      </div>
-                      <p className="mt-3 text-sm font-black text-slate-900">{getProductLabel(item, lang)}</p>
-                      <p className="mt-1 text-xs font-bold text-slate-500">{item.subcategory}</p>
-                    </a>
+                    <ProductCard key={item.id} product={item} lang={lang} />
                   ))}
                 </div>
               </section>

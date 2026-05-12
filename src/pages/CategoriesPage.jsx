@@ -13,6 +13,10 @@ const PAGE_TITLE = {
 
 export default function CategoriesPage({ lang, setLang }) {
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [])
+
+  useEffect(() => {
     document.title = PAGE_TITLE[lang]
   }, [lang])
 
