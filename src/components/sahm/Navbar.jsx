@@ -93,8 +93,12 @@ export default function Navbar({ lang, setLang }) {
   return (
     <nav className={`sticky top-0 z-50 border-b border-sahm-purple/20 bg-sahm-yellow/95 backdrop-blur-xl transition-shadow duration-300 ${scrolled ? 'shadow-lg shadow-sahm-purple/15' : ''}`}>
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <a href="#/" className="select-none text-3xl font-black italic tracking-tight text-sahm-purple">
-          SAHM
+        <a href="#/" className="brand-3d flex h-12 w-32 shrink-0 items-center">
+          <img
+            src="/images/Logos/SAHM_Azul_SAHM.svg"
+            alt="SAHM"
+            className="block h-auto max-h-10 w-full object-contain"
+          />
         </a>
 
         {/* Desktop links */}

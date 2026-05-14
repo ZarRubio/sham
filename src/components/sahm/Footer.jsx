@@ -132,8 +132,12 @@ export default function Footer({ lang }) {
 
           {/* Brand */}
           <div>
-            <a href="#/productos" className="text-4xl font-black italic tracking-tight text-sahm-yellow">
-              SAHM
+            <a href="#/productos" className="flex h-12 w-40 items-center">
+              <img
+                src="/images/Logos/SAHM_Blanco_SAHM.svg"
+                alt="SAHM"
+                className="block h-auto max-h-10 w-full object-contain"
+              />
             </a>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-300">{copy.brandText}</p>
             <div className="mt-5 flex flex-wrap gap-2">

@@ -69,6 +69,52 @@ body {
   animation: float-slow 7.5s ease-in-out infinite;
 }
 
+.brand-3d {
+  position: relative;
+  transform-style: preserve-3d;
+  perspective: 520px;
+  transform: translateZ(0);
+}
+
+.brand-3d img {
+  transform-origin: center;
+  transition:
+    filter 240ms ease,
+    transform 240ms ease;
+  will-change: transform;
+}
+
+.brand-3d::after {
+  content: '';
+  position: absolute;
+  inset: 4px -8px;
+  border-radius: 999px;
+  background: linear-gradient(
+    105deg,
+    transparent 25%,
+    rgba(255, 255, 255, 0.42) 45%,
+    transparent 64%
+  );
+  opacity: 0;
+  transform: translateX(-45%) translateZ(18px) rotateY(-18deg);
+  transition:
+    opacity 180ms ease,
+    transform 420ms ease;
+  pointer-events: none;
+}
+
+.brand-3d:hover img,
+.brand-3d:focus-visible img {
+  filter: drop-shadow(0 10px 12px rgba(61, 39, 133, 0.2));
+  transform: rotateX(8deg) rotateY(-14deg) translateZ(16px) scale(1.04);
+}
+
+.brand-3d:hover::after,
+.brand-3d:focus-visible::after {
+  opacity: 1;
+  transform: translateX(38%) translateZ(28px) rotateY(16deg);
+}
+
 @keyframes float-slow {
   0%,
   100% {
@@ -245,8 +291,15 @@ article p:not([class*='font-']) {
     animation: none;
   }
 
+  .brand-3d img,
+  .brand-3d::after {
+    transition: none;
+    transform: none;
+  }
+
   .card-shine::before,
-  .btn-shimmer::after {
+  .btn-shimmer::after,
+  .brand-3d::after {
     display: none;
   }
 }
