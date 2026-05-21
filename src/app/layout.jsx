@@ -57,7 +57,9 @@ export const metadata = {
   category: 'ecommerce',
   manifest: '/site.webmanifest',
   icons: {
+    shortcut: '/favicon.ico',
     icon: [
+      { url: '/favicon.ico', sizes: '48x48', type: 'image/x-icon' },
       { url: '/favicon-48x48.png', sizes: '48x48', type: 'image/png' },
       { url: '/favicon-192x192.png', sizes: '192x192', type: 'image/png' },
       { url: '/images/Logos/ISOTIPO_SAHM.svg', type: 'image/svg+xml' },
