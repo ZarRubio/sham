@@ -15,10 +15,11 @@ export default function CategoryClient({ products, subcategories }) {
     <>
       {/* ── Filtros de subcategoría ── */}
       {subcategories.length > 0 && (
-        <div className="mt-6 flex flex-wrap gap-2">
+        <div className="mt-6 flex flex-wrap gap-2" role="group" aria-label="Filtrar productos por subcategoría">
           <button
             type="button"
             onClick={() => setActive('Todas')}
+            aria-pressed={active === 'Todas'}
             className={`rounded-full px-4 py-1.5 text-xs font-heading font-bold uppercase tracking-wide transition ${
               active === 'Todas'
                 ? 'bg-sahm-purple text-white shadow-md'
@@ -32,6 +33,7 @@ export default function CategoryClient({ products, subcategories }) {
               key={sub}
               type="button"
               onClick={() => setActive(sub)}
+              aria-pressed={active === sub}
               className={`rounded-full px-4 py-1.5 text-xs font-heading font-bold uppercase tracking-wide transition ${
                 active === sub
                   ? 'bg-sahm-purple text-white shadow-md'
@@ -45,7 +47,7 @@ export default function CategoryClient({ products, subcategories }) {
       )}
 
       {/* ── Contador ── */}
-      <p className="mt-4 text-sm text-gray-400">
+      <p className="mt-4 text-sm text-gray-500" aria-live="polite">
         {filtered.length} {filtered.length === 1 ? 'producto' : 'productos'}
       </p>
 

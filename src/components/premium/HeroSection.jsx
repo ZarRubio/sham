@@ -12,7 +12,6 @@ const SLIDES = [
     fallback: '/images/catalog-optimized/llantas-moto-electrica-350-10-4pr/card.webp',
     label: 'Llantas',
     sub: 'Moto eléctrica · 3.50-10 4PR',
-    badge: '🏍️',
     href: '/categorias/llantas',
   },
   {
@@ -20,7 +19,6 @@ const SLIDES = [
     fallback: '/images/catalog-optimized/camaras-motos-400-12-tr13/card.webp',
     label: 'Cámaras',
     sub: 'Moto · 4.00-12 TR13',
-    badge: '🔧',
     href: '/categorias/camaras',
   },
   {
@@ -28,7 +26,6 @@ const SLIDES = [
     fallback: '/images/catalog-optimized/carburadores-pz26/card.webp',
     label: 'Carburadores',
     sub: 'Referencia PZ26',
-    badge: '⚙️',
     href: '/categorias/carburadores',
   },
   {
@@ -36,7 +33,6 @@ const SLIDES = [
     fallback: '/images/catalog-optimized/llantas-cargueros-electricos-400-12-8pr/card.webp',
     label: 'Cargueros Eléctricos',
     sub: 'Llanta 4.00-12 8PR',
-    badge: '⚡',
     href: '/categorias/llantas',
   },
   {
@@ -44,7 +40,6 @@ const SLIDES = [
     fallback: '/images/catalog-optimized/camaras-bicicletas-26x2125235/card.webp',
     label: 'Cámaras Bicicleta',
     sub: '26x2.125·2.35',
-    badge: '🚲',
     href: '/categorias/camaras',
   },
 ]
@@ -63,9 +58,10 @@ const BENEFITS = [
   },
 ]
 
-function TiltCard({ children, className = '' }) {
+function TiltCard({ children, className = '', disabled = false }) {
   const ref = useRef(null)
   function onMove(e) {
+    if (disabled) return
     const card = ref.current
     if (!card) return
     const { left, top, width, height } = card.getBoundingClientRect()
@@ -84,6 +80,21 @@ function TiltCard({ children, className = '' }) {
   )
 }
 
+function usePrefersReducedMotion() {
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const updatePreference = () => setPrefersReducedMotion(mediaQuery.matches)
+
+    updatePreference()
+    mediaQuery.addEventListener('change', updatePreference)
+    return () => mediaQuery.removeEventListener('change', updatePreference)
+  }, [])
+
+  return prefersReducedMotion
+}
+
 /* ── Glow orb ───────────────────────────────────────────────────── */
 function GlowOrb({ className = '' }) {
   return <div className={`pointer-events-none absolute rounded-full blur-3xl ${className}`} />
@@ -97,6 +108,8 @@ export default function HeroSection() {
   const [activeBenefit, setActiveBenefit] = useState(BENEFITS[0].id)
   const timerRef = useRef(null)
   const touchStartXRef = useRef(null)
+  const prefersReducedMotion = usePrefersReducedMotion()
+  const carouselPaused = paused || prefersReducedMotion
 
   const goTo = useCallback((idx) => {
     setCurrent(idx)
@@ -112,10 +125,10 @@ export default function HeroSection() {
 
   // Auto-advance every 4 s
   useEffect(() => {
-    if (paused) return undefined
+    if (carouselPaused) return undefined
     timerRef.current = setInterval(next, 4000)
     return () => clearInterval(timerRef.current)
-  }, [next, paused])
+  }, [next, carouselPaused])
 
   useEffect(() => {
     const t = setTimeout(() => setMounted(true), 60)
@@ -244,7 +257,7 @@ export default function HeroSection() {
           {/* ── RIGHT CAROUSEL CARD ── */}
           <div className="flex justify-center"
             style={{ animation: mounted ? 'fade-up-hero 0.7s 0.15s ease-out both' : 'none', opacity: mounted ? 1 : 0 }}>
-            <TiltCard className="relative w-full max-w-sm">
+            <TiltCard className="relative w-full max-w-sm" disabled={prefersReducedMotion}>
               {/* decorative rings — static, no spin */}
               <div aria-hidden="true" className="pointer-events-none absolute -inset-4 rounded-3xl border border-white/10" />
               <div aria-hidden="true" className="pointer-events-none absolute -inset-8 rounded-full border border-sahm-yellow/10" />
@@ -281,7 +294,7 @@ export default function HeroSection() {
                       onError={e => { e.currentTarget.src = slide.fallback }}
                       priority
                       className="carousel-img-enter object-contain p-4"
-                      style={{ animation: 'slide-in 0.32s ease-out both, hero-float 4s ease-in-out infinite' }}
+                      style={{ animation: prefersReducedMotion ? 'none' : 'slide-in 0.32s ease-out both, hero-float 4s ease-in-out infinite' }}
                     />
                   </Link>
 
@@ -341,6 +354,17 @@ export default function HeroSection() {
                     </svg>
                   </button>
                 </div>
+
+                {!prefersReducedMotion && (
+                  <button
+                    type="button"
+                    onClick={() => setPaused(currentPaused => !currentPaused)}
+                    aria-pressed={paused}
+                    className="mt-3 w-full rounded-xl border border-white/15 bg-white/10 py-2 font-heading text-[10px] font-bold uppercase tracking-widest text-white/75 transition hover:bg-white/15 hover:text-white"
+                  >
+                    {paused ? 'Reanudar carrusel' : 'Pausar carrusel'}
+                  </button>
+                )}
 
                 {/* trust strip */}
                 <div className="mt-3 grid grid-cols-2 gap-2">

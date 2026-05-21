@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export const metadata = {
   title: 'Nosotros',
-  description: 'SAHM Parts: catalogo de llantas, camaras y carburadores para motocicletas.',
+  description: 'SAHM Parts: catálogo de llantas, cámaras y carburadores para motocicletas.',
 }
 
 const ABOUT_IMAGES = {
@@ -16,18 +16,18 @@ const ABOUT_IMAGES = {
 const infoCards = [
   {
     title: 'Stock real y actualizado',
-    text: 'Verifica disponibilidad rapida antes de realizar tu compra.',
+    text: 'Verifica disponibilidad rápida antes de realizar tu compra.',
     image: ABOUT_IMAGES.support,
     Icon: StockIcon,
   },
   {
     title: 'Calidad para tu moto',
-    text: 'Llantas, camaras y carburadores seleccionados para brindar rendimiento y confianza.',
+    text: 'Llantas, cámaras y carburadores seleccionados para brindar rendimiento y confianza.',
     image: ABOUT_IMAGES.hero,
     Icon: ShieldIcon,
   },
   {
-    title: 'Envios a todo el Peru',
+    title: 'Envíos a todo el Perú',
     text: 'Despachos coordinados para clientes, talleres y negocios.',
     image: ABOUT_IMAGES.cta,
     Icon: TruckIcon,
@@ -51,7 +51,7 @@ export default function AboutPage() {
               Repuestos para avanzar con confianza
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-700 sm:text-lg">
-              En SAHM PARTS ofrecemos llantas, camaras y carburadores para motocicletas, seleccionados para brindar calidad, rendimiento y confianza en cada recorrido. Atendemos a clientes finales, talleres y negocios del sector motero.
+              En SAHM PARTS ofrecemos llantas, cámaras y carburadores para motocicletas, seleccionados para brindar calidad, rendimiento y confianza en cada recorrido. Atendemos a clientes finales, talleres y negocios del sector motero.
             </p>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <Link
@@ -72,7 +72,7 @@ export default function AboutPage() {
           <div className="relative min-h-[420px] overflow-hidden rounded-3xl bg-gradient-to-br from-sahm-purple via-sahm-night/95 to-black shadow-2xl shadow-sahm-purple/20">
             <Image
               src={ABOUT_IMAGES.hero}
-              alt="Almacen SAHM con llantas, productos y branding de la marca"
+              alt="Almacén SAHM con llantas, productos y branding de la marca"
               fill
               sizes="(min-width: 1024px) 52vw, 100vw"
               className="object-cover"
@@ -85,10 +85,10 @@ export default function AboutPage() {
                   <BuildingIcon />
                 </span>
                 <h2 className="mt-5 font-heading text-3xl font-extrabold uppercase italic text-white">
-                  Respaldo, stock y atencion nacional
+                  Respaldo, stock y atención nacional
                 </h2>
                 <p className="mt-3 text-sm leading-relaxed text-white/80">
-                  Una operacion pensada para abastecer a clientes, talleres y negocios con referencias listas para cotizar y despachar.
+                  Una operación pensada para abastecer a clientes, talleres y negocios con referencias listas para cotizar y despachar.
                 </p>
               </div>
             </div>
@@ -113,7 +113,7 @@ export default function AboutPage() {
               </span>
               <h2 className="mt-4 font-heading text-2xl font-extrabold uppercase text-white">Nuestras oficinas</h2>
               <p className="mt-2 text-sm leading-relaxed text-white/80">
-                Av. Manco Capac 115 - La Victoria, Lima, Peru.
+                Av. Manco Cápac 115 - La Victoria, Lima, Perú.
               </p>
             </div>
           </article>
@@ -157,12 +157,12 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-gradient-to-r from-sahm-purple/88 via-sahm-purple/68 to-sahm-night/76" />
           <div className="relative flex flex-col gap-6 p-8 sm:p-10 lg:flex-row lg:items-center lg:justify-between">
             <div>
-              <span className="font-heading text-xs font-extrabold uppercase tracking-widest text-sahm-yellow">Atencion directa</span>
+              <span className="font-heading text-xs font-extrabold uppercase tracking-widest text-sahm-yellow">Atención directa</span>
               <h2 className="mt-2 font-heading text-3xl font-extrabold uppercase italic text-white sm:text-4xl">
                 ¿Tienes alguna consulta?
               </h2>
               <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/80">
-                Escribenos por WhatsApp con la categoria, medida o referencia que necesitas y te ayudamos a confirmar stock, precio y despacho.
+                Escríbenos por WhatsApp con la categoría, medida o referencia que necesitas y te ayudamos a confirmar stock, precio y despacho.
               </p>
             </div>
             <Link

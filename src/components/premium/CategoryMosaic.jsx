@@ -32,7 +32,7 @@ function CategoryPanel({ category, featured = false }) {
 
       {category.image && (
         <div className={`absolute right-0 top-1/2 z-0 -translate-y-1/2 transition duration-700 group-hover:scale-105 ${
-          featured ? 'h-[86%] w-[70%] p-4 sm:w-[62%]' : 'h-[82%] w-[68%] p-4'
+          featured ? 'h-[78%] w-[62%] p-4 opacity-70 sm:h-[86%] sm:w-[58%] sm:opacity-90' : 'h-[76%] w-[58%] p-4 opacity-70 sm:h-[82%] sm:w-[62%] sm:opacity-90'
         }`}>
           <Image
             src={category.image}
@@ -44,16 +44,16 @@ function CategoryPanel({ category, featured = false }) {
         </div>
       )}
 
-      <div className="absolute inset-0 bg-gradient-to-r from-sahm-purple via-sahm-night/65 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-sahm-purple via-sahm-night/85 to-sahm-night/10" />
 
-      <div className={`relative z-10 flex h-full flex-col justify-end p-6 ${featured ? 'sm:p-9' : ''}`}>
+      <div className={`relative z-10 flex h-full max-w-[78%] flex-col justify-end p-6 sm:max-w-[68%] ${featured ? 'sm:p-9 lg:max-w-[58%]' : 'lg:max-w-[66%]'}`}>
         <span className="mb-3 w-fit rounded-full border border-sahm-yellow/50 bg-sahm-yellow px-3 py-1 font-heading text-[10px] font-extrabold uppercase tracking-widest text-sahm-purple">
           {category.count} productos
         </span>
         <p className="font-heading text-xs font-extrabold uppercase tracking-[0.22em] text-sahm-yellow">
           {category.eyebrow}
         </p>
-        <h3 className={`mt-2 font-heading font-extrabold uppercase italic leading-none text-white ${featured ? 'text-6xl sm:text-7xl' : 'text-4xl'}`}>
+        <h3 className={`mt-2 font-heading font-extrabold uppercase italic leading-none text-white ${featured ? 'text-5xl sm:text-7xl' : 'text-4xl'}`}>
           {category.label}
         </h3>
         <p className={`mt-3 max-w-sm text-white/65 ${featured ? 'text-base' : 'text-sm'}`}>

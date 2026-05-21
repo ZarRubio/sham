@@ -31,25 +31,35 @@ export default function ProductsClient({ products }) {
       return matchesSearch && matchesCategory
     })
   }, [products, search, activeCategory])
+  const hasActiveFilters = search.trim().length > 0 || activeCategory !== 'Todos'
+  const clearFilters = () => {
+    setSearch('')
+    setActiveCategory('Todos')
+  }
 
   return (
     <div>
       <div className="mt-8">
+        <label htmlFor="catalog-search" className="font-heading text-xs font-extrabold uppercase tracking-widest text-sahm-purple">
+          Buscar en catálogo
+        </label>
         <input
+          id="catalog-search"
           type="search"
           value={search}
           onChange={event => setSearch(event.target.value)}
-          placeholder="Buscar producto..."
-          className="w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3 text-sm text-black placeholder-gray-400 outline-none transition focus:border-sahm-yellow sm:max-w-sm"
+          placeholder="Producto, medida o referencia"
+          className="mt-2 w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3 text-sm text-black placeholder-gray-400 outline-none transition focus:border-sahm-yellow sm:max-w-sm"
         />
       </div>
 
-      <div className="mt-5 flex flex-wrap gap-2">
+      <div className="mt-5 flex flex-wrap gap-2" role="group" aria-label="Filtrar productos por categoría">
         {categories.map(category => (
           <button
             key={category}
             type="button"
             onClick={() => setActiveCategory(category)}
+            aria-pressed={activeCategory === category}
             className={`rounded-full px-4 py-2 text-xs font-heading font-bold uppercase tracking-wide transition ${
               activeCategory === category
                 ? 'bg-sahm-purple text-white'
@@ -61,9 +71,20 @@ export default function ProductsClient({ products }) {
         ))}
       </div>
 
-      <p className="mt-4 text-sm text-gray-400">
-        {filtered.length} {filtered.length === 1 ? 'producto' : 'productos'}
-      </p>
+      <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <p className="text-sm text-gray-500" aria-live="polite">
+          {filtered.length} {filtered.length === 1 ? 'producto' : 'productos'}
+        </p>
+        {hasActiveFilters && (
+          <button
+            type="button"
+            onClick={clearFilters}
+            className="w-fit rounded-lg border-2 border-gray-200 bg-white px-4 py-2 font-heading text-xs font-extrabold uppercase tracking-wide text-gray-600 transition hover:border-sahm-purple hover:text-sahm-purple"
+          >
+            Limpiar filtros
+          </button>
+        )}
+      </div>
 
       {filtered.length > 0 ? (
         <div className="mt-4 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -74,7 +95,7 @@ export default function ProductsClient({ products }) {
       ) : (
         <div className="mt-16 py-12 text-center">
           <p className="font-heading text-2xl font-bold uppercase text-gray-300">Sin resultados</p>
-          <p className="mt-2 text-gray-400">Intenta con otro termino o categoria.</p>
+          <p className="mt-2 text-gray-400">Intenta con otro término o categoría.</p>
         </div>
       )}
     </div>

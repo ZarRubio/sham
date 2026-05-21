@@ -54,7 +54,7 @@ export default function ProductCard({ product, priority = false }) {
 
         {/* Price + availability */}
         <div className="mt-3 flex items-center justify-between">
-          <span className="text-sm font-bold text-gray-400 italic">Consultar precio</span>
+          <span className="text-sm font-extrabold text-sahm-purple">Cotizar precio y stock</span>
           <span className="rounded-full bg-green-100 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-green-700">
             En stock
           </span>
@@ -72,14 +72,14 @@ export default function ProductCard({ product, priority = false }) {
               href={product.productUrl}
               className="rounded-lg border-2 border-gray-200 py-2.5 text-center text-xs font-heading font-bold uppercase tracking-wide text-gray-700 transition hover:border-gray-400 hover:text-black"
             >
-              Ver producto
+              Ver ficha
             </Link>
             <button
               type="button"
               onClick={handleAdd}
               className="rounded-lg bg-sahm-yellow py-2.5 text-xs font-heading font-bold uppercase tracking-wide text-black transition hover:brightness-95 active:scale-[0.97]"
             >
-              Agregar
+              Agregar pedido
             </button>
           </div>
         </div>

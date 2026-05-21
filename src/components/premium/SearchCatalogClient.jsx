@@ -50,10 +50,22 @@ export default function SearchCatalogClient() {
             className="mt-3 w-full rounded-2xl border border-white/10 bg-black/45 px-5 py-4 text-base font-bold text-white outline-none placeholder:text-white/22 focus:border-sahm-yellow/70"
           />
         </label>
-        <p className="mt-4 text-sm font-semibold text-white/45">{results.length} resultados</p>
-        <div className="mt-5 grid gap-4 md:grid-cols-2">
-          {results.slice(0, 8).map(product => <ProductCard key={product.id} product={product} />)}
-        </div>
+        <p className="mt-4 text-sm font-semibold text-white/45">
+          {results.length} {results.length === 1 ? 'resultado' : 'resultados'}
+        </p>
+
+        {results.length > 0 ? (
+          <div className="mt-5 grid gap-4 md:grid-cols-2">
+            {results.map((product, index) => (
+              <ProductCard key={product.id} product={product} priority={index < 4} />
+            ))}
+          </div>
+        ) : (
+          <div className="mt-8 rounded-2xl border border-white/10 bg-black/25 px-5 py-8 text-center">
+            <p className="font-heading text-2xl font-extrabold uppercase text-white">Sin resultados</p>
+            <p className="mt-2 text-sm text-white/50">Prueba con otra medida, referencia o categoría.</p>
+          </div>
+        )}
       </div>
     </div>
   )
