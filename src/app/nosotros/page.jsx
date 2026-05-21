@@ -7,10 +7,10 @@ export const metadata = {
 }
 
 const ABOUT_IMAGES = {
-  hero: '/images/nosotros/magnific_un-almacen-de-llantas-img_62F99x5iJO.webp',
-  support: '/images/nosotros/magnific_un-almacen-de-llantas-img_EqGCkeOuuO.webp',
-  office: '/images/nosotros/magnific_un-almacen-de-llantas-img_gJ8sg1ISXO.webp',
-  cta: '/images/nosotros/magnific_un-almacen-de-llantas-img_NZQ9WFY6D9.webp',
+  hero: '/images/Nosotros/magnific_un-almacen-de-llantas-img_62F99x5iJO.webp',
+  support: '/images/Nosotros/magnific_un-almacen-de-llantas-img_EqGCkeOuuO.webp',
+  office: '/images/Nosotros/magnific_un-almacen-de-llantas-img_gJ8sg1ISXO.webp',
+  cta: '/images/Nosotros/magnific_un-almacen-de-llantas-img_NZQ9WFY6D9.webp',
 }
 
 const infoCards = [
