@@ -65,6 +65,44 @@ function technicalSpecs(item, commerce) {
   ].filter(([, value]) => value !== undefined && value !== null && value !== '')
 }
 
+function productDescriptionBullets(item, displayName) {
+  if (item.category === 'Llantas') {
+    const useCase = item.subcategory === 'Cargueros Eléctricos'
+      ? 'cargueros eléctricos y trabajo de reparto'
+      : item.subcategory === 'Moto eléctrica'
+        ? 'motos eléctricas de uso diario'
+        : 'motocicletas de uso urbano y trabajo diario'
+
+    return [
+      `Llanta ${displayName} pensada para ${useCase}, con construcción enfocada en estabilidad y resistencia.`,
+      'Diseño de rodadura preparado para mantener buen contacto con el piso en recorridos frecuentes.',
+      'Opción práctica para reposición, mantenimiento preventivo y atención de talleres o flotas.',
+    ]
+  }
+
+  if (item.category === 'Cámaras') {
+    return [
+      `Cámara ${displayName} para reposición rápida, compatible con la medida indicada en la ficha técnica.`,
+      'Fabricada para ayudar a conservar la presión de aire y acompañar el trabajo diario de la llanta.',
+      'Presentación lista para talleres, tiendas y usuarios que necesitan una solución directa por medida.',
+    ]
+  }
+
+  if (item.category === 'Carburadores') {
+    return [
+      `Carburador ${displayName} para mantenimiento o reemplazo en motores compatibles con la referencia PZ.`,
+      'Cuerpo compacto con puntos de conexión visibles para facilitar la instalación y revisión técnica.',
+      'Repuesto útil para talleres y usuarios que buscan recuperar respuesta estable en la alimentación de combustible.',
+    ]
+  }
+
+  return [
+    'Producto seleccionado para reposición y mantenimiento dentro del catálogo SAHM.',
+    'Consulta compatibilidad por medida o referencia antes de cerrar tu pedido.',
+    'Disponible para cotización directa con asesoría por WhatsApp.',
+  ]
+}
+
 function product(item) {
   const commerce = CATALOG_COMMERCE_DATA[item.id]
   const displayName = commerce?.displayName || item.name
@@ -94,6 +132,7 @@ function product(item) {
     stockLabel: stock.stockLabel,
     stockLevel: stock.stockLevel,
     technicalSpecs: technicalSpecs(item, commerce),
+    descriptionBullets: productDescriptionBullets(item, displayName),
     productUrl: `/productos/${item.id}`,
     images,
   }

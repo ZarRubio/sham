@@ -103,7 +103,7 @@ export default function ProductDetailClient({ product, related }) {
 
   return (
     <>
-    <section className="grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)]">
+    <section className="grid min-w-0 items-start gap-8 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)]">
 
       {/* Image gallery */}
       <div className="min-w-0 overflow-hidden rounded-2xl border-2 border-gray-100 bg-white p-3 shadow-sm sm:p-4">
@@ -202,6 +202,17 @@ export default function ProductDetailClient({ product, related }) {
         <p className="mt-1 font-mono text-sm text-gray-400">
           {product.sku ? `SKU ${product.sku}` : `REF ${product.code}`}
         </p>
+
+        {product.descriptionBullets?.length > 0 && (
+          <div className="mt-5 space-y-3">
+            {product.descriptionBullets.map(item => (
+              <p key={item} className="flex gap-3 text-sm leading-relaxed text-slate-600 sm:text-base">
+                <span aria-hidden="true" className="mt-1.5 h-2.5 w-2.5 shrink-0 rotate-45 rounded-[2px] bg-sahm-yellow ring-2 ring-sahm-purple/10" />
+                <span>{item}</span>
+              </p>
+            ))}
+          </div>
+        )}
 
         {/* Price + availability */}
         <div className="mt-5 flex flex-wrap items-center gap-4">
