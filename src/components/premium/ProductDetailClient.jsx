@@ -6,9 +6,55 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { useCart } from '../../context/CartContext'
 import { buildWhatsAppMessageUrl } from '../../config/site'
-import { getProductLabel, getProductWhatsAppMessage } from '../../config/catalog'
+import { formatPrice, getProductLabel, getProductWhatsAppMessage } from '../../config/catalog'
 import QuantitySelector from './QuantitySelector'
 import CartConfirmation from './CartConfirmation'
+
+function stockBadgeClass(level) {
+  if (level === 'available') return 'bg-green-100 text-green-700'
+  if (level === 'low') return 'bg-amber-100 text-amber-700'
+  if (level === 'out') return 'bg-red-100 text-red-700'
+  return 'bg-gray-100 text-gray-600'
+}
+
+function TechnicalSpecsTable({ specs }) {
+  if (!specs?.length) return null
+
+  return (
+    <section className="mt-8 min-w-0 rounded-2xl border-2 border-gray-100 bg-white p-4 shadow-sm sm:p-5 lg:col-span-2">
+      <div className="mb-4 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p className="font-heading text-xs font-extrabold uppercase tracking-widest text-sahm-purple">Ficha técnica</p>
+          <h2 className="font-heading text-2xl font-extrabold uppercase italic text-black">Datos específicos</h2>
+        </div>
+        <p className="text-xs text-gray-400">Información comercial según lista SAHM.</p>
+      </div>
+
+      <div className="overflow-x-auto rounded-xl border border-sahm-purple/15">
+        <table className="min-w-[760px] w-full border-collapse text-left">
+          <thead>
+            <tr className="bg-sahm-purple text-white">
+              {specs.map(([label]) => (
+                <th key={label} className="px-5 py-4 align-top font-heading text-xs font-extrabold uppercase tracking-wide text-sahm-yellow">
+                  {label}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="bg-white">
+              {specs.map(([label, value]) => (
+                <td key={label} className="border-t border-sahm-purple/10 px-5 py-4 text-sm font-semibold text-slate-600">
+                  {value}
+                </td>
+              ))}
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  )
+}
 
 export default function ProductDetailClient({ product, related }) {
   const [activeImage, setActiveImage] = useState(0)
@@ -20,6 +66,8 @@ export default function ProductDetailClient({ product, related }) {
   const label = getProductLabel(product, 'es')
   const inCart = useMemo(() => items.find(item => item.productId === product.id), [items, product.id])
   const hasMultipleImages = product.images.length > 1
+  const priceLabel = formatPrice(product.retailPrice) || 'Consultar precio'
+  const canAddToCart = product.stockLevel !== 'out'
 
   // Show sticky bar when the native action buttons scroll out of view (mobile only)
   useEffect(() => {
@@ -48,6 +96,7 @@ export default function ProductDetailClient({ product, related }) {
   }
 
   const handleAdd = () => {
+    if (!canAddToCart) return
     addToCart(product.id, qty)
     setShowConfirmation(true)
   }
@@ -150,19 +199,25 @@ export default function ProductDetailClient({ product, related }) {
         <h1 className="mt-2 font-heading text-4xl font-extrabold uppercase leading-tight text-black sm:text-5xl">
           {label}
         </h1>
-        <p className="mt-1 font-mono text-sm text-gray-400">REF {product.code}</p>
+        <p className="mt-1 font-mono text-sm text-gray-400">
+          {product.sku ? `SKU ${product.sku}` : `REF ${product.code}`}
+        </p>
 
         {/* Price + availability */}
-        <div className="mt-5 flex items-center gap-4">
-          <span className="text-lg font-bold italic text-gray-400">Consultar precio</span>
-          <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-green-700">
-            En stock
+        <div className="mt-5 flex flex-wrap items-center gap-4">
+          <span className="font-heading text-3xl font-extrabold uppercase text-sahm-purple">{priceLabel}</span>
+          <span className={`rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wide ${stockBadgeClass(product.stockLevel)}`}>
+            {product.stockLabel}
           </span>
         </div>
 
         {/* Features */}
         <div className="mt-5 rounded-xl border-2 border-gray-100 bg-gray-50 p-4">
-          {['Stock sujeto a confirmación', 'Asesoría por referencia', 'Despacho nacional'].map(item => (
+          {[
+            product.sku ? `Código SKU ${product.sku}` : 'Código por confirmar',
+            product.retailPrice ? 'Precio publicado en catálogo' : 'Precio sujeto a cotización',
+            `${product.stockLabel} para atención comercial`,
+          ].map(item => (
             <p key={item} className="flex items-center gap-2 py-1 text-sm text-gray-600">
               <span className="h-1.5 w-1.5 rounded-full bg-sahm-yellow" />
               {item}
@@ -188,9 +243,10 @@ export default function ProductDetailClient({ product, related }) {
           <button
             type="button"
             onClick={handleAdd}
-            className="rounded-xl bg-sahm-yellow px-6 py-3.5 font-heading text-sm font-bold uppercase tracking-wide text-black transition hover:brightness-95"
+            disabled={!canAddToCart}
+            className="rounded-xl bg-sahm-yellow px-6 py-3.5 font-heading text-sm font-bold uppercase tracking-wide text-black transition hover:brightness-95 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:text-gray-400"
           >
-            Agregar al carrito
+            {canAddToCart ? 'Agregar al carrito' : 'Sin stock'}
           </button>
           <a
             href={buildWhatsAppMessageUrl(getProductWhatsAppMessage(product, 'Hola, quiero consultar precio y disponibilidad de', 'es'))}
@@ -204,6 +260,8 @@ export default function ProductDetailClient({ product, related }) {
 
         <CartConfirmation show={showConfirmation} onDismiss={() => setShowConfirmation(false)} />
       </aside>
+
+      <TechnicalSpecsTable specs={product.technicalSpecs} />
     </section>
 
     {/* Sticky mobile CTA — appears when the native buttons scroll off-screen */}
@@ -214,9 +272,10 @@ export default function ProductDetailClient({ product, related }) {
           <button
             type="button"
             onClick={handleAdd}
-            className="rounded-xl bg-sahm-yellow py-3.5 font-heading text-sm font-bold uppercase tracking-wide text-black transition active:brightness-90"
+            disabled={!canAddToCart}
+            className="rounded-xl bg-sahm-yellow py-3.5 font-heading text-sm font-bold uppercase tracking-wide text-black transition active:brightness-90 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:text-gray-400"
           >
-            Agregar
+            {canAddToCart ? 'Agregar' : 'Sin stock'}
           </button>
           <a
             href={buildWhatsAppMessageUrl(getProductWhatsAppMessage(product, 'Hola, quiero consultar precio y disponibilidad de', 'es'))}

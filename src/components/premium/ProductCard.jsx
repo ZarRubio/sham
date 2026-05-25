@@ -4,17 +4,26 @@ import Image from 'next/image'
 import { useState } from 'react'
 import Link from 'next/link'
 import { useCart } from '../../context/CartContext'
-import { getProductLabel } from '../../config/catalog'
+import { formatPrice, getProductLabel } from '../../config/catalog'
 import QuantitySelector from './QuantitySelector'
 import CartConfirmation from './CartConfirmation'
+
+function stockBadgeClass(level) {
+  if (level === 'available') return 'bg-green-100 text-green-700'
+  if (level === 'low') return 'bg-amber-100 text-amber-700'
+  if (level === 'out') return 'bg-red-100 text-red-700'
+  return 'bg-gray-100 text-gray-600'
+}
 
 export default function ProductCard({ product, priority = false }) {
   const [qty, setQty] = useState(1)
   const [showConfirmation, setShowConfirmation] = useState(false)
   const { addToCart } = useCart()
   const label = getProductLabel(product, 'es')
+  const canAddToCart = product.stockLevel !== 'out'
 
   const handleAdd = () => {
+    if (!canAddToCart) return
     addToCart(product.id, qty)
     setShowConfirmation(true)
   }
@@ -50,13 +59,17 @@ export default function ProductCard({ product, priority = false }) {
         <h3 className="mt-1 font-heading text-lg font-extrabold uppercase leading-tight text-black">
           {label}
         </h3>
-        <p className="mt-0.5 font-mono text-xs text-gray-400">REF {product.code}</p>
+        <p className="mt-0.5 font-mono text-xs text-gray-400">
+          {product.sku ? `SKU ${product.sku}` : `REF ${product.code}`}
+        </p>
 
         {/* Price + availability */}
-        <div className="mt-3 flex items-center justify-between">
-          <span className="text-sm font-extrabold text-sahm-purple">Cotizar precio y stock</span>
-          <span className="rounded-full bg-green-100 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-green-700">
-            En stock
+        <div className="mt-3 flex items-center justify-between gap-3">
+          <span className="text-sm font-extrabold text-sahm-purple">
+            {formatPrice(product.retailPrice) || 'Consultar precio'}
+          </span>
+          <span className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide ${stockBadgeClass(product.stockLevel)}`}>
+            {product.stockLabel}
           </span>
         </div>
 
@@ -77,9 +90,10 @@ export default function ProductCard({ product, priority = false }) {
             <button
               type="button"
               onClick={handleAdd}
-              className="rounded-lg bg-sahm-yellow py-2.5 text-xs font-heading font-bold uppercase tracking-wide text-black transition hover:brightness-95 active:scale-[0.97]"
+              disabled={!canAddToCart}
+              className="rounded-lg bg-sahm-yellow py-2.5 text-xs font-heading font-bold uppercase tracking-wide text-black transition hover:brightness-95 active:scale-[0.97] disabled:cursor-not-allowed disabled:bg-gray-200 disabled:text-gray-400"
             >
-              Agregar pedido
+              {canAddToCart ? 'Agregar pedido' : 'Sin stock'}
             </button>
           </div>
         </div>

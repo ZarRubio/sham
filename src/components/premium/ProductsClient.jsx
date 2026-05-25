@@ -22,6 +22,8 @@ export default function ProductsClient({ products }) {
       const haystack = normalize([
         getProductLabel(product, 'es'),
         product.code,
+        product.sku,
+        product.measure,
         product.category,
         product.subcategory,
         product.name,

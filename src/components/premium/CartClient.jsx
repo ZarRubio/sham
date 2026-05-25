@@ -11,7 +11,8 @@ function buildMessage(items) {
   const lines = items.map(item => {
     const product = CATALOG_PRODUCTS.find(entry => entry.id === item.productId)
     if (!product) return null
-    return `- ${item.qty}x ${getProductLabel(product, 'es')} | Ref: ${product.code} | ${product.subcategory}`
+    const sku = product.sku ? `SKU: ${product.sku}` : `Ref: ${product.code}`
+    return `- ${item.qty}x ${getProductLabel(product, 'es')} | ${sku} | ${product.subcategory}`
   }).filter(Boolean)
 
   return `Hola, quiero hacer el siguiente pedido:\n\n${lines.join('\n')}\n\n¿Tienen stock y cuál es el precio total? Mi ciudad es: `
@@ -81,7 +82,9 @@ export default function CartClient() {
               <Link href={product.productUrl} className="font-heading text-base font-extrabold uppercase text-black hover:text-sahm-purple">
                 {getProductLabel(product, 'es')}
               </Link>
-              <p className="mt-0.5 font-mono text-xs text-gray-400">REF {product.code}</p>
+              <p className="mt-0.5 font-mono text-xs text-gray-400">
+                {product.sku ? `SKU ${product.sku}` : `REF ${product.code}`}
+              </p>
               <span className="mt-1 inline-block rounded-full bg-sahm-purple px-2.5 py-0.5 text-[10px] font-heading font-bold uppercase text-white">
                 {product.category}
               </span>
