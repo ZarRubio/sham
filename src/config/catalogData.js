@@ -234,6 +234,46 @@ export const CATALOG_COMMERCE_DATA = {
     retailPrice: 9.28,
     stock: 0,
   },
+  'carburadores-pz19': {
+    brand: 'SAHM',
+    measure: 'PZ19',
+    tubeType: 'Carburador',
+    unit: 'Caja',
+    retailPrice: 50,
+    stock: 0,
+  },
+  'carburadores-pz20': {
+    brand: 'SAHM',
+    measure: 'PZ20',
+    tubeType: 'Carburador',
+    unit: 'Caja',
+    retailPrice: 54,
+    stock: 0,
+  },
+  'carburadores-pz26': {
+    brand: 'SAHM',
+    measure: 'PZ26',
+    tubeType: 'Carburador',
+    unit: 'Caja',
+    retailPrice: 50,
+    stock: 0,
+  },
+  'carburadores-pz27': {
+    brand: 'SAHM',
+    measure: 'PZ27',
+    tubeType: 'Carburador',
+    unit: 'Caja',
+    retailPrice: 52,
+    stock: 0,
+  },
+  'carburadores-pz30': {
+    brand: 'SAHM',
+    measure: 'PZ30',
+    tubeType: 'Carburador',
+    unit: 'Caja',
+    retailPrice: 54,
+    stock: 0,
+  },
 }
 
 export const CATALOG_PRODUCT_DATA = [

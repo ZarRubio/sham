@@ -55,6 +55,16 @@ function stockMeta(stock) {
 function technicalSpecs(item, commerce) {
   if (!commerce) return []
 
+  if (item.category === 'Carburadores') {
+    return [
+      ['Código de producto', commerce.sku],
+      ['Modelo', commerce.measure],
+      ['Tipo', commerce.tubeType],
+      ['Presentación', commerce.unit],
+      ['Disponibilidad', stockMeta(commerce.stock).stockLabel],
+    ].filter(([, value]) => value !== undefined && value !== null && value !== '')
+  }
+
   return [
     ['Código de producto', commerce.sku],
     ['Medida', commerce.measure],
