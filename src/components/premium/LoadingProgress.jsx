@@ -52,6 +52,7 @@ export default function LoadingProgress() {
           height={60}
           className="absolute inset-0 m-auto h-auto w-56 object-contain transition-[clip-path] duration-200 ease-out sm:w-64"
           style={{
+            height: 'auto',
             clipPath: `inset(${100 - progress}% 0 0 0)`,
           }}
           priority

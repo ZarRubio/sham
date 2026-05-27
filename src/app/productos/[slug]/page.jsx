@@ -13,8 +13,8 @@ export async function generateMetadata({ params }) {
   const { slug } = await params
   const product = getProductById(slug)
   return {
-    title: product ? getProductLabel(product, 'es') : 'Producto',
-    description: product ? `Cotiza ${product.code} con SAHM.` : 'Producto SAHM',
+    title: product ? product.seoName || getProductLabel(product, 'es') : 'Producto',
+    description: product ? product.metaDescription || `Cotiza ${product.code} con SAHM.` : 'Producto SAHM',
   }
 }
 

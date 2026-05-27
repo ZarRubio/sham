@@ -97,7 +97,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="es" className={`${barlowCondensed.variable} ${inter.variable}`}>
+    <html lang="es" data-scroll-behavior="smooth" className={`${barlowCondensed.variable} ${inter.variable}`}>
       <body>
         <Providers>
           <Layout>{children}</Layout>

@@ -2,6 +2,7 @@ import {
   CATALOG_CATEGORY_DATA,
   CATALOG_COMMERCE_DATA,
   CATALOG_IMAGE_ROOT,
+  CATALOG_PRODUCT_CONTENT,
   CATALOG_PRODUCT_DATA,
   OPTIMIZED_IMAGE_ROOT,
 } from './catalogData'
@@ -53,6 +54,9 @@ function stockMeta(stock) {
 }
 
 function technicalSpecs(item, commerce) {
+  const content = CATALOG_PRODUCT_CONTENT[item.id]
+  if (content?.technicalDetails?.length) return content.technicalDetails
+
   if (!commerce) return []
 
   if (item.category === 'Carburadores') {
@@ -76,6 +80,11 @@ function technicalSpecs(item, commerce) {
 }
 
 function productDescriptionBullets(item, displayName) {
+  const content = CATALOG_PRODUCT_CONTENT[item.id]
+  if (content?.shortDescription && content?.longDescription) {
+    return [content.shortDescription, content.productSheetText || content.longDescription]
+  }
+
   if (item.category === 'Llantas') {
     const useCase = item.subcategory === 'Cargueros Eléctricos'
       ? 'cargueros eléctricos y trabajo de reparto'
@@ -115,6 +124,7 @@ function productDescriptionBullets(item, displayName) {
 
 function product(item) {
   const commerce = CATALOG_COMMERCE_DATA[item.id]
+  const content = CATALOG_PRODUCT_CONTENT[item.id] || {}
   const displayName = commerce?.displayName || item.name
   const stock = stockMeta(commerce?.stock)
   const images = item.files.map((image, index) => ({
@@ -143,6 +153,19 @@ function product(item) {
     stockLevel: stock.stockLevel,
     technicalSpecs: technicalSpecs(item, commerce),
     descriptionBullets: productDescriptionBullets(item, displayName),
+    seoName: content.seoName || '',
+    shortDescription: content.shortDescription || '',
+    longDescription: content.longDescription || '',
+    compatibility: content.compatibility || '',
+    benefits: content.benefits || [],
+    recommendation: content.recommendation || '',
+    technicalWarning: content.technicalWarning || '',
+    seoKeywords: content.seoKeywords || [],
+    metaDescription: content.metaDescription || '',
+    productSheetText: content.productSheetText || '',
+    faq: content.faq || [],
+    badges: content.badges || [],
+    comparison: content.comparison,
     productUrl: `/productos/${item.id}`,
     images,
   }

@@ -276,6 +276,273 @@ export const CATALOG_COMMERCE_DATA = {
   },
 }
 
+export const CATALOG_PRODUCT_CONTENT = {
+  'carburadores-pz19': {
+    seoName: 'Carburador PZ19 19 mm para moto, ATV, scooter y go kart',
+    shortDescription: 'Carburador PZ19 de 19 mm para motores 4 tiempos pequeños. Recomendado para 50cc a 125cc según configuración.',
+    longDescription:
+      'El carburador PZ19 SAHM es una opción práctica para mantenimiento, reposición y calibración de motores 4 tiempos de baja cilindrada. Su diámetro de 19 mm lo hace común en motos pequeñas, scooters, ATV, dirt bikes y go karts que trabajan con referencias PZ. Es una alternativa comercial para talleres, distribuidores y usuarios que necesitan recuperar una alimentación estable de combustible, siempre validando medidas antes de instalar.',
+    technicalDetails: [
+      ['Modelo', 'PZ19'],
+      ['Diámetro de carburador', '19 mm'],
+      ['Cilindrada sugerida', '50cc, 70cc, 90cc, 100cc, 110cc y 125cc según configuración'],
+      ['Tipo de motor sugerido', '4 tiempos'],
+      ['Choke', 'Puede venir con choke por cable según versión'],
+      ['Intake ID referencial', '19 mm'],
+      ['Montaje de filtro referencial', '33-35 mm aprox.'],
+      ['Distancia de pernos referencial', '48 mm aprox.'],
+    ],
+    compatibility:
+      'Compatible según configuración con motos pequeñas, scooter, ATV, dirt bike y go kart con motores 4T de 50cc a 125cc. Validar diámetro de admisión, filtro y distancia entre pernos.',
+    benefits: [
+      'Medida compacta para motores de baja cilindrada.',
+      'Ayuda a recuperar respuesta estable en la alimentación de combustible.',
+      'Referencia muy usada en motos chinas, scooters y vehículos recreativos pequeños.',
+      'Opción útil para talleres que atienden mantenimiento frecuente.',
+    ],
+    recommendation:
+      'Recomendado para reposición o mantenimiento en motores pequeños cuando el carburador original coincide en admisión, filtro y anclaje. Puede requerir calibración de mezcla y ralentí.',
+    technicalWarning:
+      'No instalar solo por cilindrada. Verificar medidas antes de instalar: diámetro de admisión, entrada de filtro, distancia entre pernos, tipo de choke y calibración requerida.',
+    seoKeywords: [
+      'carburador PZ19',
+      'carburador 19 mm',
+      'carburador para moto 110cc',
+      'carburador para scooter',
+      'repuestos para motos Perú',
+      'carburador ATV go kart',
+    ],
+    metaDescription: 'Carburador PZ19 19 mm para motores 4T 50cc-125cc según configuración. Verificar medidas antes de instalar.',
+    productSheetText:
+      'Carburador PZ19 SAHM para motores pequeños 4 tiempos. Ideal para reposición en motos, scooters, ATV y go kart compatibles según configuración. Validar medidas y calibración.',
+    faq: [
+      ['¿El carburador PZ19 sirve para 110cc?', 'Sí, puede servir en motores 110cc según configuración, pero se debe validar admisión, filtro, pernos y calibración.'],
+      ['¿Qué diámetro tiene el PZ19?', 'Tiene diámetro referencial de carburador de 19 mm e intake ID referencial de 19 mm.'],
+      ['¿Sirve para scooter o ATV?', 'Puede usarse en scooters, ATV, dirt bikes y go karts compatibles con referencia PZ19.'],
+      ['¿Necesita calibración?', 'Sí. Puede requerir ajuste de mezcla, ralentí y revisión de chicleres según el motor.'],
+      ['¿Qué debo medir antes de comprar?', 'Diámetro de admisión, montaje del filtro de aire, distancia entre pernos y tipo de choke.'],
+    ],
+    badges: ['19 mm', '50cc-125cc', '4 tiempos', 'Verificar medidas'],
+    comparison: {
+      diameter: '19 mm',
+      displacement: '50cc-125cc',
+      use: 'Motos pequeñas, scooter, ATV y go kart',
+      flow: 'Bajo',
+      note: 'Compacto; validar choke y pernos.',
+    },
+  },
+  'carburadores-pz20': {
+    seoName: 'Carburador PZ20 20 mm para moto 110cc, 125cc, ATV y scooter',
+    shortDescription: 'Carburador PZ20 de 20 mm para motores 110cc y 125cc, también 50cc a 125cc según configuración.',
+    longDescription:
+      'El carburador PZ20 SAHM está orientado a motores 4 tiempos ligeros que requieren una referencia de 20 mm para reposición o mantenimiento. Es usado principalmente en motores 110cc y 125cc, con aplicaciones comunes en ATV, dirt bike, go kart, motos chinas, mototaxis ligeras y scooters. Su instalación debe confirmarse comparando medidas físicas y puede requerir calibración para lograr una respuesta estable.',
+    technicalDetails: [
+      ['Modelo', 'PZ20'],
+      ['Diámetro de carburador', '20 mm'],
+      ['Cilindrada sugerida', '110cc y 125cc principalmente; 50cc a 125cc según configuración'],
+      ['Tipo de motor sugerido', '4 tiempos'],
+      ['Choke', 'Puede venir con choke manual según versión'],
+      ['Intake referencial', '20 mm'],
+      ['Montaje de filtro referencial', '32 mm aprox.'],
+      ['Distancia de pernos referencial', '48 mm aprox.'],
+    ],
+    compatibility:
+      'Compatible según configuración con motos chinas, scooters, mototaxis ligeras, ATV, dirt bike y go kart de baja cilindrada. Validar diámetro de admisión, filtro y distancia entre pernos.',
+    benefits: [
+      'Flujo ligeramente mayor que PZ19 para motores ligeros.',
+      'Referencia común para 110cc y 125cc.',
+      'Buena opción para talleres que atienden motos chinas y vehículos utilitarios pequeños.',
+      'Ayuda a estabilizar alimentación cuando el carburador anterior está desgastado.',
+    ],
+    recommendation:
+      'Recomendado para motores 110cc y 125cc cuando la medida original coincide. Revisar compatibilidad física y realizar calibración después del montaje.',
+    technicalWarning:
+      'La compatibilidad no es universal. Validar admisión de 20 mm, montaje del filtro, distancia entre pernos, tipo de choke y calibración de mezcla antes de instalar.',
+    seoKeywords: [
+      'carburador PZ20',
+      'carburador 20 mm',
+      'carburador para moto 125cc',
+      'carburador para mototaxi ligera',
+      'carburador para ATV',
+      'repuestos para motos Perú',
+    ],
+    metaDescription: 'Carburador PZ20 20 mm para motores 110cc y 125cc según configuración. Ideal para motos, ATV y scooter.',
+    productSheetText:
+      'Carburador PZ20 SAHM de 20 mm para motores 4 tiempos ligeros. Recomendado para 110cc y 125cc según configuración. Verificar medidas y calibrar.',
+    faq: [
+      ['¿El PZ20 sirve para 125cc?', 'Sí, es usado principalmente en 110cc y 125cc, siempre que las medidas coincidan con el motor.'],
+      ['¿Qué diferencia hay entre PZ19 y PZ20?', 'El PZ20 ofrece un diámetro de 20 mm, ligeramente mayor que el PZ19 de 19 mm.'],
+      ['¿Puede usarse en mototaxi?', 'Puede servir en mototaxis ligeras según configuración, pero se debe validar admisión, filtro y pernos.'],
+      ['¿Viene con choke manual?', 'Puede venir con choke manual según versión del producto. Validar antes de instalar.'],
+      ['¿Requiere ajuste técnico?', 'Sí. Es recomendable calibrar mezcla y ralentí después del montaje.'],
+    ],
+    badges: ['20 mm', '110cc-125cc', 'Choke manual posible', 'Uso ligero'],
+    comparison: {
+      diameter: '20 mm',
+      displacement: '110cc-125cc',
+      use: 'Motos chinas, scooters, ATV y mototaxis ligeras',
+      flow: 'Bajo-medio',
+      note: 'Mayor flujo que PZ19; validar filtro de aire.',
+    },
+  },
+  'carburadores-pz26': {
+    seoName: 'Carburador PZ26 26 mm para moto 125cc, 150cc y 200cc',
+    shortDescription: 'Carburador PZ26 de 26 mm para motores 125cc, 150cc y 200cc según configuración.',
+    longDescription:
+      'El carburador PZ26 SAHM ofrece mayor flujo de aire que las referencias PZ19 y PZ20, por lo que se recomienda para motores de cilindrada media según configuración. Es una alternativa para motos lineales, dirt bikes, pit bikes, ATV, go kart y motos chinas que requieren mejor alimentación de mezcla. Su uso debe definirse comparando el carburador original y realizando calibración posterior.',
+    technicalDetails: [
+      ['Modelo', 'PZ26'],
+      ['Diámetro de carburador', '26 mm'],
+      ['Cilindrada sugerida', '125cc, 150cc y 200cc según configuración'],
+      ['Tipo de motor sugerido', '4 tiempos'],
+      ['Nivel de flujo', 'Mayor que PZ19/PZ20'],
+      ['Aplicación comercial', 'Motos lineales, ATV, pit bike, dirt bike y go kart'],
+    ],
+    compatibility:
+      'Compatible según configuración con motores 125cc, 150cc y 200cc en motos lineales, motos chinas, ATV, dirt bikes, pit bikes y go kart.',
+    benefits: [
+      'Mayor flujo de aire frente a PZ19 y PZ20.',
+      'Buena opción para motores de cilindrada media.',
+      'Puede mejorar respuesta cuando el motor requiere mayor alimentación de mezcla.',
+      'Adecuado para uso de trabajo, recreativo y taller mecánico.',
+    ],
+    recommendation:
+      'Recomendado para motores 125cc a 200cc cuando se busca reposición o mejor alimentación según configuración. Validar medidas y calibrar mezcla/ralentí.',
+    technicalWarning:
+      'Un carburador más grande no siempre mejora el rendimiento. Si el diámetro no corresponde al motor, puede afectar consumo, ralentí o respuesta.',
+    seoKeywords: [
+      'carburador PZ26',
+      'carburador 26 mm',
+      'carburador para moto 150cc',
+      'carburador para moto 200cc',
+      'carburador para pit bike',
+      'repuestos para motos Perú',
+    ],
+    metaDescription: 'Carburador PZ26 26 mm para motores 125cc, 150cc y 200cc según configuración. Mayor flujo que PZ19/PZ20.',
+    productSheetText:
+      'Carburador PZ26 SAHM de 26 mm para motores medianos. Recomendado para 125cc, 150cc y 200cc según configuración. Validar medidas y calibrar.',
+    faq: [
+      ['¿Para qué cilindrada se recomienda el PZ26?', 'Se recomienda para 125cc, 150cc y 200cc según configuración del motor.'],
+      ['¿Tiene más flujo que PZ20?', 'Sí, el PZ26 ofrece mayor flujo de aire que PZ19 y PZ20.'],
+      ['¿Sirve para pit bike o dirt bike?', 'Puede servir en pit bikes y dirt bikes compatibles con medidas PZ26.'],
+      ['¿Puedo instalarlo sin calibrar?', 'No es lo ideal. Puede requerir calibración de mezcla, ralentí y chicleres.'],
+      ['¿Qué debo validar?', 'Diámetro de admisión, filtro, anclaje, espacio disponible y configuración del motor.'],
+    ],
+    badges: ['26 mm', '125cc-200cc', 'Mayor flujo', 'Uso taller'],
+    comparison: {
+      diameter: '26 mm',
+      displacement: '125cc-200cc',
+      use: 'Motos lineales, pit bike, ATV y go kart',
+      flow: 'Medio',
+      note: 'Más aire que PZ19/PZ20; requiere buena calibración.',
+    },
+  },
+  'carburadores-pz27': {
+    seoName: 'Carburador PZ27 27 mm para moto 150cc, 200cc y algunos 250cc',
+    shortDescription: 'Carburador PZ27 de 27 mm para motores 150cc, 200cc y algunos 250cc según configuración.',
+    longDescription:
+      'El carburador PZ27 SAHM está pensado para motores que requieren mayor alimentación de mezcla y respuesta más firme que referencias pequeñas. Se recomienda para 150cc, 200cc y algunos 250cc dependiendo del motor, con aplicaciones en motos de trabajo, off-road, ATV, pit bike y go kart. Es una pieza técnica que debe elegirse por medidas y configuración, no solo por cilindrada.',
+    technicalDetails: [
+      ['Modelo', 'PZ27'],
+      ['Diámetro de carburador', '27 mm'],
+      ['Cilindrada sugerida', '150cc, 200cc y algunos 250cc según configuración'],
+      ['Tipo de motor sugerido', '4 tiempos'],
+      ['Enfoque', 'Mejor respuesta y mayor alimentación de mezcla'],
+      ['Aplicación comercial', 'Motos de trabajo, off-road, ATV, pit bike y go kart'],
+    ],
+    compatibility:
+      'Compatible según configuración con motos de trabajo, off-road, ATV, pit bikes y go karts que usen referencia PZ27 o medidas equivalentes.',
+    benefits: [
+      'Mayor alimentación de mezcla frente a carburadores más pequeños.',
+      'Enfocado en respuesta para motores de trabajo u off-road.',
+      'Adecuado para talleres que atienden motos chinas y vehículos recreativos.',
+      'Alternativa para motores medianos cuando la configuración lo permite.',
+    ],
+    recommendation:
+      'Recomendado para motores 150cc, 200cc y algunos 250cc cuando el carburador original y las medidas físicas coinciden. Realizar ajuste técnico tras instalar.',
+    technicalWarning:
+      'Validar antes de comprar. Un PZ27 mal dimensionado puede generar mezcla incorrecta, consumo elevado o respuesta irregular.',
+    seoKeywords: [
+      'carburador PZ27',
+      'carburador 27 mm',
+      'carburador para moto 200cc',
+      'carburador para moto 250cc',
+      'carburador off road',
+      'repuestos para motos Perú',
+    ],
+    metaDescription: 'Carburador PZ27 27 mm para motores 150cc, 200cc y algunos 250cc según configuración. Validar medidas.',
+    productSheetText:
+      'Carburador PZ27 SAHM de 27 mm para motores de trabajo, off-road, ATV, pit bike y go kart compatibles según configuración.',
+    faq: [
+      ['¿El PZ27 sirve para 200cc?', 'Sí, puede ser recomendado para 200cc según configuración y medidas del motor.'],
+      ['¿Puede servir para 250cc?', 'Puede servir en algunos 250cc, pero se debe validar el carburador original y las medidas.'],
+      ['¿Qué mejora frente a PZ26?', 'Ofrece un diámetro ligeramente mayor y puede alimentar más mezcla si el motor lo requiere.'],
+      ['¿Es para uso de trabajo?', 'Sí, puede aplicarse en motos de trabajo y off-road compatibles.'],
+      ['¿Qué riesgo hay si no coincide?', 'Puede causar mala respuesta, consumo elevado o dificultad de calibración.'],
+    ],
+    badges: ['27 mm', '150cc-250cc', 'Trabajo/off-road', 'Calibrar'],
+    comparison: {
+      diameter: '27 mm',
+      displacement: '150cc-250cc',
+      use: 'Motos de trabajo, off-road, ATV y pit bike',
+      flow: 'Medio-alto',
+      note: 'Elegir por medidas, no solo por cilindrada.',
+    },
+  },
+  'carburadores-pz30': {
+    seoName: 'Carburador PZ30 30 mm para CG125, CG150, CG200, CG250, ATV y dirt bike',
+    shortDescription: 'Carburador PZ30 de 30 mm para motores 175cc, 200cc, 250cc y hasta 300cc según configuración.',
+    longDescription:
+      'El carburador PZ30 SAHM es una referencia de mayor flujo para motores de cilindrada media-alta que requieren más alimentación de aire y combustible. Se usa comúnmente en aplicaciones CG125, CG150, CG175, CG200, CG250, ATV, kart, dirt bike y motos chinas, siempre dependiendo de la configuración real del motor. Es ideal para talleres y usuarios que buscan una reposición robusta, con instalación verificada y calibración profesional.',
+    technicalDetails: [
+      ['Modelo', 'PZ30'],
+      ['Diámetro de carburador', '30 mm'],
+      ['Cilindrada sugerida', '175cc, 200cc, 250cc y hasta 300cc según configuración'],
+      ['Tipo de motor sugerido', '4 tiempos'],
+      ['Nivel de flujo', 'Alto dentro de la serie PZ comercial'],
+      ['Aplicaciones referenciales', 'CG125, CG150, CG175, CG200, CG250, ATV, kart, dirt bike y motos chinas'],
+    ],
+    compatibility:
+      'Compatible según configuración con motores CG y motos chinas de mayor cilindrada, ATV, kart y dirt bike. Validar admisión, filtro, pernos, espacio y calibración.',
+    benefits: [
+      'Mayor flujo de aire para motores de más cilindrada.',
+      'Referencia comercial común en aplicaciones CG y motos chinas.',
+      'Adecuado para trabajo exigente, off-road y vehículos recreativos.',
+      'Buena alternativa para talleres que atienden 200cc, 250cc y configuraciones mayores.',
+    ],
+    recommendation:
+      'Recomendado para 175cc a 250cc y hasta 300cc según configuración. Instalar solo si las medidas coinciden y realizar calibración técnica.',
+    technicalWarning:
+      'Por su mayor diámetro, requiere especial cuidado en compatibilidad y calibración. Si el motor no demanda ese flujo, puede perder respuesta o consumir más combustible.',
+    seoKeywords: [
+      'carburador PZ30',
+      'carburador 30 mm',
+      'carburador CG200',
+      'carburador CG250',
+      'carburador para moto 250cc',
+      'carburador para ATV Perú',
+    ],
+    metaDescription: 'Carburador PZ30 30 mm para CG125-CG250, ATV, kart y dirt bike. Para 175cc-250cc según configuración.',
+    productSheetText:
+      'Carburador PZ30 SAHM de 30 mm para motores de mayor cilindrada. Aplicación referencial CG, ATV, kart y dirt bike. Validar medidas y calibrar.',
+    faq: [
+      ['¿El PZ30 sirve para CG200 o CG250?', 'Puede servir en aplicaciones CG200 y CG250 según configuración, medidas y calibración.'],
+      ['¿Para qué cilindrada es recomendado?', 'Se usa comúnmente en 175cc, 200cc y 250cc, y hasta 300cc según configuración.'],
+      ['¿Tiene más flujo que PZ27?', 'Sí, el PZ30 tiene mayor diámetro y flujo que PZ27.'],
+      ['¿Es ideal para motos chinas?', 'Puede ser una buena opción para motos chinas compatibles, validando medidas antes de instalar.'],
+      ['¿Qué pasa si lo instalo en un motor pequeño?', 'Puede afectar respuesta, consumo y calibración si el motor no requiere ese flujo.'],
+    ],
+    badges: ['30 mm', '175cc-250cc+', 'Alto flujo', 'CG/ATV/kart'],
+    comparison: {
+      diameter: '30 mm',
+      displacement: '175cc-250cc+',
+      use: 'CG, ATV, kart, dirt bike y motos chinas',
+      flow: 'Alto',
+      note: 'Mayor flujo; requiere compatibilidad y calibración cuidadosa.',
+    },
+  },
+}
+
 export const CATALOG_PRODUCT_DATA = [
   {
     id: 'llantas-motos-110-90-13-56l',
@@ -471,14 +738,14 @@ export const CATALOG_PRODUCT_DATA = [
     name: 'PZ19',
     sourceDir: 'Carburadores/PZ19',
     files: [
-      { file: 'Carburador_[PZ19]_SAHM-1.jpg', label: 'Producto' },
-      { file: 'Carburador_[PZ19]_SAHM-2.jpg', label: 'Lateral' },
-      { file: 'Carburador_[PZ19]_SAHM-3.jpg', label: 'Detalle' },
-      { file: 'Carburador_[PZ19]_SAHM-4.jpg', label: 'Angulo' },
-      { file: 'Carburador_[PZ19]_SAHM-5.jpg', label: 'Vista 5' },
-      { file: 'Carburador_[PZ19]_SAHM-6.jpg', label: 'Vista 6' },
-      { file: 'Carburador_[PZ19]_SAHM-7.jpg', label: 'Vista 7' },
-      { file: 'Carburador_[PZ19]_SAHM-8.jpg', label: 'Vista 8' },
+      { file: 'Carburador_[PZ19]_SAHM-4.jpg', label: 'Producto' },
+      { file: 'Carburador_[PZ19]_SAHM-5.jpg', label: 'Lateral' },
+      { file: 'Carburador_[PZ19]_SAHM-6.jpg', label: 'Detalle' },
+      { file: 'Carburador_[PZ19]_SAHM-7.jpg', label: 'Angulo' },
+      { file: 'Carburador_[PZ19]_SAHM-8.jpg', label: 'Vista 5' },
+      { file: 'Carburador_[PZ19]_SAHM-1.jpg', label: 'Vista 6' },
+      { file: 'Carburador_[PZ19]_SAHM-2.jpg', label: 'Vista 7' },
+      { file: 'Carburador_[PZ19]_SAHM-3.jpg', label: 'Vista 8' },
     ],
   },
   {
@@ -488,14 +755,14 @@ export const CATALOG_PRODUCT_DATA = [
     name: 'PZ20',
     sourceDir: 'Carburadores/PZ20',
     files: [
-      { file: 'Carburador_[PZ20]_SAHM-1.jpg', label: 'Producto' },
-      { file: 'Carburador_[PZ20]_SAHM-2.jpg', label: 'Lateral' },
-      { file: 'Carburador_[PZ20]_SAHM-3.jpg', label: 'Detalle' },
-      { file: 'Carburador_[PZ20]_SAHM-4.jpg', label: 'Angulo' },
-      { file: 'Carburador_[PZ20]_SAHM-5.jpg', label: 'Vista 5' },
-      { file: 'Carburador_[PZ20]_SAHM-6.jpg', label: 'Vista 6' },
-      { file: 'Carburador_[PZ20]_SAHM-7.jpg', label: 'Vista 7' },
-      { file: 'Carburador_[PZ20]_SAHM-9.jpg', label: 'Vista 8' },
+      { file: 'Carburador_[PZ20]_SAHM-7.jpg', label: 'Producto' },
+      { file: 'Carburador_[PZ20]_SAHM-9.jpg', label: 'Lateral' },
+      { file: 'Carburador_[PZ20]_SAHM-1.jpg', label: 'Detalle' },
+      { file: 'Carburador_[PZ20]_SAHM-2.jpg', label: 'Angulo' },
+      { file: 'Carburador_[PZ20]_SAHM-3.jpg', label: 'Vista 5' },
+      { file: 'Carburador_[PZ20]_SAHM-4.jpg', label: 'Vista 6' },
+      { file: 'Carburador_[PZ20]_SAHM-5.jpg', label: 'Vista 7' },
+      { file: 'Carburador_[PZ20]_SAHM-6.jpg', label: 'Vista 8' },
     ],
   },
   {
@@ -505,14 +772,14 @@ export const CATALOG_PRODUCT_DATA = [
     name: 'PZ26',
     sourceDir: 'Carburadores/PZ26',
     files: [
-      { file: 'Carburador_[PZ26]_SAHM-1.jpg', label: 'Producto' },
-      { file: 'Carburador_[PZ26]_SAHM-2.jpg', label: 'Lateral' },
-      { file: 'Carburador_[PZ26]_SAHM-3.jpg', label: 'Detalle' },
-      { file: 'Carburador_[PZ26]_SAHM-4.jpg', label: 'Angulo' },
-      { file: 'Carburador_[PZ26]_SAHM-5.jpg', label: 'Vista 5' },
-      { file: 'Carburador_[PZ26]_SAHM-6.jpg', label: 'Vista 6' },
-      { file: 'Carburador_[PZ26]_SAHM-7.jpg', label: 'Vista 7' },
-      { file: 'Carburador_[PZ26]_SAHM-8.jpg', label: 'Vista 8' },
+      { file: 'Carburador_[PZ26]_SAHM-4.jpg', label: 'Producto' },
+      { file: 'Carburador_[PZ26]_SAHM-5.jpg', label: 'Lateral' },
+      { file: 'Carburador_[PZ26]_SAHM-6.jpg', label: 'Detalle' },
+      { file: 'Carburador_[PZ26]_SAHM-7.jpg', label: 'Angulo' },
+      { file: 'Carburador_[PZ26]_SAHM-8.jpg', label: 'Vista 5' },
+      { file: 'Carburador_[PZ26]_SAHM-1.jpg', label: 'Vista 6' },
+      { file: 'Carburador_[PZ26]_SAHM-2.jpg', label: 'Vista 7' },
+      { file: 'Carburador_[PZ26]_SAHM-3.jpg', label: 'Vista 8' },
     ],
   },
   {
@@ -522,14 +789,14 @@ export const CATALOG_PRODUCT_DATA = [
     name: 'PZ27',
     sourceDir: 'Carburadores/PZ27',
     files: [
-      { file: 'Carburador_[PZ27]_SAHM-2.jpg', label: 'Producto' },
-      { file: 'Carburador_[PZ27]_SAHM-3.jpg', label: 'Lateral' },
-      { file: 'Carburador_[PZ27]_SAHM-4.jpg', label: 'Detalle' },
-      { file: 'Carburador_[PZ27]_SAHM-5.jpg', label: 'Angulo' },
-      { file: 'Carburador_[PZ27]_SAHM-6.jpg', label: 'Vista 5' },
-      { file: 'Carburador_[PZ27]_SAHM-8.jpg', label: 'Vista 6' },
-      { file: 'Carburador_[PZ27]_SAHM-9.jpg', label: 'Vista 7' },
-      { file: 'Carburador_[PZ27]_SAHM-10.jpg', label: 'Vista 8' },
+      { file: 'Carburador_[PZ27]_SAHM-5.jpg', label: 'Producto' },
+      { file: 'Carburador_[PZ27]_SAHM-6.jpg', label: 'Lateral' },
+      { file: 'Carburador_[PZ27]_SAHM-8.jpg', label: 'Detalle' },
+      { file: 'Carburador_[PZ27]_SAHM-9.jpg', label: 'Angulo' },
+      { file: 'Carburador_[PZ27]_SAHM-10.jpg', label: 'Vista 5' },
+      { file: 'Carburador_[PZ27]_SAHM-2.jpg', label: 'Vista 6' },
+      { file: 'Carburador_[PZ27]_SAHM-3.jpg', label: 'Vista 7' },
+      { file: 'Carburador_[PZ27]_SAHM-4.jpg', label: 'Vista 8' },
     ],
   },
   {
@@ -539,14 +806,14 @@ export const CATALOG_PRODUCT_DATA = [
     name: 'PZ30',
     sourceDir: 'Carburadores/PZ30',
     files: [
-      { file: 'Carburador_[PZ30]_SAHM-1.jpg', label: 'Producto' },
-      { file: 'Carburador_[PZ30]_SAHM-2.jpg', label: 'Lateral' },
-      { file: 'Carburador_[PZ30]_SAHM-3.jpg', label: 'Detalle' },
-      { file: 'Carburador_[PZ30]_SAHM-4.jpg', label: 'Angulo' },
-      { file: 'Carburador_[PZ30]_SAHM-5.jpg', label: 'Vista 5' },
-      { file: 'Carburador_[PZ30]_SAHM-6.jpg', label: 'Vista 6' },
-      { file: 'Carburador_[PZ30]_SAHM-7.jpg', label: 'Vista 7' },
-      { file: 'Carburador_[PZ30]_SAHM-10.jpg', label: 'Vista 8' },
+      { file: 'Carburador_[PZ30]_SAHM-2.jpg', label: 'Producto' },
+      { file: 'Carburador_[PZ30]_SAHM-3.jpg', label: 'Lateral' },
+      { file: 'Carburador_[PZ30]_SAHM-4.jpg', label: 'Detalle' },
+      { file: 'Carburador_[PZ30]_SAHM-5.jpg', label: 'Angulo' },
+      { file: 'Carburador_[PZ30]_SAHM-6.jpg', label: 'Vista 5' },
+      { file: 'Carburador_[PZ30]_SAHM-7.jpg', label: 'Vista 6' },
+      { file: 'Carburador_[PZ30]_SAHM-10.jpg', label: 'Vista 7' },
+      { file: 'Carburador_[PZ30]_SAHM-1.jpg', label: 'Vista 8' },
     ],
   },
 ]
