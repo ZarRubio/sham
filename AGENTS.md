@@ -2,154 +2,90 @@
 
 This file provides guidance to Codex (Codex.ai/code) when working with code in this repository.
 
+## Project
+
+Website/catalog for **SAHM**, a motorcycle tire, tube and carburetor distributor in Peru. There is no backend or checkout: the cart and every CTA end in a prefilled WhatsApp message. UI copy is Spanish (some data carries `En` fields for English).
+
 ## Commands
 
 ```bash
-npm install              # install dependencies
-npm run dev              # start Next.js dev server (http://localhost:3000)
-npm run build            # static export (outputs to /out)
-npm run start            # serve production build locally
-npm run preview          # serve /out with `serve`
-npm run optimize:images  # compress catalog images with Sharp (run before build with new images)
+npm install
+npm run dev              # Next.js dev server (http://localhost:3000)
+npm run build            # `prebuild` first deletes /out (scripts/clean-output.mjs), then `next build`
+npm run start            # run the production build (next start) — this is how the site runs in production
+npm run preview          # `serve out` — leftover from static-export days; /out is no longer produced
+npm run optimize:images  # regenerate WebP images from catalog photos (Sharp)
 ```
 
-No test runner or linter is configured.
+No test runner or linter is configured. Verify changes with `npm run build` and the dev server.
 
 ## Environment
 
-```env
-# Rename .env.example to .env.local and fill in your values:
-NEXT_PUBLIC_WHATSAPP_NUMBER=51987881821   # digits only, with country code, no +
-```
-
-> The env var prefix is `NEXT_PUBLIC_` (not `VITE_`). The fallback number is hardcoded in `src/config/site.js`.
+`NEXT_PUBLIC_WHATSAPP_NUMBER` (digits only, country code, no `+`) in `.env.local`. Read in `src/config/site.js`, which falls back to a hardcoded number. Note: `.env.example` and `README.md` are stale Vite-era files (they still say `VITE_WHATSAPP_NUMBER` / Vite) — the `VITE_` prefix does nothing here.
 
 ## Stack
 
-- **Next.js 16** (App Router, static export via `output: 'export'`)
-- **React 19**
-- **Tailwind CSS 3** — brand tokens `sahm-yellow` (`#F5C000`) and `sahm-purple` (`#3D2785`)
-- **Framer Motion 12** — nav and micro-animations
-- **GSAP 3 + ScrollTrigger** — scroll-driven reveals (`.gsap-reveal`) and parallax (`.parallax-media`)
-- **Lenis** — smooth scroll
-- **Sharp** (dev) — image optimization script
+Next.js 16 App Router (JSX, no TypeScript) · React 19 · Tailwind CSS 3 (brand tokens `sahm-yellow` `#F5C000`, `sahm-purple` `#3D2785`, plus `sahm-cream` etc. in `tailwind.config.js`) · Framer Motion · GSAP + ScrollTrigger · Lenis smooth scroll · Sharp (dev, image script).
 
 ## Architecture
 
-**Next.js App Router static export** for **SAHM** (motorcycle tire/parts distributor, Peru).
-`next.config.mjs` sets `output: 'export'`, `trailingSlash: true`, and `images.unoptimized: true` for FTP deployment to Hostinger.
+### Catalog data pipeline (the core of the site)
+
+Everything product-related derives from `src/config/catalogData.js` → `src/config/catalog.js`:
+
+- `catalogData.js` holds four separate structures, all keyed by product `id`:
+  - `CATALOG_CATEGORY_DATA` — categories (`llantas`, `camaras`, `carburadores`), each with a `coverProductId`.
+  - `CATALOG_PRODUCT_DATA` — the product list: `id`, `category`, `subcategory`, `name`, `files` (photo filenames + labels), optional `sourceDir`.
+  - `CATALOG_COMMERCE_DATA` — SKU, measure, price, stock, etc. per id.
+  - `CATALOG_PRODUCT_CONTENT` — optional SEO/long-form content (seoName, descriptions, FAQ, technicalDetails…) per id.
+- `catalog.js` merges these into `CATALOG_PRODUCTS` (adds `slug` = `id`, image URLs, stock labels, spec rows, description bullets) and `CATALOG_CATEGORIES`, plus helpers (`getProductById`, `getCategoryBySlug`, `getSubcategories`, `getProductLabel`, `getProductWhatsAppMessage`).
+- `catalog.js` contains **per-category branching on the Spanish category name** (`'Llantas'`, `'Cámaras'`, `'Carburadores'`) for labels, spec rows and description bullets. A new category needs a branch in each of those functions.
+- **There are three separate category lists** that must agree on the category `id` (`llantas`, `camaras`, `carburadores`, …):
+  - `CATALOG_CATEGORY_DATA` in `catalogData.js` — catalog categories with cover product/image.
+  - `CATEGORIES` in `src/config/categories.js` — has an `enabled` flag and a `catalogName` that must match a product's `category` string. It drives `/categorias/[categoria]` `generateStaticParams` and `sitemap.js` (only `enabled` categories get pages). `repuestos` and `accesorios` exist here but are disabled.
+  - `RAW_CATEGORIES` in `src/lib/premiumData.js` — home/`/categorias` cards; entries with zero products are filtered out.
+- `src/lib/premiumData.js` also exports `heroProduct` (hardcoded id), `bestSellers`, `catalogHighlights`, `testimonials` for the home page.
+
+**Images:** original photos live under `public/images/FOTOS SAHM/<category>/<subcategory>/<name>/` (or `sourceDir`). `npm run optimize:images` writes `public/images/catalog-optimized/<id>/card.webp` and `detail-N.webp`, which is what the site actually renders. Adding a product = add entries to the data structures above + drop photos in place + run the optimize script. Adding a category additionally means touching all three category lists and the `catalog.js` branches.
 
 ### Routes (`src/app/`)
 
-| Route | File | Notes |
-|---|---|---|
-| `/` | `page.jsx` | Renders `HomeExperience` |
-| `/productos` | `productos/page.jsx` | Product listing with filters |
-| `/productos/[slug]` | `productos/[slug]/page.jsx` | Filtered product list by category slug |
-| `/categorias` | `categorias/page.jsx` | Category listing |
-| `/categorias/[categoria]` | `categorias/[categoria]/page.jsx` | Category detail |
-| `/buscar` | `buscar/` | Fitment / search |
-| `/carrito` | `carrito/` | Cart page |
-| `/nosotros` | `nosotros/` | About page |
-| `/contacto` | `contacto/` | Contact page |
-| `*` | `not-found.jsx` | 404 page |
+- `/productos` — listing with filters (`ProductsClient`).
+- `/productos/[slug]` — **product detail** page; `generateStaticParams` over `CATALOG_PRODUCTS` with `dynamicParams = false`.
+- `/categorias` (cards from `premiumCategories`), `/categorias/[categoria]` (params from `config/categories.js`, products matched by `catalogName`).
+- `/buscar` (search/fitment), `/carrito` (cart), `/nosotros`, `/contacto`, plus `sitemap.js`, `robots.js`, `error.jsx`, `loading.jsx`, `not-found.jsx`.
 
-`layout.jsx` is a Server Component. It wraps all routes with `Providers` → `Layout` (which includes `SahmNav`, `PremiumFooter`, `FloatingWhatsApp`).
+Pages are Server Components that read catalog config and hand data to `'use client'` components in `src/components/premium/`.
 
-### Client Boundary
+### Layout & client boundary
 
-- `src/app/layout.jsx` — Server Component (metadata, fonts)
-- `src/components/premium/Providers.jsx` — `'use client'`, wraps children, initializes Lenis and GSAP ScrollTrigger
-- All interactive components in `src/components/premium/` are `'use client'`
+`src/app/layout.jsx` (Server Component; metadata + `next/font` Barlow Condensed `--font-heading` / Inter `--font-body`) → `Providers.jsx` (client: Lenis, GSAP ScrollTrigger, wraps everything in `CartProvider`) → `Layout.jsx` (skip link, `Navbar`, `TrustBar`, `Footer`, `FloatingWhatsApp`). In `components/premium/`, `Navbar.jsx` and `Footer.jsx` are one-line re-exports of `SahmNav.jsx` and `PremiumFooter.jsx` — edit those.
 
-### Fonts
-
-Loaded via `next/font/google` in `layout.jsx`:
-- **Barlow Condensed** — headings (`--font-heading`, weights 600/700/800)
-- **Inter** — body text (`--font-body`)
-
-### Config Layer (`src/config/`)
-
-| File | Purpose |
-|---|---|
-| `site.js` | `WHATSAPP_NUMBER`, `WHATSAPP_URL`, `buildWhatsAppMessageUrl()`, feature flags `catalogReady` / `socialReady` |
-| `catalogData.js` | Raw product/category data — **source of truth** for adding/removing products |
-| `catalog.js` | Enriches raw data with image paths; exports `CATALOG_PRODUCTS`, `CATALOG_CATEGORIES`, `getSubcategories()`, `getProductById()`, `getProductLabel()`, `getProductWhatsAppMessage()` |
-| `categories.js` | Category definitions |
-| `navigation.js` | `PRODUCT_SUBCATEGORIES` keyed by `'es'` / `'en'` |
-
-### Data Layer (`src/lib/premiumData.js`)
-
-Derives `featuredBrands`, `premiumCategories`, `heroProduct`, `bestSellers`, `oemHighlights`, and `testimonials` from `CATALOG_PRODUCTS` for use in `HomeExperience`.
+`Providers.jsx` drives Lenis through GSAP's ticker (keeps ScrollTrigger in sync), resets scroll to top and re-runs ScrollTrigger on every `pathname` change, and animates any element with the `.gsap-reveal` class. Both Lenis and the reveals are skipped under `prefers-reduced-motion` (with a CSS fallback in `src/index.css`).
 
 ### State
 
-- `CartContext` (`src/context/CartContext.jsx`) — cart state persisted to `localStorage` under `sahm_cart`; exposes `addToCart`, `removeFromCart`, `updateQty`, `clearCart`, `totalItems` via `useCart()` hook
-- No other global state; UI state is component-local
+`src/context/CartContext.jsx` — cart stores only `{ productId, qty }` items (product data is looked up from the catalog), persisted to `localStorage` key `sahm_cart` after a client-side hydration step (`hasHydrated`); accessed via `useCart()`. All other state is component-local.
 
-### Components (`src/components/premium/`)
+All conversion goes through `buildWhatsAppMessageUrl()` in `src/config/site.js` (cart, product detail, contact form, nav, footer, floating button). `FEATURE_FLAGS` in `site.js` is currently not read anywhere.
 
-Active components used in production:
+### Legacy code
 
-| Component | Role |
-|---|---|
-| `Providers.jsx` | `'use client'` wrapper; Lenis + GSAP init |
-| `Layout.jsx` | Wraps page content with nav + footer |
-| `SahmNav.jsx` | Main navigation bar (yellow brand navbar) |
-| `PremiumFooter.jsx` | Site footer |
-| `FloatingWhatsApp.jsx` | Sticky WhatsApp CTA button |
-| `HomeExperience.jsx` | Home page component |
-| `ProductCard.jsx` | Reusable product card |
-| `ProductsClient.jsx` | Client-side product listing/filtering |
-| `ProductDetailClient.jsx` | Product detail page (image, qty, cart, WhatsApp) |
-| `CartClient.jsx` | Cart page |
-| `CartConfirmation.jsx` | Post-add-to-cart confirmation state |
-| `CategoryCard.jsx` | Category card |
-| `SearchCatalogClient.jsx` | Search/fitment page |
-| `QuantitySelector.jsx` | Reusable quantity selector |
-| `TrustBar.jsx` | Trust indicators strip |
-| `StatsTrustPanel.jsx` | Stats / social proof panel |
-| `SectionHeader.jsx` | Reusable section heading |
-
-### Legacy Components (`src/components/sahm/`)
-
-Original Vite-era components retained but **not used in active routes**. Do not remove — may be referenced or repurposed. Do NOT migrate back to Vite.
-
-### Hooks (`src/hooks/`)
-
-- `useFadeIn.js` — legacy fade-in hook (from Vite era)
-- `useScrollY.js` — scroll position hook (from Vite era)
-
-## Styling
-
-- **Tailwind CSS 3** with custom brand tokens in `tailwind.config.js`
-- CSS variables: `--sahm-yellow`, `--sahm-purple`, `--font-heading`, `--font-body`
-- Global utilities in `src/index.css`: `.ambient-glow`, `.soft-grid`, `.float-slow`, `.card-shine`, `.btn-shimmer`, `.premium-float`, `.magnetic-btn`, `.brand-3d`
-- Custom Tailwind animations in `tailwind.config.js`: `marquee`, `fade-up`, `fade-in`, `scale-in`, `glow-cta`, `pulse-ring`, `scroll-bounce`
-- `prefers-reduced-motion` respected — Lenis and GSAP skip animations entirely
+`src/components/sahm/` and `src/hooks/` (`useFadeIn`, `useScrollY`) are Vite-era leftovers: nothing under `src/app` or `components/premium` imports them. `components/premium/SectionHeader.jsx` is also currently unused. Don't delete them, don't build on them. Beware of same-named files in both folders (`Navbar`, `ProductCard`, `TrustBar`, `FloatingWhatsApp`) — active code is always `components/premium/`.
 
 ## Deployment
 
-Static export (`/out`) deployed to Hostinger via GitHub Actions FTP.
+The site runs on Hostinger as a **Node.js Next.js app** (`next build` + `next start`), not a static export — `output: 'export'` was intentionally removed (commit e8928ed); do not re-add it. According to the owner, Hostinger redeploys automatically when changes are pushed to GitHub (`main`), so **a push to `main` publishes to production**. There is no CI workflow in the repo (`.github/` does not exist); the auto-deploy is configured on the Hostinger side.
 
-**CI workflow:** `.github/workflows/deploy-hostinger.yml`
-
-**Required GitHub Secrets** (Settings → Secrets → Actions):
-
-| Secret | Value |
-|---|---|
-| `HOSTINGER_FTP_HOST` | FTP hostname or IP from Hostinger panel |
-| `HOSTINGER_FTP_USER` | FTP username |
-| `HOSTINGER_FTP_PASSWORD` | FTP password |
-
-**Important:** Hostinger panel must have the framework set to **Next.js** (not Vite). Always run `npm run optimize:images` before a build that includes new catalog images.
+Because there is no test suite, run `npm run build` locally before pushing — a broken build on `main` breaks the live deploy. Commit regenerated images in `public/images/catalog-optimized/` along with catalog changes.
 
 ## Key Rules
 
-- Do **NOT** migrate back to Vite — project is fully on Next.js App Router.
-- Do **NOT** use `VITE_` env prefix — use `NEXT_PUBLIC_` instead.
-- Do **NOT** mix App Router and Pages Router.
+- Do **NOT** migrate back to Vite or use the `VITE_` env prefix.
+- Do **NOT** mix App Router with Pages Router.
 - Do **NOT** delete product data in `catalogData.js`.
-- Keep the **yellow navbar** — it is SAHM brand identity.
-- Keep `trailingSlash: true` and `output: 'export'` in `next.config.mjs` for static FTP deploy.
-- Images must use `unoptimized: true` (set in `next.config.mjs`) since Next.js image optimization requires a server.
+- Keep the **yellow navbar** (`SahmNav`) — SAHM brand identity.
+- Keep `images.unoptimized: true` (catalog images are pre-optimized by the Sharp script) and `trailingSlash: true` (existing URLs/sitemap depend on it).
+- Pushing to `main` deploys to production — only push when asked.
+- Run `npm run optimize:images` after adding or changing catalog photos.
+- `CLAUDE.md` mirrors this file for Claude Code — keep the two in sync when editing either.
