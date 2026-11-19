@@ -7,7 +7,7 @@
     "dev": "next dev",
     "optimize:images": "node scripts/optimize-catalog-images.mjs",
     "prebuild": "node scripts/clean-output.mjs",
-    "build": "next build",
+    "build": "next build --webpack",
     "start": "next start",
     "preview": "serve out"
   },

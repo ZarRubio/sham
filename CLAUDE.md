@@ -11,7 +11,7 @@ Website/catalog for **SAHM**, a motorcycle tire, tube and carburetor distributor
 ```bash
 npm install
 npm run dev              # Next.js dev server (http://localhost:3000)
-npm run build            # `prebuild` first deletes /out (scripts/clean-output.mjs), then `next build`
+npm run build            # `prebuild` deletes /out, then `next build --webpack` (webpack, not Turbopack: Turbopack's PostCSS worker crashes on Hostinger)
 npm run start            # run the production build (next start) — this is how the site runs in production
 npm run preview          # `serve out` — leftover from static-export days; /out is no longer produced
 npm run optimize:images  # regenerate WebP images from catalog photos (Sharp)
