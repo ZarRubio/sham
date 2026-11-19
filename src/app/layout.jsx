@@ -2,6 +2,8 @@ import { Barlow_Condensed, Inter } from 'next/font/google'
 import '../index.css'
 import Providers from '../components/premium/Providers'
 import Layout from '../components/premium/Layout'
+import JsonLd from '../components/premium/JsonLd'
+import { SITE_URL, organizationJsonLd } from '../lib/seo'
 
 const barlowCondensed = Barlow_Condensed({
   subsets: ['latin'],
@@ -17,7 +19,7 @@ const inter = Inter({
   display: 'swap',
 })
 
-const siteUrl = 'https://sahmparts.com'
+const siteUrl = SITE_URL
 const siteTitle = 'SAHM PARTS | Repuestos para motos en Perú'
 const siteDescription = 'Llantas, cámaras, carburadores y repuestos para motos. Stock real, asesoría directa y despachos a todo el Perú.'
 
@@ -99,6 +101,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="es" data-scroll-behavior="smooth" className={`${barlowCondensed.variable} ${inter.variable}`}>
       <body>
+        <JsonLd data={organizationJsonLd()} />
         <Providers>
           <Layout>{children}</Layout>
         </Providers>

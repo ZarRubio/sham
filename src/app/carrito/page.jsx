@@ -1,9 +1,12 @@
 import CartClient from '../../components/premium/CartClient'
+import { pageMetadata } from '../../lib/seo'
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: 'Mi pedido',
-  description: 'Arma tu pedido SAHM y envialo por WhatsApp.',
-}
+  description: 'Arma tu pedido SAHM y envíalo por WhatsApp.',
+  path: '/carrito/',
+  noindex: true,
+})
 
 export default function CartPage() {
   return (

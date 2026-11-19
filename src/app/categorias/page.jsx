@@ -1,11 +1,13 @@
 import Link from 'next/link'
 import CategoryCard from '../../components/premium/CategoryCard'
 import { premiumCategories } from '../../lib/premiumData'
+import { pageMetadata } from '../../lib/seo'
 
-export const metadata = {
-  title: 'Categorías',
-  description: 'Explora las categorías SAHM: llantas, cámaras, repuestos y accesorios.',
-}
+export const metadata = pageMetadata({
+  title: 'Categorías de repuestos para moto',
+  description: 'Explora las categorías SAHM: llantas para moto y moto eléctrica, cámaras para moto y bicicleta, y carburadores PZ. Cotiza por WhatsApp.',
+  path: '/categorias/',
+})
 
 export default function CategoriesPage() {
   const heroImages = premiumCategories

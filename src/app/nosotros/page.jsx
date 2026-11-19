@@ -1,10 +1,12 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { pageMetadata } from '../../lib/seo'
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: 'Nosotros',
-  description: 'SAHM Parts: catálogo de llantas, cámaras y carburadores para motocicletas.',
-}
+  description: 'Conoce SAHM Parts: distribuidor de llantas, cámaras y carburadores para motocicletas en Perú, con stock real y asesoría directa.',
+  path: '/nosotros/',
+})
 
 const ABOUT_IMAGES = {
   hero: '/images/Nosotros/magnific_un-almacen-de-llantas-img_62F99x5iJO.webp',

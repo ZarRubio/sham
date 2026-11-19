@@ -1,10 +1,12 @@
 import Link from 'next/link'
 import ContactFormClient from '../../components/premium/ContactFormClient'
+import { pageMetadata } from '../../lib/seo'
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: 'Contacto',
-  description: 'Contacta a SAHM por WhatsApp para cotizar repuestos, llantas y cámaras para moto.',
-}
+  description: 'Contacta a SAHM por WhatsApp para cotizar llantas, cámaras y carburadores para moto. Asesoría directa y despacho a todo el Perú.',
+  path: '/contacto/',
+})
 
 export default function ContactPage() {
   return (

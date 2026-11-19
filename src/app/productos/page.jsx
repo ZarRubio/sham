@@ -1,11 +1,13 @@
 import Link from 'next/link'
 import ProductsClient from '../../components/premium/ProductsClient'
 import { CATALOG_PRODUCTS } from '../../config/catalog'
+import { pageMetadata } from '../../lib/seo'
 
-export const metadata = {
-  title: 'Productos',
-  description: 'Catálogo de llantas, cámaras y repuestos SAHM con stock real y precios claros.',
-}
+export const metadata = pageMetadata({
+  title: 'Catálogo de llantas, cámaras y carburadores para moto',
+  description: 'Catálogo SAHM de llantas para moto y moto eléctrica, cámaras y carburadores PZ con stock real y precios en soles. Cotiza por WhatsApp.',
+  path: '/productos/',
+})
 
 export default function ProductsPage() {
   return (

@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation'
 import CategoryClient from '../../../components/premium/CategoryClient'
 import { CATEGORIES, getCategoryById } from '../../../config/categories'
 import { CATALOG_CATEGORIES, CATALOG_PRODUCTS, getSubcategories } from '../../../config/catalog'
+import JsonLd from '../../../components/premium/JsonLd'
+import { breadcrumbJsonLd, pageMetadata } from '../../../lib/seo'
 
 export const dynamicParams = false
 
@@ -16,10 +18,13 @@ export async function generateMetadata({ params }) {
   if (!category) notFound()
 
   const label = category?.name || categoria
-  return {
-    title: label,
-    description: category?.description || `Catálogo de ${label} SAHM.`,
-  }
+  const catalogCategory = CATALOG_CATEGORIES.find(c => c.id === categoria)
+  return pageMetadata({
+    title: `${label} para motos en Perú`,
+    description: catalogCategory?.description || category?.description || `Catálogo de ${label} SAHM.`,
+    path: `/categorias/${categoria}/`,
+    image: catalogCategory?.image || undefined,
+  })
 }
 
 export default async function CategoryPage({ params }) {
@@ -33,6 +38,11 @@ export default async function CategoryPage({ params }) {
 
   return (
     <main className="min-h-screen bg-sahm-cream">
+      <JsonLd data={breadcrumbJsonLd([
+        { name: 'Inicio', path: '/' },
+        { name: 'Categorías', path: '/categorias/' },
+        { name: label, path: `/categorias/${categoria}/` },
+      ])} />
 
       {/* ── Mini hero banner ── */}
       <div className="relative overflow-hidden bg-gradient-to-br from-sahm-purple via-sahm-night/95 to-black px-4 py-10 sm:px-6 sm:py-14">

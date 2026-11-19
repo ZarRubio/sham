@@ -1,9 +1,12 @@
 import SearchCatalogClient from '../../components/premium/SearchCatalogClient'
+import { pageMetadata } from '../../lib/seo'
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: 'Buscar productos',
   description: 'Busca productos SAHM por medida, referencia, categoría o subcategoría.',
-}
+  path: '/buscar/',
+  noindex: true,
+})
 
 export default function SearchPage() {
   return (

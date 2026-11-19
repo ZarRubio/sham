@@ -57,6 +57,12 @@ Everything product-related derives from `src/config/catalogData.js` → `src/con
 
 Pages are Server Components that read catalog config and hand data to `'use client'` components in `src/components/premium/`.
 
+### SEO (`src/lib/seo.js`)
+
+- Every page builds its metadata with `pageMetadata({ title, description, path, image, noindex })`. Next.js replaces (does not merge) the layout's `openGraph`/`twitter`, so skipping the helper makes the page's share preview fall back to the home page. `path` must end in `/`.
+- JSON-LD is rendered server-side via `components/premium/JsonLd.jsx`: `Organization` in `layout.jsx`, `Product` + `BreadcrumbList` on product pages, `BreadcrumbList` on category pages. Product title/description fall back to text generated from catalog data when `CATALOG_PRODUCT_CONTENT` has no `seoName`/`metaDescription`.
+- `/carrito/` and `/buscar/` are `noindex` and excluded from `sitemap.js`; sitemap URLs end in `/`.
+
 ### Layout & client boundary
 
 `src/app/layout.jsx` (Server Component; metadata + `next/font` Barlow Condensed `--font-heading` / Inter `--font-body`) → `Providers.jsx` (client: Lenis, GSAP ScrollTrigger, wraps everything in `CartProvider`) → `Layout.jsx` (skip link, `Navbar`, `TrustBar`, `Footer`, `FloatingWhatsApp`). In `components/premium/`, `Navbar.jsx` and `Footer.jsx` are one-line re-exports of `SahmNav.jsx` and `PremiumFooter.jsx` — edit those.

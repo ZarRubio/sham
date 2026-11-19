@@ -3,7 +3,7 @@ export const CATEGORIES = [
     id: 'llantas',
     catalogName: 'Llantas',
     name: 'Llantas',
-    description: 'Llantas para moto, scooter y mototaxi según medida, uso y tipo de terreno.',
+    description: 'Llantas para moto, moto eléctrica y cargueros eléctricos según medida y uso.',
     cta: 'Ver catálogo de llantas',
     waMessage: 'Hola, quiero cotizar llantas SAHM. Mi medida o referencia es: ',
     enabled: true,

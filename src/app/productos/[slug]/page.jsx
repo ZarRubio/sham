@@ -1,7 +1,9 @@
 import { notFound } from 'next/navigation'
 import ProductDetailClient from '../../../components/premium/ProductDetailClient'
 import ProductCard from '../../../components/premium/ProductCard'
-import { CATALOG_PRODUCTS, getProductById, getProductLabel } from '../../../config/catalog'
+import JsonLd from '../../../components/premium/JsonLd'
+import { CATALOG_CATEGORIES, CATALOG_PRODUCTS, getProductById } from '../../../config/catalog'
+import { breadcrumbJsonLd, pageMetadata, productJsonLd, productSeoDescription, productSeoTitle } from '../../../lib/seo'
 
 export const dynamicParams = false
 
@@ -12,10 +14,14 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const { slug } = await params
   const product = getProductById(slug)
-  return {
-    title: product ? product.seoName || getProductLabel(product, 'es') : 'Producto',
-    description: product ? product.metaDescription || `Cotiza ${product.code} con SAHM.` : 'Producto SAHM',
-  }
+  if (!product) return { title: 'Producto' }
+
+  return pageMetadata({
+    title: productSeoTitle(product),
+    description: productSeoDescription(product),
+    path: `${product.productUrl}/`,
+    image: product.images[0]?.detail,
+  })
 }
 
 export default async function ProductPage({ params }) {
@@ -27,8 +33,17 @@ export default async function ProductPage({ params }) {
     .filter(item => item.id !== product.id && item.category === product.category)
     .slice(0, 4)
 
+  const category = CATALOG_CATEGORIES.find(item => item.name === product.category)
+  const breadcrumb = breadcrumbJsonLd([
+    { name: 'Inicio', path: '/' },
+    { name: 'Productos', path: '/productos/' },
+    ...(category ? [{ name: category.name, path: `/categorias/${category.id}/` }] : []),
+    { name: productSeoTitle(product), path: `${product.productUrl}/` },
+  ])
+
   return (
     <main className="min-h-screen overflow-x-hidden bg-sahm-cream px-4 pb-24 pt-8 sm:px-6">
+      <JsonLd data={[productJsonLd(product), breadcrumb]} />
       <div className="mx-auto w-full max-w-7xl">
         <ProductDetailClient product={product} related={related} />
         {related.length > 0 && (
