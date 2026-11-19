@@ -541,6 +541,582 @@ export const CATALOG_PRODUCT_CONTENT = {
       note: 'Mayor flujo; requiere compatibilidad y calibración cuidadosa.',
     },
   },
+  'llantas-motos-110-90-13-56l': {
+    seoName: 'Llanta 110/90-13 56L para moto aro 13',
+    shortDescription: 'Llanta SAHM 110/90-13 56L con cámara (TT) para motos y scooters urbanos con aro 13.',
+    longDescription:
+      'La llanta SAHM 110/90-13 56L está pensada para motos y scooters urbanos con aro 13 que se usan a diario en reparto, trabajo y traslados urbanos. La medida 110/90-13 significa 110 mm de ancho de sección, perfil 90 (la altura del flanco es el 90% del ancho) y aro de 13 pulgadas. Su índice 56L indica una capacidad de carga de hasta 224 kg por llanta (índice 56) y una velocidad máxima de 120 km/h (código L). Al ser una llanta TT necesita cámara: en el catálogo SAHM está disponible la Cámara 110/90-13 TR4 de la misma medida.',
+    compatibility:
+      'Para motos y scooters urbanos con aro 13 que usen la medida 110/90-13. Antes de comprar, revisa la medida impresa en el flanco de tu llanta actual o en el manual del vehículo: la medida y el tipo de llanta (con o sin cámara) deben coincidir.',
+    benefits: [
+      'Medida 110/90-13 lista para reposición directa en aro 13.',
+      'Índice de carga y velocidad 56L (hasta 224 kg y 120 km/h).',
+      'Con cámara (TT): reparación sencilla en cualquier taller.',
+      'Precio publicado y cotización directa por WhatsApp, con despacho a todo el Perú.',
+    ],
+    recommendation:
+      'Cambia la llanta cuando el labrado esté gastado o haya cortes, grietas o deformaciones en el flanco. Mantén la presión que indica el fabricante del vehículo y revísala con la llanta en frío.',
+    technicalWarning:
+      'No reutilices una cámara dañada o de otra medida con una llanta nueva: la cámara debe ser de la misma medida que la llanta. Una medida distinta a la indicada por el fabricante puede afectar la estabilidad, el frenado y la capacidad de carga.',
+    seoKeywords: [
+      'llanta 110/90-13',
+      'llanta 110/90-13 56L',
+      'llanta para moto aro 13',
+      'llanta con cámara',
+      'llantas para motos Perú',
+    ],
+    metaDescription: 'Llanta 110/90-13 56L con cámara (TT) para motos y scooters urbanos con aro 13. Precio publicado y despacho a todo el Perú. Cotiza por WhatsApp.',
+    faq: [
+      ['¿Qué significa la medida 110/90-13?', 'Indica 110 mm de ancho de sección, perfil 90 (la altura del flanco es el 90% del ancho) y aro de 13 pulgadas.'],
+      ['¿Qué significa 56L?', '56 es el índice de carga (hasta 224 kg por llanta) y L el código de velocidad (hasta 120 km/h).'],
+      ['¿Necesita cámara?', 'Sí. Es una llanta TT (con cámara). Te recomendamos la Cámara 110/90-13 TR4 de la misma medida.'],
+      ['¿Cómo sé si es mi medida?', 'Revisa los números impresos en el flanco de tu llanta actual. Si tienes dudas, envíanos una foto por WhatsApp y te ayudamos a confirmarla.'],
+      ['¿Hacen envíos?', 'Sí, despachamos a todo el Perú. Cotiza por WhatsApp para coordinar el envío.'],
+    ],
+    badges: ['Aro 13', '56L', 'Con cámara (TT)', 'Moto'],
+  },
+  'llantas-moto-electrica-250-10-4pr': {
+    seoName: 'Llanta 2.50-10 4PR para moto eléctrica aro 10',
+    shortDescription: 'Llanta SAHM 2.50-10 4PR sin cámara (tubeless, TL) para motos y scooters eléctricos con aro 10.',
+    longDescription:
+      'La llanta SAHM 2.50-10 4PR está pensada para motos y scooters eléctricos con aro 10 que se usan a diario en reparto, trabajo y traslados urbanos. La medida 2.50-10 significa 2.50 pulgadas de ancho de sección y aro de 10 pulgadas. Su construcción de 4 lonas (4PR) indica la resistencia de la carcasa: a más lonas, mayor capacidad para soportar peso y golpes. Al ser tubeless (TL) se monta sin cámara, por lo que el aro debe ser apto para llanta sin cámara y llevar válvula tubeless.',
+    compatibility:
+      'Para motos y scooters eléctricos con aro 10 que usen la medida 2.50-10. Antes de comprar, revisa la medida impresa en el flanco de tu llanta actual o en el manual del vehículo: la medida y el tipo de llanta (con o sin cámara) deben coincidir.',
+    benefits: [
+      'Medida 2.50-10 lista para reposición directa en aro 10.',
+      'Carcasa de 4 lonas (4PR) para trabajo diario.',
+      'Tubeless: sin cámara, más simple de mantener en aros compatibles.',
+      'Precio publicado y cotización directa por WhatsApp, con despacho a todo el Perú.',
+    ],
+    recommendation:
+      'Cambia la llanta cuando el labrado esté gastado o haya cortes, grietas o deformaciones en el flanco. Mantén la presión que indica el fabricante del vehículo y revísala con la llanta en frío.',
+    technicalWarning:
+      'No montes una llanta tubeless en un aro que no es apto para llanta sin cámara. Una medida distinta a la indicada por el fabricante puede afectar la estabilidad, el frenado y la capacidad de carga.',
+    seoKeywords: [
+      'llanta 2.50-10',
+      'llanta 2.50-10 4PR',
+      'llanta para moto eléctrica aro 10',
+      'llanta tubeless',
+      'llantas para motos Perú',
+    ],
+    metaDescription: 'Llanta 2.50-10 4PR tubeless para motos y scooters eléctricos con aro 10. Precio publicado y despacho a todo el Perú. Cotiza por WhatsApp.',
+    faq: [
+      ['¿Qué significa la medida 2.50-10?', 'Indica 2.50 pulgadas de ancho de sección y aro de 10 pulgadas.'],
+      ['¿Qué significa 4PR?', '4PR es el número de lonas (ply rating): indica la resistencia de la carcasa y su capacidad de carga.'],
+      ['¿Necesita cámara?', 'No. Es tubeless (TL): va sin cámara en un aro apto para llanta sin cámara.'],
+      ['¿Cómo sé si es mi medida?', 'Revisa los números impresos en el flanco de tu llanta actual. Si tienes dudas, envíanos una foto por WhatsApp y te ayudamos a confirmarla.'],
+      ['¿Hacen envíos?', 'Sí, despachamos a todo el Perú. Cotiza por WhatsApp para coordinar el envío.'],
+    ],
+    badges: ['Aro 10', '4PR', 'Tubeless', 'Moto eléctrica'],
+  },
+  'llantas-moto-electrica-275-10-4pr': {
+    seoName: 'Llanta 2.75-10 6PR para moto eléctrica aro 10',
+    shortDescription: 'Llanta SAHM 2.75-10 6PR sin cámara (tubeless, TL) para motos y scooters eléctricos con aro 10.',
+    longDescription:
+      'La llanta SAHM 2.75-10 6PR está pensada para motos y scooters eléctricos con aro 10 que se usan a diario en reparto, trabajo y traslados urbanos. La medida 2.75-10 significa 2.75 pulgadas de ancho de sección y aro de 10 pulgadas. Su construcción de 6 lonas (6PR) indica la resistencia de la carcasa: a más lonas, mayor capacidad para soportar peso y golpes. Al ser tubeless (TL) se monta sin cámara, por lo que el aro debe ser apto para llanta sin cámara y llevar válvula tubeless.',
+    compatibility:
+      'Para motos y scooters eléctricos con aro 10 que usen la medida 2.75-10. Antes de comprar, revisa la medida impresa en el flanco de tu llanta actual o en el manual del vehículo: la medida y el tipo de llanta (con o sin cámara) deben coincidir.',
+    benefits: [
+      'Medida 2.75-10 lista para reposición directa en aro 10.',
+      'Carcasa de 6 lonas (6PR) para trabajo diario.',
+      'Tubeless: sin cámara, más simple de mantener en aros compatibles.',
+      'Precio publicado y cotización directa por WhatsApp, con despacho a todo el Perú.',
+    ],
+    recommendation:
+      'Cambia la llanta cuando el labrado esté gastado o haya cortes, grietas o deformaciones en el flanco. Mantén la presión que indica el fabricante del vehículo y revísala con la llanta en frío.',
+    technicalWarning:
+      'No montes una llanta tubeless en un aro que no es apto para llanta sin cámara. Una medida distinta a la indicada por el fabricante puede afectar la estabilidad, el frenado y la capacidad de carga.',
+    seoKeywords: [
+      'llanta 2.75-10',
+      'llanta 2.75-10 6PR',
+      'llanta para moto eléctrica aro 10',
+      'llanta tubeless',
+      'llantas para motos Perú',
+    ],
+    metaDescription: 'Llanta 2.75-10 6PR tubeless para motos y scooters eléctricos con aro 10. Precio publicado y despacho a todo el Perú. Cotiza por WhatsApp.',
+    faq: [
+      ['¿Qué significa la medida 2.75-10?', 'Indica 2.75 pulgadas de ancho de sección y aro de 10 pulgadas.'],
+      ['¿Qué significa 6PR?', '6PR es el número de lonas (ply rating): indica la resistencia de la carcasa y su capacidad de carga.'],
+      ['¿Necesita cámara?', 'No. Es tubeless (TL): va sin cámara en un aro apto para llanta sin cámara.'],
+      ['¿Cómo sé si es mi medida?', 'Revisa los números impresos en el flanco de tu llanta actual. Si tienes dudas, envíanos una foto por WhatsApp y te ayudamos a confirmarla.'],
+      ['¿Hacen envíos?', 'Sí, despachamos a todo el Perú. Cotiza por WhatsApp para coordinar el envío.'],
+    ],
+    badges: ['Aro 10', '6PR', 'Tubeless', 'Moto eléctrica'],
+  },
+  'llantas-moto-electrica-300-8-4pr': {
+    seoName: 'Llanta 3.00-8 4PR para moto eléctrica aro 8',
+    shortDescription: 'Llanta SAHM 3.00-8 4PR sin cámara (tubeless, TL) para motos y scooters eléctricos con aro 8.',
+    longDescription:
+      'La llanta SAHM 3.00-8 4PR está pensada para motos y scooters eléctricos con aro 8 que se usan a diario en reparto, trabajo y traslados urbanos. La medida 3.00-8 significa 3.00 pulgadas de ancho de sección y aro de 8 pulgadas. Su construcción de 4 lonas (4PR) indica la resistencia de la carcasa: a más lonas, mayor capacidad para soportar peso y golpes. Al ser tubeless (TL) se monta sin cámara, por lo que el aro debe ser apto para llanta sin cámara y llevar válvula tubeless.',
+    compatibility:
+      'Para motos y scooters eléctricos con aro 8 que usen la medida 3.00-8. Antes de comprar, revisa la medida impresa en el flanco de tu llanta actual o en el manual del vehículo: la medida y el tipo de llanta (con o sin cámara) deben coincidir.',
+    benefits: [
+      'Medida 3.00-8 lista para reposición directa en aro 8.',
+      'Carcasa de 4 lonas (4PR) para trabajo diario.',
+      'Tubeless: sin cámara, más simple de mantener en aros compatibles.',
+      'Precio publicado y cotización directa por WhatsApp, con despacho a todo el Perú.',
+    ],
+    recommendation:
+      'Cambia la llanta cuando el labrado esté gastado o haya cortes, grietas o deformaciones en el flanco. Mantén la presión que indica el fabricante del vehículo y revísala con la llanta en frío.',
+    technicalWarning:
+      'No montes una llanta tubeless en un aro que no es apto para llanta sin cámara. Una medida distinta a la indicada por el fabricante puede afectar la estabilidad, el frenado y la capacidad de carga.',
+    seoKeywords: [
+      'llanta 3.00-8',
+      'llanta 3.00-8 4PR',
+      'llanta para moto eléctrica aro 8',
+      'llanta tubeless',
+      'llantas para motos Perú',
+    ],
+    metaDescription: 'Llanta 3.00-8 4PR tubeless para motos y scooters eléctricos con aro 8. Precio publicado y despacho a todo el Perú. Cotiza por WhatsApp.',
+    faq: [
+      ['¿Qué significa la medida 3.00-8?', 'Indica 3.00 pulgadas de ancho de sección y aro de 8 pulgadas.'],
+      ['¿Qué significa 4PR?', '4PR es el número de lonas (ply rating): indica la resistencia de la carcasa y su capacidad de carga.'],
+      ['¿Necesita cámara?', 'No. Es tubeless (TL): va sin cámara en un aro apto para llanta sin cámara.'],
+      ['¿Cómo sé si es mi medida?', 'Revisa los números impresos en el flanco de tu llanta actual. Si tienes dudas, envíanos una foto por WhatsApp y te ayudamos a confirmarla.'],
+      ['¿Hacen envíos?', 'Sí, despachamos a todo el Perú. Cotiza por WhatsApp para coordinar el envío.'],
+    ],
+    badges: ['Aro 8', '4PR', 'Tubeless', 'Moto eléctrica'],
+  },
+  'llantas-moto-electrica-300-10-6pr': {
+    seoName: 'Llanta 3.00-10 6PR para moto eléctrica aro 10',
+    shortDescription: 'Llanta SAHM 3.00-10 6PR sin cámara (tubeless, TL) para motos y scooters eléctricos con aro 10.',
+    longDescription:
+      'La llanta SAHM 3.00-10 6PR está pensada para motos y scooters eléctricos con aro 10 que se usan a diario en reparto, trabajo y traslados urbanos. La medida 3.00-10 significa 3.00 pulgadas de ancho de sección y aro de 10 pulgadas. Su construcción de 6 lonas (6PR) indica la resistencia de la carcasa: a más lonas, mayor capacidad para soportar peso y golpes. Al ser tubeless (TL) se monta sin cámara, por lo que el aro debe ser apto para llanta sin cámara y llevar válvula tubeless.',
+    compatibility:
+      'Para motos y scooters eléctricos con aro 10 que usen la medida 3.00-10. Antes de comprar, revisa la medida impresa en el flanco de tu llanta actual o en el manual del vehículo: la medida y el tipo de llanta (con o sin cámara) deben coincidir.',
+    benefits: [
+      'Medida 3.00-10 lista para reposición directa en aro 10.',
+      'Carcasa de 6 lonas (6PR) para trabajo diario.',
+      'Tubeless: sin cámara, más simple de mantener en aros compatibles.',
+      'Precio publicado y cotización directa por WhatsApp, con despacho a todo el Perú.',
+    ],
+    recommendation:
+      'Cambia la llanta cuando el labrado esté gastado o haya cortes, grietas o deformaciones en el flanco. Mantén la presión que indica el fabricante del vehículo y revísala con la llanta en frío.',
+    technicalWarning:
+      'No montes una llanta tubeless en un aro que no es apto para llanta sin cámara. Una medida distinta a la indicada por el fabricante puede afectar la estabilidad, el frenado y la capacidad de carga.',
+    seoKeywords: [
+      'llanta 3.00-10',
+      'llanta 3.00-10 6PR',
+      'llanta para moto eléctrica aro 10',
+      'llanta tubeless',
+      'llantas para motos Perú',
+    ],
+    metaDescription: 'Llanta 3.00-10 6PR tubeless para motos y scooters eléctricos con aro 10. Precio publicado y despacho a todo el Perú. Cotiza por WhatsApp.',
+    faq: [
+      ['¿Qué significa la medida 3.00-10?', 'Indica 3.00 pulgadas de ancho de sección y aro de 10 pulgadas.'],
+      ['¿Qué significa 6PR?', '6PR es el número de lonas (ply rating): indica la resistencia de la carcasa y su capacidad de carga.'],
+      ['¿Necesita cámara?', 'No. Es tubeless (TL): va sin cámara en un aro apto para llanta sin cámara.'],
+      ['¿Cómo sé si es mi medida?', 'Revisa los números impresos en el flanco de tu llanta actual. Si tienes dudas, envíanos una foto por WhatsApp y te ayudamos a confirmarla.'],
+      ['¿Hacen envíos?', 'Sí, despachamos a todo el Perú. Cotiza por WhatsApp para coordinar el envío.'],
+    ],
+    badges: ['Aro 10', '6PR', 'Tubeless', 'Moto eléctrica'],
+  },
+  'llantas-moto-electrica-350-10-4pr': {
+    seoName: 'Llanta 3.50-10 4PR para moto eléctrica aro 10',
+    shortDescription: 'Llanta SAHM 3.50-10 4PR sin cámara (tubeless, TL) para motos y scooters eléctricos con aro 10.',
+    longDescription:
+      'La llanta SAHM 3.50-10 4PR está pensada para motos y scooters eléctricos con aro 10 que se usan a diario en reparto, trabajo y traslados urbanos. La medida 3.50-10 significa 3.50 pulgadas de ancho de sección y aro de 10 pulgadas. Su construcción de 4 lonas (4PR) indica la resistencia de la carcasa: a más lonas, mayor capacidad para soportar peso y golpes. Al ser tubeless (TL) se monta sin cámara, por lo que el aro debe ser apto para llanta sin cámara y llevar válvula tubeless.',
+    compatibility:
+      'Para motos y scooters eléctricos con aro 10 que usen la medida 3.50-10. Antes de comprar, revisa la medida impresa en el flanco de tu llanta actual o en el manual del vehículo: la medida y el tipo de llanta (con o sin cámara) deben coincidir.',
+    benefits: [
+      'Medida 3.50-10 lista para reposición directa en aro 10.',
+      'Carcasa de 4 lonas (4PR) para trabajo diario.',
+      'Tubeless: sin cámara, más simple de mantener en aros compatibles.',
+      'Precio publicado y cotización directa por WhatsApp, con despacho a todo el Perú.',
+    ],
+    recommendation:
+      'Cambia la llanta cuando el labrado esté gastado o haya cortes, grietas o deformaciones en el flanco. Mantén la presión que indica el fabricante del vehículo y revísala con la llanta en frío.',
+    technicalWarning:
+      'No montes una llanta tubeless en un aro que no es apto para llanta sin cámara. Una medida distinta a la indicada por el fabricante puede afectar la estabilidad, el frenado y la capacidad de carga.',
+    seoKeywords: [
+      'llanta 3.50-10',
+      'llanta 3.50-10 4PR',
+      'llanta para moto eléctrica aro 10',
+      'llanta tubeless',
+      'llantas para motos Perú',
+    ],
+    metaDescription: 'Llanta 3.50-10 4PR tubeless para motos y scooters eléctricos con aro 10. Precio publicado y despacho a todo el Perú. Cotiza por WhatsApp.',
+    faq: [
+      ['¿Qué significa la medida 3.50-10?', 'Indica 3.50 pulgadas de ancho de sección y aro de 10 pulgadas.'],
+      ['¿Qué significa 4PR?', '4PR es el número de lonas (ply rating): indica la resistencia de la carcasa y su capacidad de carga.'],
+      ['¿Necesita cámara?', 'No. Es tubeless (TL): va sin cámara en un aro apto para llanta sin cámara.'],
+      ['¿Cómo sé si es mi medida?', 'Revisa los números impresos en el flanco de tu llanta actual. Si tienes dudas, envíanos una foto por WhatsApp y te ayudamos a confirmarla.'],
+      ['¿Hacen envíos?', 'Sí, despachamos a todo el Perú. Cotiza por WhatsApp para coordinar el envío.'],
+    ],
+    badges: ['Aro 10', '4PR', 'Tubeless', 'Moto eléctrica'],
+  },
+  'llantas-cargueros-electricos-300-12-4pr': {
+    seoName: 'Llanta 3.00-12 4PR para carguero eléctrico aro 12',
+    shortDescription: 'Llanta SAHM 3.00-12 4PR con cámara (TT) para triciclos y cargueros eléctricos con aro 12.',
+    longDescription:
+      'La llanta SAHM 3.00-12 4PR está pensada para triciclos y cargueros eléctricos con aro 12 que se usan a diario en reparto, trabajo y traslados urbanos. La medida 3.00-12 significa 3.00 pulgadas de ancho de sección y aro de 12 pulgadas. Su construcción de 4 lonas (4PR) indica la resistencia de la carcasa: a más lonas, mayor capacidad para soportar la carga del vehículo. Al ser una llanta TT necesita cámara: en el catálogo SAHM está disponible la Cámara 3.00-12 TR87 de la misma medida.',
+    compatibility:
+      'Para triciclos y cargueros eléctricos con aro 12 que usen la medida 3.00-12. Antes de comprar, revisa la medida impresa en el flanco de tu llanta actual o en el manual del vehículo: la medida y el tipo de llanta (con o sin cámara) deben coincidir.',
+    benefits: [
+      'Medida 3.00-12 lista para reposición directa en aro 12.',
+      'Carcasa de 4 lonas (4PR) para trabajo diario.',
+      'Con cámara (TT): reparación sencilla en cualquier taller.',
+      'Precio publicado y cotización directa por WhatsApp, con despacho a todo el Perú.',
+    ],
+    recommendation:
+      'Cambia la llanta cuando el labrado esté gastado o haya cortes, grietas o deformaciones en el flanco. Mantén la presión que indica el fabricante del vehículo y revísala con la llanta en frío.',
+    technicalWarning:
+      'No reutilices una cámara dañada o de otra medida con una llanta nueva: la cámara debe ser de la misma medida que la llanta. Una medida distinta a la indicada por el fabricante puede afectar la estabilidad, el frenado y la capacidad de carga.',
+    seoKeywords: [
+      'llanta 3.00-12',
+      'llanta 3.00-12 4PR',
+      'llanta para carguero eléctrico aro 12',
+      'llanta con cámara',
+      'llantas para motos Perú',
+    ],
+    metaDescription: 'Llanta 3.00-12 4PR con cámara (TT) para triciclos y cargueros eléctricos con aro 12. Precio publicado y despacho a todo el Perú. Cotiza por WhatsApp.',
+    faq: [
+      ['¿Qué significa la medida 3.00-12?', 'Indica 3.00 pulgadas de ancho de sección y aro de 12 pulgadas.'],
+      ['¿Qué significa 4PR?', '4PR es el número de lonas (ply rating): indica la resistencia de la carcasa y su capacidad de carga.'],
+      ['¿Necesita cámara?', 'Sí. Es una llanta TT (con cámara). Te recomendamos la Cámara 3.00-12 TR87 de la misma medida.'],
+      ['¿Cómo sé si es mi medida?', 'Revisa los números impresos en el flanco de tu llanta actual. Si tienes dudas, envíanos una foto por WhatsApp y te ayudamos a confirmarla.'],
+      ['¿Hacen envíos?', 'Sí, despachamos a todo el Perú. Cotiza por WhatsApp para coordinar el envío.'],
+    ],
+    badges: ['Aro 12', '4PR', 'Con cámara (TT)', 'Carguero eléctrico'],
+  },
+  'llantas-cargueros-electricos-350-12-4pr': {
+    seoName: 'Llanta 3.50-12 4PR para carguero eléctrico aro 12',
+    shortDescription: 'Llanta SAHM 3.50-12 4PR con cámara (TT) para triciclos y cargueros eléctricos con aro 12.',
+    longDescription:
+      'La llanta SAHM 3.50-12 4PR está pensada para triciclos y cargueros eléctricos con aro 12 que se usan a diario en reparto, trabajo y traslados urbanos. La medida 3.50-12 significa 3.50 pulgadas de ancho de sección y aro de 12 pulgadas. Su construcción de 4 lonas (4PR) indica la resistencia de la carcasa: a más lonas, mayor capacidad para soportar la carga del vehículo. Al ser una llanta TT necesita cámara: en el catálogo SAHM está disponible la Cámara 3.50-12 TR87 de la misma medida.',
+    compatibility:
+      'Para triciclos y cargueros eléctricos con aro 12 que usen la medida 3.50-12. Antes de comprar, revisa la medida impresa en el flanco de tu llanta actual o en el manual del vehículo: la medida y el tipo de llanta (con o sin cámara) deben coincidir.',
+    benefits: [
+      'Medida 3.50-12 lista para reposición directa en aro 12.',
+      'Carcasa de 4 lonas (4PR) para trabajo diario.',
+      'Con cámara (TT): reparación sencilla en cualquier taller.',
+      'Precio publicado y cotización directa por WhatsApp, con despacho a todo el Perú.',
+    ],
+    recommendation:
+      'Cambia la llanta cuando el labrado esté gastado o haya cortes, grietas o deformaciones en el flanco. Mantén la presión que indica el fabricante del vehículo y revísala con la llanta en frío.',
+    technicalWarning:
+      'No reutilices una cámara dañada o de otra medida con una llanta nueva: la cámara debe ser de la misma medida que la llanta. Una medida distinta a la indicada por el fabricante puede afectar la estabilidad, el frenado y la capacidad de carga.',
+    seoKeywords: [
+      'llanta 3.50-12',
+      'llanta 3.50-12 4PR',
+      'llanta para carguero eléctrico aro 12',
+      'llanta con cámara',
+      'llantas para motos Perú',
+    ],
+    metaDescription: 'Llanta 3.50-12 4PR con cámara (TT) para triciclos y cargueros eléctricos con aro 12. Precio publicado y despacho a todo el Perú. Cotiza por WhatsApp.',
+    faq: [
+      ['¿Qué significa la medida 3.50-12?', 'Indica 3.50 pulgadas de ancho de sección y aro de 12 pulgadas.'],
+      ['¿Qué significa 4PR?', '4PR es el número de lonas (ply rating): indica la resistencia de la carcasa y su capacidad de carga.'],
+      ['¿Necesita cámara?', 'Sí. Es una llanta TT (con cámara). Te recomendamos la Cámara 3.50-12 TR87 de la misma medida.'],
+      ['¿Cómo sé si es mi medida?', 'Revisa los números impresos en el flanco de tu llanta actual. Si tienes dudas, envíanos una foto por WhatsApp y te ayudamos a confirmarla.'],
+      ['¿Hacen envíos?', 'Sí, despachamos a todo el Perú. Cotiza por WhatsApp para coordinar el envío.'],
+    ],
+    badges: ['Aro 12', '4PR', 'Con cámara (TT)', 'Carguero eléctrico'],
+  },
+  'llantas-cargueros-electricos-375-12-6pr': {
+    seoName: 'Llanta 3.75-12 6PR para carguero eléctrico aro 12',
+    shortDescription: 'Llanta SAHM 3.75-12 6PR con cámara (TT) para triciclos y cargueros eléctricos con aro 12.',
+    longDescription:
+      'La llanta SAHM 3.75-12 6PR está pensada para triciclos y cargueros eléctricos con aro 12 que se usan a diario en reparto, trabajo y traslados urbanos. La medida 3.75-12 significa 3.75 pulgadas de ancho de sección y aro de 12 pulgadas. Su construcción de 6 lonas (6PR) indica la resistencia de la carcasa: a más lonas, mayor capacidad para soportar la carga del vehículo. Al ser una llanta TT necesita cámara: en el catálogo SAHM está disponible la Cámara 3.75-12 TR87 de la misma medida.',
+    compatibility:
+      'Para triciclos y cargueros eléctricos con aro 12 que usen la medida 3.75-12. Antes de comprar, revisa la medida impresa en el flanco de tu llanta actual o en el manual del vehículo: la medida y el tipo de llanta (con o sin cámara) deben coincidir.',
+    benefits: [
+      'Medida 3.75-12 lista para reposición directa en aro 12.',
+      'Carcasa de 6 lonas (6PR) para trabajo diario.',
+      'Con cámara (TT): reparación sencilla en cualquier taller.',
+      'Precio publicado y cotización directa por WhatsApp, con despacho a todo el Perú.',
+    ],
+    recommendation:
+      'Cambia la llanta cuando el labrado esté gastado o haya cortes, grietas o deformaciones en el flanco. Mantén la presión que indica el fabricante del vehículo y revísala con la llanta en frío.',
+    technicalWarning:
+      'No reutilices una cámara dañada o de otra medida con una llanta nueva: la cámara debe ser de la misma medida que la llanta. Una medida distinta a la indicada por el fabricante puede afectar la estabilidad, el frenado y la capacidad de carga.',
+    seoKeywords: [
+      'llanta 3.75-12',
+      'llanta 3.75-12 6PR',
+      'llanta para carguero eléctrico aro 12',
+      'llanta con cámara',
+      'llantas para motos Perú',
+    ],
+    metaDescription: 'Llanta 3.75-12 6PR con cámara (TT) para triciclos y cargueros eléctricos con aro 12. Precio publicado y despacho a todo el Perú. Cotiza por WhatsApp.',
+    faq: [
+      ['¿Qué significa la medida 3.75-12?', 'Indica 3.75 pulgadas de ancho de sección y aro de 12 pulgadas.'],
+      ['¿Qué significa 6PR?', '6PR es el número de lonas (ply rating): indica la resistencia de la carcasa y su capacidad de carga.'],
+      ['¿Necesita cámara?', 'Sí. Es una llanta TT (con cámara). Te recomendamos la Cámara 3.75-12 TR87 de la misma medida.'],
+      ['¿Cómo sé si es mi medida?', 'Revisa los números impresos en el flanco de tu llanta actual. Si tienes dudas, envíanos una foto por WhatsApp y te ayudamos a confirmarla.'],
+      ['¿Hacen envíos?', 'Sí, despachamos a todo el Perú. Cotiza por WhatsApp para coordinar el envío.'],
+    ],
+    badges: ['Aro 12', '6PR', 'Con cámara (TT)', 'Carguero eléctrico'],
+  },
+  'llantas-cargueros-electricos-400-12-8pr': {
+    seoName: 'Llanta 4.00-12 8PR para carguero eléctrico aro 12',
+    shortDescription: 'Llanta SAHM 4.00-12 8PR con cámara (TT) para triciclos y cargueros eléctricos con aro 12.',
+    longDescription:
+      'La llanta SAHM 4.00-12 8PR está pensada para triciclos y cargueros eléctricos con aro 12 que se usan a diario en reparto, trabajo y traslados urbanos. La medida 4.00-12 significa 4.00 pulgadas de ancho de sección y aro de 12 pulgadas. Su construcción de 8 lonas (8PR) indica la resistencia de la carcasa: a más lonas, mayor capacidad para soportar la carga del vehículo. Al ser una llanta TT necesita cámara: en el catálogo SAHM está disponible la Cámara 4.00-12 TR13 de la misma medida.',
+    compatibility:
+      'Para triciclos y cargueros eléctricos con aro 12 que usen la medida 4.00-12. Antes de comprar, revisa la medida impresa en el flanco de tu llanta actual o en el manual del vehículo: la medida y el tipo de llanta (con o sin cámara) deben coincidir.',
+    benefits: [
+      'Medida 4.00-12 lista para reposición directa en aro 12.',
+      'Carcasa de 8 lonas (8PR) para trabajo diario.',
+      'Con cámara (TT): reparación sencilla en cualquier taller.',
+      'Precio publicado y cotización directa por WhatsApp, con despacho a todo el Perú.',
+    ],
+    recommendation:
+      'Cambia la llanta cuando el labrado esté gastado o haya cortes, grietas o deformaciones en el flanco. Mantén la presión que indica el fabricante del vehículo y revísala con la llanta en frío.',
+    technicalWarning:
+      'No reutilices una cámara dañada o de otra medida con una llanta nueva: la cámara debe ser de la misma medida que la llanta. Una medida distinta a la indicada por el fabricante puede afectar la estabilidad, el frenado y la capacidad de carga.',
+    seoKeywords: [
+      'llanta 4.00-12',
+      'llanta 4.00-12 8PR',
+      'llanta para carguero eléctrico aro 12',
+      'llanta con cámara',
+      'llantas para motos Perú',
+    ],
+    metaDescription: 'Llanta 4.00-12 8PR con cámara (TT) para triciclos y cargueros eléctricos con aro 12. Precio publicado y despacho a todo el Perú. Cotiza por WhatsApp.',
+    faq: [
+      ['¿Qué significa la medida 4.00-12?', 'Indica 4.00 pulgadas de ancho de sección y aro de 12 pulgadas.'],
+      ['¿Qué significa 8PR?', '8PR es el número de lonas (ply rating): indica la resistencia de la carcasa y su capacidad de carga.'],
+      ['¿Necesita cámara?', 'Sí. Es una llanta TT (con cámara). Te recomendamos la Cámara 4.00-12 TR13 de la misma medida.'],
+      ['¿Cómo sé si es mi medida?', 'Revisa los números impresos en el flanco de tu llanta actual. Si tienes dudas, envíanos una foto por WhatsApp y te ayudamos a confirmarla.'],
+      ['¿Hacen envíos?', 'Sí, despachamos a todo el Perú. Cotiza por WhatsApp para coordinar el envío.'],
+    ],
+    badges: ['Aro 12', '8PR', 'Con cámara (TT)', 'Carguero eléctrico'],
+  },
+  'camaras-motos-110-90-13-tr4': {
+    seoName: 'Cámara 110/90-13 TR4 para moto aro 13',
+    shortDescription: 'Cámara SAHM 110/90-13 con válvula TR4 para llantas de moto con cámara (TT) aro 13.',
+    longDescription:
+      'La cámara SAHM 110/90-13 es para llantas TT (con cámara) de medida 110/90-13, es decir, 110 mm de ancho de sección, perfil 90 (la altura del flanco es el 90% del ancho) y aro de 13 pulgadas. Viene con válvula TR4. La cámara mantiene el aire dentro de la llanta, por eso es la pieza a cambiar cuando hay pinchazos repetidos, la válvula está dañada o la cámara ya está vieja. En el catálogo SAHM puedes pedirla junto con la Llanta 110/90-13 56L de la misma medida.',
+    compatibility:
+      'Para llantas TT (con cámara) de medida 110/90-13 en aro 13. Revisa la medida en el flanco de tu llanta y que el agujero de tu aro sea compatible con la válvula TR4.',
+    benefits: [
+      'Medida 110/90-13 para reposición directa.',
+      'Válvula TR4.',
+      'Ideal para cambiar junto con la llanta y evitar pinchazos.',
+      'Precio publicado y despacho a todo el Perú.',
+    ],
+    recommendation:
+      'Cambia la cámara cada vez que cambies la llanta. Al montarla, ínflala un poco antes de colocarla y revisa que no quede pellizcada entre la llanta y el aro.',
+    technicalWarning:
+      'La cámara debe ser de la misma medida que la llanta: una cámara más grande se pliega y una más pequeña queda estirada y se revienta con facilidad.',
+    seoKeywords: [
+      'cámara 110/90-13',
+      'cámara 110/90-13 tr4',
+      'cámara para moto aro 13',
+      'válvula tr4',
+      'cámaras para moto Perú',
+    ],
+    metaDescription: 'Cámara 110/90-13 con válvula TR4 para llantas de moto con cámara aro 13. Precio publicado y despacho a todo el Perú. Cotiza por WhatsApp.',
+    faq: [
+      ['¿Para qué llanta sirve la cámara 110/90-13?', 'Para llantas TT (con cámara) de medida 110/90-13. Por ejemplo, la Llanta 110/90-13 56L de nuestro catálogo.'],
+      ['¿Qué válvula trae?', 'Trae válvula TR4. Verifica que el agujero de tu aro sea compatible.'],
+      ['¿Sirve para una llanta tubeless?', 'Una llanta tubeless no lleva cámara. Esta cámara es para llantas TT (con cámara).'],
+      ['¿Cada cuánto se cambia la cámara?', 'Se recomienda cambiarla junto con la llanta o cuando tenga varios parches, fugas o la válvula esté dañada.'],
+      ['¿Hacen envíos?', 'Sí, despachamos a todo el Perú. Cotiza por WhatsApp.'],
+    ],
+    badges: ['Aro 13', 'Válvula TR4', 'Para llanta TT'],
+  },
+  'camaras-motos-300-12-tr87': {
+    seoName: 'Cámara 3.00-12 TR87 para moto aro 12',
+    shortDescription: 'Cámara SAHM 3.00-12 con válvula TR87 para llantas de moto con cámara (TT) aro 12.',
+    longDescription:
+      'La cámara SAHM 3.00-12 es para llantas TT (con cámara) de medida 3.00-12, es decir, 3.00 pulgadas de ancho de sección y aro de 12 pulgadas. Viene con válvula TR87. La cámara mantiene el aire dentro de la llanta, por eso es la pieza a cambiar cuando hay pinchazos repetidos, la válvula está dañada o la cámara ya está vieja. En el catálogo SAHM puedes pedirla junto con la Llanta 3.00-12 4PR de la misma medida.',
+    compatibility:
+      'Para llantas TT (con cámara) de medida 3.00-12 en aro 12. Revisa la medida en el flanco de tu llanta y que el agujero de tu aro sea compatible con la válvula TR87.',
+    benefits: [
+      'Medida 3.00-12 para reposición directa.',
+      'Válvula TR87.',
+      'Ideal para cambiar junto con la llanta y evitar pinchazos.',
+      'Precio publicado y despacho a todo el Perú.',
+    ],
+    recommendation:
+      'Cambia la cámara cada vez que cambies la llanta. Al montarla, ínflala un poco antes de colocarla y revisa que no quede pellizcada entre la llanta y el aro.',
+    technicalWarning:
+      'La cámara debe ser de la misma medida que la llanta: una cámara más grande se pliega y una más pequeña queda estirada y se revienta con facilidad.',
+    seoKeywords: [
+      'cámara 3.00-12',
+      'cámara 3.00-12 tr87',
+      'cámara para moto aro 12',
+      'válvula tr87',
+      'cámaras para moto Perú',
+    ],
+    metaDescription: 'Cámara 3.00-12 con válvula TR87 para llantas de moto con cámara aro 12. Precio publicado y despacho a todo el Perú. Cotiza por WhatsApp.',
+    faq: [
+      ['¿Para qué llanta sirve la cámara 3.00-12?', 'Para llantas TT (con cámara) de medida 3.00-12. Por ejemplo, la Llanta 3.00-12 4PR de nuestro catálogo.'],
+      ['¿Qué válvula trae?', 'Trae válvula TR87. Verifica que el agujero de tu aro sea compatible.'],
+      ['¿Sirve para una llanta tubeless?', 'Una llanta tubeless no lleva cámara. Esta cámara es para llantas TT (con cámara).'],
+      ['¿Cada cuánto se cambia la cámara?', 'Se recomienda cambiarla junto con la llanta o cuando tenga varios parches, fugas o la válvula esté dañada.'],
+      ['¿Hacen envíos?', 'Sí, despachamos a todo el Perú. Cotiza por WhatsApp.'],
+    ],
+    badges: ['Aro 12', 'Válvula TR87', 'Para llanta TT'],
+  },
+  'camaras-motos-350-12-tr87': {
+    seoName: 'Cámara 3.50-12 TR87 para moto aro 12',
+    shortDescription: 'Cámara SAHM 3.50-12 con válvula TR87 para llantas de moto con cámara (TT) aro 12.',
+    longDescription:
+      'La cámara SAHM 3.50-12 es para llantas TT (con cámara) de medida 3.50-12, es decir, 3.50 pulgadas de ancho de sección y aro de 12 pulgadas. Viene con válvula TR87. La cámara mantiene el aire dentro de la llanta, por eso es la pieza a cambiar cuando hay pinchazos repetidos, la válvula está dañada o la cámara ya está vieja. En el catálogo SAHM puedes pedirla junto con la Llanta 3.50-12 4PR de la misma medida.',
+    compatibility:
+      'Para llantas TT (con cámara) de medida 3.50-12 en aro 12. Revisa la medida en el flanco de tu llanta y que el agujero de tu aro sea compatible con la válvula TR87.',
+    benefits: [
+      'Medida 3.50-12 para reposición directa.',
+      'Válvula TR87.',
+      'Ideal para cambiar junto con la llanta y evitar pinchazos.',
+      'Precio publicado y despacho a todo el Perú.',
+    ],
+    recommendation:
+      'Cambia la cámara cada vez que cambies la llanta. Al montarla, ínflala un poco antes de colocarla y revisa que no quede pellizcada entre la llanta y el aro.',
+    technicalWarning:
+      'La cámara debe ser de la misma medida que la llanta: una cámara más grande se pliega y una más pequeña queda estirada y se revienta con facilidad.',
+    seoKeywords: [
+      'cámara 3.50-12',
+      'cámara 3.50-12 tr87',
+      'cámara para moto aro 12',
+      'válvula tr87',
+      'cámaras para moto Perú',
+    ],
+    metaDescription: 'Cámara 3.50-12 con válvula TR87 para llantas de moto con cámara aro 12. Precio publicado y despacho a todo el Perú. Cotiza por WhatsApp.',
+    faq: [
+      ['¿Para qué llanta sirve la cámara 3.50-12?', 'Para llantas TT (con cámara) de medida 3.50-12. Por ejemplo, la Llanta 3.50-12 4PR de nuestro catálogo.'],
+      ['¿Qué válvula trae?', 'Trae válvula TR87. Verifica que el agujero de tu aro sea compatible.'],
+      ['¿Sirve para una llanta tubeless?', 'Una llanta tubeless no lleva cámara. Esta cámara es para llantas TT (con cámara).'],
+      ['¿Cada cuánto se cambia la cámara?', 'Se recomienda cambiarla junto con la llanta o cuando tenga varios parches, fugas o la válvula esté dañada.'],
+      ['¿Hacen envíos?', 'Sí, despachamos a todo el Perú. Cotiza por WhatsApp.'],
+    ],
+    badges: ['Aro 12', 'Válvula TR87', 'Para llanta TT'],
+  },
+  'camaras-motos-375-12-tr87': {
+    seoName: 'Cámara 3.75-12 TR87 para moto aro 12',
+    shortDescription: 'Cámara SAHM 3.75-12 con válvula TR87 para llantas de moto con cámara (TT) aro 12.',
+    longDescription:
+      'La cámara SAHM 3.75-12 es para llantas TT (con cámara) de medida 3.75-12, es decir, 3.75 pulgadas de ancho de sección y aro de 12 pulgadas. Viene con válvula TR87. La cámara mantiene el aire dentro de la llanta, por eso es la pieza a cambiar cuando hay pinchazos repetidos, la válvula está dañada o la cámara ya está vieja. En el catálogo SAHM puedes pedirla junto con la Llanta 3.75-12 6PR de la misma medida.',
+    compatibility:
+      'Para llantas TT (con cámara) de medida 3.75-12 en aro 12. Revisa la medida en el flanco de tu llanta y que el agujero de tu aro sea compatible con la válvula TR87.',
+    benefits: [
+      'Medida 3.75-12 para reposición directa.',
+      'Válvula TR87.',
+      'Ideal para cambiar junto con la llanta y evitar pinchazos.',
+      'Precio publicado y despacho a todo el Perú.',
+    ],
+    recommendation:
+      'Cambia la cámara cada vez que cambies la llanta. Al montarla, ínflala un poco antes de colocarla y revisa que no quede pellizcada entre la llanta y el aro.',
+    technicalWarning:
+      'La cámara debe ser de la misma medida que la llanta: una cámara más grande se pliega y una más pequeña queda estirada y se revienta con facilidad.',
+    seoKeywords: [
+      'cámara 3.75-12',
+      'cámara 3.75-12 tr87',
+      'cámara para moto aro 12',
+      'válvula tr87',
+      'cámaras para moto Perú',
+    ],
+    metaDescription: 'Cámara 3.75-12 con válvula TR87 para llantas de moto con cámara aro 12. Precio publicado y despacho a todo el Perú. Cotiza por WhatsApp.',
+    faq: [
+      ['¿Para qué llanta sirve la cámara 3.75-12?', 'Para llantas TT (con cámara) de medida 3.75-12. Por ejemplo, la Llanta 3.75-12 6PR de nuestro catálogo.'],
+      ['¿Qué válvula trae?', 'Trae válvula TR87. Verifica que el agujero de tu aro sea compatible.'],
+      ['¿Sirve para una llanta tubeless?', 'Una llanta tubeless no lleva cámara. Esta cámara es para llantas TT (con cámara).'],
+      ['¿Cada cuánto se cambia la cámara?', 'Se recomienda cambiarla junto con la llanta o cuando tenga varios parches, fugas o la válvula esté dañada.'],
+      ['¿Hacen envíos?', 'Sí, despachamos a todo el Perú. Cotiza por WhatsApp.'],
+    ],
+    badges: ['Aro 12', 'Válvula TR87', 'Para llanta TT'],
+  },
+  'camaras-motos-400-12-tr13': {
+    seoName: 'Cámara 4.00-12 TR13 para moto aro 12',
+    shortDescription: 'Cámara SAHM 4.00-12 con válvula TR13 para llantas de moto con cámara (TT) aro 12.',
+    longDescription:
+      'La cámara SAHM 4.00-12 es para llantas TT (con cámara) de medida 4.00-12, es decir, 4.00 pulgadas de ancho de sección y aro de 12 pulgadas. Viene con válvula TR13. La cámara mantiene el aire dentro de la llanta, por eso es la pieza a cambiar cuando hay pinchazos repetidos, la válvula está dañada o la cámara ya está vieja. En el catálogo SAHM puedes pedirla junto con la Llanta 4.00-12 8PR de la misma medida.',
+    compatibility:
+      'Para llantas TT (con cámara) de medida 4.00-12 en aro 12. Revisa la medida en el flanco de tu llanta y que el agujero de tu aro sea compatible con la válvula TR13.',
+    benefits: [
+      'Medida 4.00-12 para reposición directa.',
+      'Válvula TR13.',
+      'Ideal para cambiar junto con la llanta y evitar pinchazos.',
+      'Precio publicado y despacho a todo el Perú.',
+    ],
+    recommendation:
+      'Cambia la cámara cada vez que cambies la llanta. Al montarla, ínflala un poco antes de colocarla y revisa que no quede pellizcada entre la llanta y el aro.',
+    technicalWarning:
+      'La cámara debe ser de la misma medida que la llanta: una cámara más grande se pliega y una más pequeña queda estirada y se revienta con facilidad.',
+    seoKeywords: [
+      'cámara 4.00-12',
+      'cámara 4.00-12 tr13',
+      'cámara para moto aro 12',
+      'válvula tr13',
+      'cámaras para moto Perú',
+    ],
+    metaDescription: 'Cámara 4.00-12 con válvula TR13 para llantas de moto con cámara aro 12. Precio publicado y despacho a todo el Perú. Cotiza por WhatsApp.',
+    faq: [
+      ['¿Para qué llanta sirve la cámara 4.00-12?', 'Para llantas TT (con cámara) de medida 4.00-12. Por ejemplo, la Llanta 4.00-12 8PR de nuestro catálogo.'],
+      ['¿Qué válvula trae?', 'Trae válvula TR13. Verifica que el agujero de tu aro sea compatible.'],
+      ['¿Sirve para una llanta tubeless?', 'Una llanta tubeless no lleva cámara. Esta cámara es para llantas TT (con cámara).'],
+      ['¿Cada cuánto se cambia la cámara?', 'Se recomienda cambiarla junto con la llanta o cuando tenga varios parches, fugas o la válvula esté dañada.'],
+      ['¿Hacen envíos?', 'Sí, despachamos a todo el Perú. Cotiza por WhatsApp.'],
+    ],
+    badges: ['Aro 12', 'Válvula TR13', 'Para llanta TT'],
+  },
+  'camaras-bicicletas-26x2125235': {
+    seoName: 'Cámara para bicicleta 26x2.125/2.35 válvula Schrader',
+    shortDescription: 'Cámara SAHM 26X2.125/2.35 para bicicleta aro 26, con válvula Schrader (AV) de 48 mm.',
+    longDescription:
+      'La cámara SAHM 26X2.125/2.35 es para bicicletas aro 26 con llantas de 2.125 a 2.35 pulgadas de ancho, un rango habitual en bicicletas de montaña. Trae válvula AV de 48 mm: AV es la válvula Schrader o "tipo auto", la misma de los autos, así que se infla con bombas comunes y en grifos. Es una reposición rápida para ciclistas, tiendas y talleres.',
+    compatibility:
+      'Para llantas de bicicleta aro 26 con ancho entre 2.125 y 2.35 pulgadas. Revisa la medida en el flanco de tu llanta y que el agujero del aro sea para válvula Schrader (AV).',
+    benefits: [
+      'Cubre llantas aro 26 de 2.125 a 2.35 pulgadas de ancho.',
+      'Válvula Schrader (AV) de 48 mm, compatible con bombas comunes.',
+      'Reposición rápida ante pinchazos.',
+      'Precio publicado y despacho a todo el Perú.',
+    ],
+    recommendation:
+      'Al instalarla, ínflala un poco antes de montarla y revisa que no quede pellizcada entre la llanta y el aro.',
+    technicalWarning:
+      'Si tu aro es para válvula Presta (más delgada), esta cámara no entra sin agrandar el agujero del aro.',
+    seoKeywords: [
+      'cámara 26x2.125',
+      'cámara bicicleta aro 26',
+      'cámara 26x2.125/2.35',
+      'cámara válvula schrader',
+      'cámaras de bicicleta Perú',
+    ],
+    metaDescription: 'Cámara 26X2.125/2.35 para bicicleta aro 26 con válvula Schrader (AV) de 48 mm. Precio publicado y despacho a todo el Perú.',
+    faq: [
+      ['¿Para qué llantas sirve la 26X2.125/2.35?', 'Para llantas de bicicleta aro 26 con ancho de 2.125 a 2.35 pulgadas.'],
+      ['¿Qué significa AV48MM?', 'AV es la válvula Schrader (tipo auto) y 48 mm es el largo de la válvula.'],
+      ['¿Sirve para aro con válvula Presta?', 'No directamente: el agujero para válvula Presta es más pequeño que el de una Schrader.'],
+      ['¿Hacen envíos?', 'Sí, despachamos a todo el Perú. Cotiza por WhatsApp.'],
+    ],
+    badges: ['Aro 26', 'Válvula AV 48 mm', 'Bicicleta'],
+  },
+  'camaras-bicicletas-29x195235': {
+    seoName: 'Cámara para bicicleta 29x1.95/2.35 válvula Schrader',
+    shortDescription: 'Cámara SAHM 29X1.95/2.35 para bicicleta aro 29, con válvula Schrader (AV) de 48 mm.',
+    longDescription:
+      'La cámara SAHM 29X1.95/2.35 es para bicicletas aro 29 con llantas de 1.95 a 2.35 pulgadas de ancho, un rango habitual en bicicletas de montaña. Trae válvula AV de 48 mm: AV es la válvula Schrader o "tipo auto", la misma de los autos, así que se infla con bombas comunes y en grifos. Es una reposición rápida para ciclistas, tiendas y talleres.',
+    compatibility:
+      'Para llantas de bicicleta aro 29 con ancho entre 1.95 y 2.35 pulgadas. Revisa la medida en el flanco de tu llanta y que el agujero del aro sea para válvula Schrader (AV).',
+    benefits: [
+      'Cubre llantas aro 29 de 1.95 a 2.35 pulgadas de ancho.',
+      'Válvula Schrader (AV) de 48 mm, compatible con bombas comunes.',
+      'Reposición rápida ante pinchazos.',
+      'Precio publicado y despacho a todo el Perú.',
+    ],
+    recommendation:
+      'Al instalarla, ínflala un poco antes de montarla y revisa que no quede pellizcada entre la llanta y el aro.',
+    technicalWarning:
+      'Si tu aro es para válvula Presta (más delgada), esta cámara no entra sin agrandar el agujero del aro.',
+    seoKeywords: [
+      'cámara 29x1.95',
+      'cámara bicicleta aro 29',
+      'cámara 29x1.95/2.35',
+      'cámara válvula schrader',
+      'cámaras de bicicleta Perú',
+    ],
+    metaDescription: 'Cámara 29X1.95/2.35 para bicicleta aro 29 con válvula Schrader (AV) de 48 mm. Precio publicado y despacho a todo el Perú.',
+    faq: [
+      ['¿Para qué llantas sirve la 29X1.95/2.35?', 'Para llantas de bicicleta aro 29 con ancho de 1.95 a 2.35 pulgadas.'],
+      ['¿Qué significa AV48MM?', 'AV es la válvula Schrader (tipo auto) y 48 mm es el largo de la válvula.'],
+      ['¿Sirve para aro con válvula Presta?', 'No directamente: el agujero para válvula Presta es más pequeño que el de una Schrader.'],
+      ['¿Hacen envíos?', 'Sí, despachamos a todo el Perú. Cotiza por WhatsApp.'],
+    ],
+    badges: ['Aro 29', 'Válvula AV 48 mm', 'Bicicleta'],
+  },
 }
 
 export const CATALOG_PRODUCT_DATA = [
