@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import ProductsClient from '../../components/premium/ProductsClient'
-import { CATALOG_PRODUCTS } from '../../config/catalog'
+import { CATALOG_PRODUCTS, toCardProduct } from '../../config/catalog'
 import { pageMetadata } from '../../lib/seo'
 
 export const metadata = pageMetadata({
@@ -27,7 +27,7 @@ export default function ProductsPage() {
           Llantas, cámaras y repuestos con stock real. Filtra por categoría o busca por nombre.
         </p>
 
-        <ProductsClient products={CATALOG_PRODUCTS} />
+        <ProductsClient products={CATALOG_PRODUCTS.map(toCardProduct)} />
       </div>
     </main>
   )

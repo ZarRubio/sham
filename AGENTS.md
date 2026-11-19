@@ -25,7 +25,7 @@ No test runner or linter is configured. Verify changes with `npm run build` and 
 
 ## Stack
 
-Next.js 16 App Router (JSX, no TypeScript) · React 19 · Tailwind CSS 3 (brand tokens `sahm-yellow` `#F5C000`, `sahm-purple` `#3D2785`, plus `sahm-cream` etc. in `tailwind.config.js`) · GSAP + ScrollTrigger · Lenis smooth scroll · Sharp (dev, image script).
+Next.js 16 App Router (JSX, no TypeScript) · React 19 · Tailwind CSS 3 (brand tokens `sahm-yellow` `#F5C000`, `sahm-purple` `#3D2785`, plus `sahm-cream` etc. in `tailwind.config.js`) · Lenis smooth scroll (desktop only, lazy-loaded) · Sharp (dev, image script). No animation libraries: GSAP and Framer Motion were removed — use CSS/Tailwind animations.
 
 ## Architecture
 
@@ -57,6 +57,11 @@ Everything product-related derives from `src/config/catalogData.js` → `src/con
 
 Pages are Server Components that read catalog config and hand data to `'use client'` components in `src/components/premium/`.
 
+**Client/server data rules (keep the JS bundle and page payload small):**
+- `'use client'` components import formatting helpers from `config/catalogFormat.js`, **never** from `config/catalog.js` (that pulls the whole `catalogData.js` into the browser bundle).
+- Server pages pass slim products to client components: `toCardProduct()` for cards/listings/search/cart, `toDetailProduct()` for `ProductDetailClient`. Long product copy is rendered by the server component `ProductInfoSections.jsx`.
+- `HomeExperience.jsx` is a Server Component; `HeroSection`, `StatsTrustPanel` and `BestSellersCarousel` are the client islands.
+
 ### SEO (`src/lib/seo.js`)
 
 - Every page builds its metadata with `pageMetadata({ title, description, path, image, noindex })`. Next.js replaces (does not merge) the layout's `openGraph`/`twitter`, so skipping the helper makes the page's share preview fall back to the home page. `path` must end in `/`.
@@ -65,15 +70,15 @@ Pages are Server Components that read catalog config and hand data to `'use clie
 
 ### Layout & client boundary
 
-`src/app/layout.jsx` (Server Component; metadata + `next/font` Barlow Condensed `--font-heading` / Inter `--font-body`) → `Providers.jsx` (client: Lenis, GSAP ScrollTrigger, wraps everything in `CartProvider`) → `Layout.jsx` (skip link, `Navbar`, `TrustBar`, `Footer`, `FloatingWhatsApp`). In `components/premium/`, `Navbar.jsx` and `Footer.jsx` are one-line re-exports of `SahmNav.jsx` and `PremiumFooter.jsx` — edit those.
+`src/app/layout.jsx` (Server Component; metadata + `next/font` Barlow Condensed `--font-heading` / Inter `--font-body`) → `Providers.jsx` (client: lazy Lenis, scroll reveal, wraps everything in `CartProvider`) → `Layout.jsx` (skip link, `Navbar`, `TrustBar`, `Footer`, `FloatingWhatsApp`). In `components/premium/`, `Navbar.jsx` and `Footer.jsx` are one-line re-exports of `SahmNav.jsx` and `PremiumFooter.jsx` — edit those.
 
-`Providers.jsx` drives Lenis through GSAP's ticker (keeps ScrollTrigger in sync), resets scroll to top and re-runs ScrollTrigger on every `pathname` change, and animates any element with the `.gsap-reveal` class. Both Lenis and the reveals are skipped under `prefers-reduced-motion` (with a CSS fallback in `src/index.css`).
+`Providers.jsx` loads Lenis with a dynamic `import()` only for `(pointer: fine)` devices (never on phones), scrolls to top on forward navigations but keeps the restored position on back/forward, and runs an IntersectionObserver scroll reveal: elements with the `.reveal` class that start below the fold get `.reveal-pending` (hidden, `src/index.css`) until they enter the viewport. Elements visible on load are never hidden. All of it is skipped under `prefers-reduced-motion`.
 
 ### State
 
 `src/context/CartContext.jsx` — cart stores only `{ productId, qty }` items (product data is looked up from the catalog), persisted to `localStorage` key `sahm_cart` after a client-side hydration step (`hasHydrated`); accessed via `useCart()`. All other state is component-local.
 
-All conversion goes through `buildWhatsAppMessageUrl()` in `src/config/site.js` (cart, product detail, contact form, nav, footer, floating button). `FEATURE_FLAGS` in `site.js` is currently not read anywhere. Footer social icons come from `SOCIAL_LINKS` in `site.js` (Grupo NBG profiles; empty values are hidden). Framer Motion was removed — use Tailwind animations (`animate-fade-in`, etc.) instead of adding it back.
+All conversion goes through `buildWhatsAppMessageUrl()` in `src/config/site.js` (cart, product detail, contact form, nav, footer, floating button). `FEATURE_FLAGS` in `site.js` is currently not read anywhere. Footer social icons come from `SOCIAL_LINKS` in `site.js` (Grupo NBG profiles; empty values are hidden).
 
 ### Legacy code
 

@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import CategoryClient from '../../../components/premium/CategoryClient'
 import { CATEGORIES, getCategoryById } from '../../../config/categories'
-import { CATALOG_CATEGORIES, CATALOG_PRODUCTS, getSubcategories } from '../../../config/catalog'
+import { CATALOG_CATEGORIES, CATALOG_PRODUCTS, getSubcategories, toCardProduct } from '../../../config/catalog'
 import JsonLd from '../../../components/premium/JsonLd'
 import { breadcrumbJsonLd, pageMetadata } from '../../../lib/seo'
 
@@ -97,7 +97,7 @@ export default async function CategoryPage({ params }) {
       {/* ── Product grid ── */}
       <div className="px-4 pb-24 pt-8 sm:px-6">
         <div className="mx-auto max-w-7xl">
-          <CategoryClient products={products} subcategories={subcategories} />
+          <CategoryClient products={products.map(toCardProduct)} subcategories={subcategories} />
         </div>
       </div>
     </main>

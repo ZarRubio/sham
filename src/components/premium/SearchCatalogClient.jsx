@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react'
 import ProductCard from './ProductCard'
-import { CATALOG_PRODUCTS, getProductLabel } from '../../config/catalog'
+import { getProductLabel } from '../../config/catalogFormat'
 
 function normalize(value) {
   return value
@@ -11,11 +11,11 @@ function normalize(value) {
     .toLowerCase()
 }
 
-function searchProducts(query) {
+function searchProducts(products, query) {
   const q = normalize(query.trim())
-  if (!q) return CATALOG_PRODUCTS
+  if (!q) return products
   const tokens = q.split(/\s+/).filter(Boolean)
-  return CATALOG_PRODUCTS.filter(product => {
+  return products.filter(product => {
     const haystack = normalize([
       getProductLabel(product, 'es'),
       product.code,
@@ -29,19 +29,19 @@ function searchProducts(query) {
   })
 }
 
-export default function SearchCatalogClient() {
+export default function SearchCatalogClient({ products }) {
   const [query, setQuery] = useState('')
-  const results = useMemo(() => searchProducts(query), [query])
+  const results = useMemo(() => searchProducts(products, query), [products, query])
 
   return (
     <div className="grid gap-8 lg:grid-cols-[0.65fr_1.35fr]">
-      <div className="gsap-reveal">
+      <div className="reveal">
         <p className="text-xs font-black uppercase tracking-[0.2em] text-sahm-yellow">Catálogo SAHM</p>
         <h1 className="mt-4 text-5xl font-black leading-none text-white sm:text-6xl">Busca por producto, medida o referencia.</h1>
         <p className="mt-5 text-white/55">Encuentra llantas, cámaras, repuestos y accesorios por tipo de producto. Si tienes dudas, agrega productos al carrito y cotiza por WhatsApp.</p>
       </div>
 
-      <div className="gsap-reveal rounded-[2rem] border border-white/10 bg-white/[0.035] p-4 sm:p-5">
+      <div className="reveal rounded-[2rem] border border-white/10 bg-white/[0.035] p-4 sm:p-5">
         <label className="block">
           <span className="text-[10px] font-black uppercase tracking-[0.18em] text-white/38">Búsqueda de catálogo</span>
           <input

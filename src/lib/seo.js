@@ -1,5 +1,5 @@
 import { WHATSAPP_NUMBER } from '../config/site'
-import { getProductLabel } from '../config/catalog'
+import { getProductLabel } from '../config/catalogFormat'
 
 export const SITE_URL = 'https://sahmparts.com'
 export const SITE_NAME = 'SAHM PARTS'

@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { useState } from 'react'
 import Link from 'next/link'
 import { useCart } from '../../context/CartContext'
-import { formatPrice, getProductLabel } from '../../config/catalog'
+import { formatPrice, getProductLabel } from '../../config/catalogFormat'
 import QuantitySelector from './QuantitySelector'
 import CartConfirmation from './CartConfirmation'
 

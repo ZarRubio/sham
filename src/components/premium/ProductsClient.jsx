@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react'
 import ProductCard from './ProductCard'
-import { getProductLabel } from '../../config/catalog'
+import { getProductLabel } from '../../config/catalogFormat'
 
 function normalize(value) {
   return value

@@ -1,8 +1,9 @@
 import { notFound } from 'next/navigation'
 import ProductDetailClient from '../../../components/premium/ProductDetailClient'
 import ProductCard from '../../../components/premium/ProductCard'
+import ProductInfoSections from '../../../components/premium/ProductInfoSections'
 import JsonLd from '../../../components/premium/JsonLd'
-import { CATALOG_CATEGORIES, CATALOG_PRODUCTS, getProductById } from '../../../config/catalog'
+import { CATALOG_CATEGORIES, CATALOG_PRODUCTS, getProductById, toCardProduct, toDetailProduct } from '../../../config/catalog'
 import { breadcrumbJsonLd, pageMetadata, productJsonLd, productSeoDescription, productSeoTitle } from '../../../lib/seo'
 
 export const dynamicParams = false
@@ -45,7 +46,8 @@ export default async function ProductPage({ params }) {
     <main className="min-h-screen overflow-x-hidden bg-sahm-cream px-4 pb-24 pt-8 sm:px-6">
       <JsonLd data={[productJsonLd(product), breadcrumb]} />
       <div className="mx-auto w-full max-w-7xl">
-        <ProductDetailClient product={product} related={related} />
+        <ProductDetailClient product={toDetailProduct(product)} />
+        <ProductInfoSections product={product} />
         {related.length > 0 && (
           <section className="mt-16">
             <div className="mb-6">
@@ -53,7 +55,7 @@ export default async function ProductPage({ params }) {
               <h2 className="mt-1 font-heading text-3xl font-extrabold uppercase italic text-black">Productos relacionados</h2>
             </div>
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-              {related.map(item => <ProductCard key={item.id} product={item} />)}
+              {related.map(item => <ProductCard key={item.id} product={toCardProduct(item)} />)}
             </div>
           </section>
         )}

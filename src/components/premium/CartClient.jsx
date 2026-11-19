@@ -3,13 +3,13 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useCart } from '../../context/CartContext'
-import { CATALOG_PRODUCTS, getProductLabel } from '../../config/catalog'
+import { getProductLabel } from '../../config/catalogFormat'
 import { buildWhatsAppMessageUrl } from '../../config/site'
 import QuantitySelector from './QuantitySelector'
 
-function buildMessage(items) {
+function buildMessage(items, products) {
   const lines = items.map(item => {
-    const product = CATALOG_PRODUCTS.find(entry => entry.id === item.productId)
+    const product = products.find(entry => entry.id === item.productId)
     if (!product) return null
     const sku = product.sku ? `SKU: ${product.sku}` : `Ref: ${product.code}`
     return `- ${item.qty}x ${getProductLabel(product, 'es')} | ${sku} | ${product.subcategory}`
@@ -18,17 +18,17 @@ function buildMessage(items) {
   return `Hola, quiero hacer el siguiente pedido:\n\n${lines.join('\n')}\n\n¿Tienen stock y cuál es el precio total? Mi ciudad es: `
 }
 
-export default function CartClient() {
+export default function CartClient({ products }) {
   const { items, removeFromCart, updateQty, clearCart, totalItems, hasHydrated } = useCart()
   const cartProducts = items.map(item => ({
     ...item,
-    product: CATALOG_PRODUCTS.find(product => product.id === item.productId),
+    product: products.find(product => product.id === item.productId),
   })).filter(item => item.product)
 
   if (!hasHydrated) {
     return (
       <div className="rounded-2xl border-2 border-gray-100 bg-white p-8 text-center shadow-sm sm:p-12">
-        <p className="font-heading text-3xl font-extrabold uppercase text-black">Cargando pedido...</p>
+        <p className="font-heading text-3xl font-extrabold uppercase text-black">Cargando pedido…</p>
         <p className="mt-3 text-gray-500">Estamos revisando tu selección guardada.</p>
       </div>
     )
@@ -111,7 +111,7 @@ export default function CartClient() {
           ← Seguir comprando
         </Link>
         <a
-          href={buildWhatsAppMessageUrl(buildMessage(items))}
+          href={buildWhatsAppMessageUrl(buildMessage(items, products))}
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-center gap-2.5 rounded-xl bg-green-500 px-8 py-4 font-heading text-sm font-bold uppercase tracking-wide text-white shadow-lg shadow-green-500/25 transition hover:bg-green-600 hover:shadow-green-500/40 active:scale-[0.98] sm:py-3.5"

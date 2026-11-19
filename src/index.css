@@ -106,8 +106,14 @@ button:disabled {
   color: #111;
 }
 
-.gsap-reveal {
-  opacity: 1;
+/* Scroll reveal (see Providers.jsx). Only below-the-fold elements ever get .reveal-pending. */
+.reveal {
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-pending {
+  opacity: 0;
+  transform: translateY(24px);
 }
 
 @media (prefers-reduced-motion: reduce) {

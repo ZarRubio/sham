@@ -1,16 +1,15 @@
-'use client'
-
-import { useEffect, useState } from 'react'
+// Server Component: only HeroSection, StatsTrustPanel and BestSellersCarousel are client islands.
 import StatsTrustPanel from './StatsTrustPanel'
 import HeroSection from './HeroSection'
 import BestSellersCarousel from './BestSellersCarousel'
 import CategoryMosaic from './CategoryMosaic'
 import { bestSellers, catalogHighlights, premiumCategories, testimonials } from '../../lib/premiumData'
+import { toCardProduct } from '../../config/catalog'
 import { buildWhatsAppMessageUrl } from '../../config/site'
 
 function StarRating() {
   return (
-    <div className="mb-3 flex gap-0.5" aria-label="5 estrellas">
+    <div className="mb-3 flex gap-0.5" role="img" aria-label="5 estrellas">
       {Array.from({ length: 5 }).map((_, i) => (
         <svg key={i} viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4 text-sahm-yellow" aria-hidden="true">
           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -21,13 +20,7 @@ function StarRating() {
 }
 
 export default function HomeExperience() {
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  const revealClass = className => (mounted ? `gsap-reveal ${className}` : className)
+  const revealClass = className => `reveal ${className}`.trim()
 
   return (
     <>
@@ -59,7 +52,7 @@ export default function HomeExperience() {
             <span className="text-xs font-heading font-bold uppercase tracking-widest text-sahm-purple">Más vendidos</span>
             <h2 className="mt-2 font-heading text-4xl font-extrabold uppercase italic text-black">Referencias listas para salir.</h2>
           </div>
-          <BestSellersCarousel products={bestSellers} />
+          <BestSellersCarousel products={bestSellers.map(toCardProduct)} />
         </div>
       </section>
 

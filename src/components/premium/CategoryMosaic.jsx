@@ -7,7 +7,7 @@ export default function CategoryMosaic({ categories }) {
   if (!featured) return null
 
   return (
-    <div className="gsap-reveal grid gap-4 lg:grid-cols-[1.35fr_0.85fr]">
+    <div className="reveal grid gap-4 lg:grid-cols-[1.35fr_0.85fr]">
       <CategoryPanel category={featured} featured />
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
         {secondary.map(category => (

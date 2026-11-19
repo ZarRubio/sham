@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
-import { getProductLabel } from '../../config/catalog'
+import { getProductLabel } from '../../config/catalogFormat'
 
 const PAGE_SIZE = 4
 const MOBILE_PAGE_SIZE = 1
@@ -47,7 +47,7 @@ export default function BestSellersCarousel({ products }) {
   const goMobileNext = () => setMobilePage(current => (current + 1) % mobilePages.length)
 
   return (
-    <div className="gsap-reveal">
+    <div className="reveal">
       <div className="relative">
         {canSlide && (
           <div className="hidden sm:block">

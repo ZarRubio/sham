@@ -6,6 +6,9 @@ import {
   CATALOG_PRODUCT_DATA,
   OPTIMIZED_IMAGE_ROOT,
 } from './catalogData'
+import { formatPrice, getProductLabel, getProductWhatsAppMessage } from './catalogFormat'
+
+export { formatPrice, getProductLabel, getProductWhatsAppMessage }
 
 function assetPath(path) {
   return encodeURI(`/${path}`)
@@ -20,10 +23,6 @@ function optimizedImagePath(productId, file) {
   return `${OPTIMIZED_IMAGE_ROOT}/${productId}/${file}`
 }
 
-export function formatPrice(value) {
-  if (typeof value !== 'number') return ''
-  return `S/ ${value.toFixed(2)}`
-}
 
 function stockMeta(stock) {
   if (typeof stock !== 'number') {
@@ -192,15 +191,46 @@ export function getProductById(id) {
   return CATALOG_PRODUCTS.find(productItem => productItem.id === id)
 }
 
-export function getProductLabel(productItem, lang = 'es') {
-  if (productItem.category === 'Llantas') return `${lang === 'en' ? 'Tire' : 'Llanta'} ${productItem.name}`
-  if (productItem.category === 'Carburadores') return `${lang === 'en' ? 'Carburetor' : 'Carburador'} ${productItem.name}`
-  return `${lang === 'en' ? 'Tube' : 'Cámara'} ${productItem.name}`
+/**
+ * Minimal product shape for client components (cards, listings, search, cart).
+ * Server pages must pass these instead of full CATALOG_PRODUCTS entries: every
+ * field given to a 'use client' component is serialized into the page payload.
+ */
+export function toCardProduct(item) {
+  return {
+    id: item.id,
+    productUrl: item.productUrl,
+    name: item.name,
+    code: item.code,
+    category: item.category,
+    subcategory: item.subcategory,
+    sku: item.sku,
+    measure: item.measure,
+    retailPrice: item.retailPrice,
+    stockLabel: item.stockLabel,
+    stockLevel: item.stockLevel,
+    images: [{ card: item.images[0]?.card || '' }],
+    ...(item.comparison && { comparison: item.comparison }),
+  }
 }
 
-export function getProductWhatsAppMessage(productItem, prefix, lang = 'es') {
-  const sku = productItem.sku ? ` | SKU: ${productItem.sku}` : ''
-  return `${prefix} ${getProductLabel(productItem, lang)} - ${productItem.subcategory}${sku}`
+/** Fields the interactive part of the product page needs (long SEO copy stays server-rendered). */
+export function toDetailProduct(item) {
+  return {
+    id: item.id,
+    name: item.name,
+    code: item.code,
+    category: item.category,
+    subcategory: item.subcategory,
+    sku: item.sku,
+    retailPrice: item.retailPrice,
+    stockLabel: item.stockLabel,
+    stockLevel: item.stockLevel,
+    badges: item.badges,
+    descriptionBullets: item.descriptionBullets,
+    technicalSpecs: item.technicalSpecs,
+    images: item.images,
+  }
 }
 
 export function getCategoryBySlug(slug) {
