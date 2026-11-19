@@ -16,6 +16,9 @@ const outputRoot = path.join(publicRoot, OPTIMIZED_IMAGE_ROOT)
 
 const CARD_SIZE = 900
 const DETAIL_SIZE = 1800
+const THUMB_SIZE = 240
+// `--thumbs-only` regenerates just the gallery thumbnails (thumb-N.webp)
+const THUMBS_ONLY = process.argv.includes('--thumbs-only')
 
 function sourcePath(product, file) {
   if (product.sourceDir) return path.join(sourceRoot, product.sourceDir, file)
@@ -50,21 +53,27 @@ async function main() {
     const productOutput = path.join(outputRoot, product.id)
     await fs.mkdir(productOutput, { recursive: true })
 
-    const firstImage = product.files[0]
-    const firstSource = sourcePath(product, firstImage.file)
-    const cardOutput = outputPath(product.id, 'card.webp')
+    if (!THUMBS_ONLY) {
+      const firstImage = product.files[0]
+      const firstSource = sourcePath(product, firstImage.file)
+      const cardOutput = outputPath(product.id, 'card.webp')
 
-    await optimizeImage(firstSource, cardOutput, CARD_SIZE, 76)
-    totalInputBytes += (await fs.stat(firstSource)).size
-    totalOutputBytes += (await fs.stat(cardOutput)).size
+      await optimizeImage(firstSource, cardOutput, CARD_SIZE, 76)
+      totalInputBytes += (await fs.stat(firstSource)).size
+      totalOutputBytes += (await fs.stat(cardOutput)).size
+    }
 
     for (const [index, image] of product.files.entries()) {
       const input = sourcePath(product, image.file)
-      const output = outputPath(product.id, `detail-${index + 1}.webp`)
+      const outputs = [[`thumb-${index + 1}.webp`, THUMB_SIZE, 76]]
+      if (!THUMBS_ONLY) outputs.unshift([`detail-${index + 1}.webp`, DETAIL_SIZE, 82])
 
-      await optimizeImage(input, output, DETAIL_SIZE, 82)
-      totalInputBytes += (await fs.stat(input)).size
-      totalOutputBytes += (await fs.stat(output)).size
+      for (const [file, size, quality] of outputs) {
+        const output = outputPath(product.id, file)
+        await optimizeImage(input, output, size, quality)
+        totalInputBytes += (await fs.stat(input)).size
+        totalOutputBytes += (await fs.stat(output)).size
+      }
     }
 
     console.log(`Optimized ${product.id}`)

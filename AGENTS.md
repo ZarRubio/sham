@@ -46,14 +46,14 @@ Everything product-related derives from `src/config/catalogData.js` → `src/con
   - `RAW_CATEGORIES` in `src/lib/premiumData.js` — home/`/categorias` cards; entries with zero products are filtered out.
 - `src/lib/premiumData.js` also exports `heroProduct` (hardcoded id), `bestSellers`, `catalogHighlights`, `testimonials` for the home page.
 
-**Images:** original photos live under `public/images/FOTOS SAHM/<category>/<subcategory>/<name>/` (or `sourceDir`). `npm run optimize:images` writes `public/images/catalog-optimized/<id>/card.webp` and `detail-N.webp`, which is what the site actually renders. Adding a product = add entries to the data structures above + drop photos in place + run the optimize script. Adding a category additionally means touching all three category lists and the `catalog.js` branches.
+**Images:** original photos live under `public/images/FOTOS SAHM/<category>/<subcategory>/<name>/` (or `sourceDir`). `npm run optimize:images` writes `public/images/catalog-optimized/<id>/card.webp` (900px), `detail-N.webp` (1800px) and `thumb-N.webp` (240px, gallery thumbnails), which is what the site actually renders (`next/image` is unoptimized, so there is no srcset — pick the smallest file that fits). `node scripts/optimize-catalog-images.mjs --thumbs-only` regenerates only thumbnails. Adding a product = add entries to the data structures above + drop photos in place + run the optimize script. Adding a category additionally means touching all three category lists and the `catalog.js` branches.
 
 ### Routes (`src/app/`)
 
 - `/productos` — listing with filters (`ProductsClient`).
 - `/productos/[slug]` — **product detail** page; `generateStaticParams` over `CATALOG_PRODUCTS` with `dynamicParams = false`.
 - `/categorias` (cards from `premiumCategories`), `/categorias/[categoria]` (params from `config/categories.js`, products matched by `catalogName`).
-- `/buscar` (search/fitment), `/carrito` (cart), `/nosotros`, `/contacto`, plus `sitemap.js`, `robots.js`, `error.jsx`, `loading.jsx`, `not-found.jsx`.
+- `/buscar` (search/fitment), `/carrito` (cart), `/nosotros`, `/contacto`, plus `sitemap.js`, `robots.js`, `error.jsx`, `not-found.jsx`. There is intentionally **no root `loading.jsx`**: it wrapped every page in a Suspense fallback, so the server HTML showed a loading screen and the real content arrived hidden (`<div hidden>`), adding ~1 s+ to LCP. `LoadingProgress.jsx` is kept but unused.
 
 Pages are Server Components that read catalog config and hand data to `'use client'` components in `src/components/premium/`.
 
@@ -92,6 +92,7 @@ Because there is no test suite, run `npm run build` locally before pushing — a
 - Do **NOT** delete product data in `catalogData.js`.
 - Keep the **yellow navbar** (`SahmNav`) — SAHM brand identity.
 - Keep `images.unoptimized: true` (catalog images are pre-optimized by the Sharp script) and `trailingSlash: true` (existing URLs/sitemap depend on it).
+- Both fonts use `display: 'optional'` (chosen with the owner to remove a font-swap layout shift on `/productos/`). Above-the-fold content (hero, first product image) must be visible in the server HTML — don't gate it behind a `mounted` state or a Framer Motion `initial={{ opacity: 0 }}`.
 - Pushing to `main` deploys to production — only push when asked.
 - Run `npm run optimize:images` after adding or changing catalog photos.
 - `CLAUDE.md` mirrors this file for Claude Code — keep the two in sync when editing either.

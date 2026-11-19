@@ -8,36 +8,36 @@ import { buildWhatsAppMessageUrl } from '../../config/site'
 /* ── Carrusel slides ─────────────────────────────────────────────── */
 const SLIDES = [
   {
-    img: '/images/catalog-optimized/llantas-moto-electrica-350-10-4pr/detail-1.webp',
-    fallback: '/images/catalog-optimized/llantas-moto-electrica-350-10-4pr/card.webp',
+    img: '/images/catalog-optimized/llantas-moto-electrica-350-10-4pr/card.webp',
+    fallback: '/images/catalog-optimized/llantas-moto-electrica-350-10-4pr/detail-1.webp',
     label: 'Llantas',
     sub: 'Moto eléctrica · 3.50-10 4PR',
     href: '/categorias/llantas',
   },
   {
-    img: '/images/catalog-optimized/camaras-motos-400-12-tr13/detail-1.webp',
-    fallback: '/images/catalog-optimized/camaras-motos-400-12-tr13/card.webp',
+    img: '/images/catalog-optimized/camaras-motos-400-12-tr13/card.webp',
+    fallback: '/images/catalog-optimized/camaras-motos-400-12-tr13/detail-1.webp',
     label: 'Cámaras',
     sub: 'Moto · 4.00-12 TR13',
     href: '/categorias/camaras',
   },
   {
-    img: '/images/catalog-optimized/carburadores-pz26/detail-1.webp',
-    fallback: '/images/catalog-optimized/carburadores-pz26/card.webp',
+    img: '/images/catalog-optimized/carburadores-pz26/card.webp',
+    fallback: '/images/catalog-optimized/carburadores-pz26/detail-1.webp',
     label: 'Carburadores',
     sub: 'Referencia PZ26',
     href: '/categorias/carburadores',
   },
   {
-    img: '/images/catalog-optimized/llantas-cargueros-electricos-400-12-8pr/detail-1.webp',
-    fallback: '/images/catalog-optimized/llantas-cargueros-electricos-400-12-8pr/card.webp',
+    img: '/images/catalog-optimized/llantas-cargueros-electricos-400-12-8pr/card.webp',
+    fallback: '/images/catalog-optimized/llantas-cargueros-electricos-400-12-8pr/detail-1.webp',
     label: 'Cargueros Eléctricos',
     sub: 'Llanta 4.00-12 8PR',
     href: '/categorias/llantas',
   },
   {
-    img: '/images/catalog-optimized/camaras-bicicletas-26x2125235/detail-1.webp',
-    fallback: '/images/catalog-optimized/camaras-bicicletas-26x2125235/card.webp',
+    img: '/images/catalog-optimized/camaras-bicicletas-26x2125235/card.webp',
+    fallback: '/images/catalog-optimized/camaras-bicicletas-26x2125235/detail-1.webp',
     label: 'Cámaras Bicicleta',
     sub: '26x2.125·2.35',
     href: '/categorias/camaras',
@@ -102,7 +102,6 @@ function GlowOrb({ className = '' }) {
 
 /* ── Main Hero ──────────────────────────────────────────────────── */
 export default function HeroSection() {
-  const [mounted, setMounted] = useState(false)
   const [current, setCurrent] = useState(0)
   const [paused, setPaused] = useState(false)
   const [activeBenefit, setActiveBenefit] = useState(BENEFITS[0].id)
@@ -129,11 +128,6 @@ export default function HeroSection() {
     timerRef.current = setInterval(next, 4000)
     return () => clearInterval(timerRef.current)
   }, [next, carouselPaused])
-
-  useEffect(() => {
-    const t = setTimeout(() => setMounted(true), 60)
-    return () => clearTimeout(t)
-  }, [])
 
   const slide = SLIDES[current]
   const selectedBenefit = BENEFITS.find(benefit => benefit.id === activeBenefit) || BENEFITS[0]
@@ -196,7 +190,7 @@ export default function HeroSection() {
         <div className="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
 
           {/* ── LEFT COPY ── */}
-          <div style={{ opacity: mounted ? 1 : 0, animation: mounted ? 'fade-up-hero 0.6s ease-out both' : 'none' }}>
+          <div style={{ animation: 'fade-up-hero 0.6s ease-out both' }}>
             <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-heading font-bold uppercase tracking-widest text-sahm-yellow">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sahm-yellow opacity-75" />
@@ -215,14 +209,14 @@ export default function HeroSection() {
             </h1>
 
             <p className="mt-5 max-w-lg text-base leading-relaxed text-white/65"
-              style={{ animation: mounted ? 'fade-up-hero 0.6s 0.1s ease-out both' : 'none', opacity: mounted ? 1 : 0 }}>
+              style={{ animation: 'fade-up-hero 0.6s 0.1s ease-out both' }}>
               Catálogo profesional para motos, talleres y flotas. Precios claros,
               asesoría directa y despacho nacional.
             </p>
 
             {/* CTA buttons */}
             <div className="mt-8 flex flex-col gap-3 sm:flex-row"
-              style={{ animation: mounted ? 'fade-up-hero 0.6s 0.2s ease-out both' : 'none', opacity: mounted ? 1 : 0 }}>
+              style={{ animation: 'fade-up-hero 0.6s 0.2s ease-out both' }}>
               <Link id="hero-cta-catalogo" href="/productos"
                 className="group relative overflow-hidden rounded-2xl px-8 py-4 text-center font-heading text-sm font-bold uppercase tracking-widest text-black shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl active:scale-100"
                 style={{ background:'linear-gradient(135deg,#f5c000 0%,#ffdc57 50%,#f5c000 100%)', backgroundSize:'200% auto', animation:'shimmer-btn 3s linear infinite', boxShadow:'0 8px 32px rgba(245,192,0,0.35),inset 0 1px 0 rgba(255,255,255,0.3)' }}>
@@ -249,14 +243,14 @@ export default function HeroSection() {
             </div>
 
             <p className="mt-5 text-xs text-white/40"
-              style={{ animation: mounted ? 'fade-up-hero 0.6s 0.3s ease-out both' : 'none', opacity: mounted ? 1 : 0 }}>
+              style={{ animation: 'fade-up-hero 0.6s 0.3s ease-out both' }}>
               ✓ Stock confirmado · ✓ Despacho nacional · ✓ Asesoría por WhatsApp
             </p>
           </div>
 
           {/* ── RIGHT CAROUSEL CARD ── */}
           <div className="flex justify-center"
-            style={{ animation: mounted ? 'fade-up-hero 0.7s 0.15s ease-out both' : 'none', opacity: mounted ? 1 : 0 }}>
+            style={{ animation: 'fade-up-hero 0.7s 0.15s ease-out both' }}>
             <TiltCard className="relative w-full max-w-sm" disabled={prefersReducedMotion}>
               {/* decorative rings — static, no spin */}
               <div aria-hidden="true" className="pointer-events-none absolute -inset-4 rounded-3xl border border-white/10" />

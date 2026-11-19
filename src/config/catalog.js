@@ -132,6 +132,7 @@ function product(item) {
     original: assetPath(originalImagePath(item, image.file)),
     card: assetPath(optimizedImagePath(item.id, 'card.webp')),
     detail: assetPath(optimizedImagePath(item.id, `detail-${index + 1}.webp`)),
+    thumb: assetPath(optimizedImagePath(item.id, `thumb-${index + 1}.webp`)),
   }))
 
   return {

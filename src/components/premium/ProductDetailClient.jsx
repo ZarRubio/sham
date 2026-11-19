@@ -305,7 +305,8 @@ export default function ProductDetailClient({ product, related }) {
         >
           <motion.div
             key={product.images[activeImage].detail}
-            initial={{ opacity: 0 }}
+            // No fade on the first image: it is the LCP element and must be visible in the server HTML.
+            initial={activeImage === 0 ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.3 }}
             className="absolute inset-0 cursor-zoom-in"
@@ -316,6 +317,7 @@ export default function ProductDetailClient({ product, related }) {
               alt={label}
               fill
               loading={activeImage === 0 ? 'eager' : 'lazy'}
+              fetchPriority={activeImage === 0 ? 'high' : 'auto'}
               sizes="(min-width: 1024px) 54vw, (min-width: 640px) 92vw, 100vw"
               draggable={false}
               className="object-contain p-5 sm:p-8"
@@ -376,7 +378,7 @@ export default function ProductDetailClient({ product, related }) {
                     : 'border-gray-200 hover:border-gray-400'
                 }`}
               >
-                <Image src={image.detail} alt="" fill sizes="96px" className="object-contain p-2" />
+                <Image src={image.thumb} alt="" fill sizes="96px" className="object-contain p-2" />
                 {activeImage === index && (
                   <span className="absolute inset-x-0 bottom-0 h-1 bg-sahm-yellow" />
                 )}
@@ -669,7 +671,7 @@ export default function ProductDetailClient({ product, related }) {
                     : 'border-white/20 opacity-70 hover:opacity-100'
                 }`}
               >
-                <Image src={image.detail} alt="" fill sizes="80px" className="object-contain p-1.5" />
+                <Image src={image.thumb} alt="" fill sizes="80px" className="object-contain p-1.5" />
               </button>
             ))}
           </div>

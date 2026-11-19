@@ -10,13 +10,15 @@ const barlowCondensed = Barlow_Condensed({
   weight: ['600', '700', '800'],
   style: ['normal', 'italic'],
   variable: '--font-heading',
-  display: 'swap',
+  display: 'optional',
 })
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-body',
-  display: 'swap',
+  // 'optional' avoids the late swap that reflowed product cards (CLS ~0.12 on /productos/).
+  // The font is still preloaded, so it is normally used; if it is late, the metric-adjusted fallback stays.
+  display: 'optional',
 })
 
 const siteUrl = SITE_URL
