@@ -29,7 +29,7 @@ export default function CartClient() {
     return (
       <div className="rounded-2xl border-2 border-gray-100 bg-white p-8 text-center shadow-sm sm:p-12">
         <p className="font-heading text-3xl font-extrabold uppercase text-black">Cargando pedido...</p>
-        <p className="mt-3 text-gray-500">Estamos revisando tu selecciÃ³n guardada.</p>
+        <p className="mt-3 text-gray-500">Estamos revisando tu selección guardada.</p>
       </div>
     )
   }

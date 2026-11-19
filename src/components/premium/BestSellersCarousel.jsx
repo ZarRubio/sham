@@ -97,7 +97,6 @@ export default function BestSellersCarousel({ products }) {
               <FeaturedProduct
                 key={product.id}
                 product={product}
-                priority={mobilePage === 0 && index === 0}
                 compact
               />
             ))}
@@ -106,7 +105,7 @@ export default function BestSellersCarousel({ products }) {
 
         <div key={page} className="hidden animate-fade-in gap-4 sm:grid sm:grid-cols-2 lg:grid-cols-4">
           {activeProducts.map((product, index) => (
-            <FeaturedProduct key={product.id} product={product} priority={page === 0 && index < 2} />
+            <FeaturedProduct key={product.id} product={product} />
           ))}
         </div>
       </div>
@@ -152,7 +151,7 @@ export default function BestSellersCarousel({ products }) {
   )
 }
 
-function FeaturedProduct({ product, priority, compact = false }) {
+function FeaturedProduct({ product, compact = false }) {
   const label = getProductLabel(product, 'es')
 
   return (
@@ -163,11 +162,10 @@ function FeaturedProduct({ product, priority, compact = false }) {
             {product.category}
           </span>
           <Image
-            src={product.images[0].detail || product.images[0].card}
+            src={product.images[0].card}
             alt={label}
             fill
             sizes={compact ? '90vw' : '(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw'}
-            priority={priority}
             className={`object-contain transition duration-500 group-hover:scale-105 ${compact ? 'p-6' : 'p-6'}`}
           />
           <span className={`absolute inset-x-0 bottom-0 bg-sahm-yellow px-3 text-center font-heading font-extrabold uppercase tracking-wide text-sahm-purple transition duration-300 ${compact ? 'py-3 text-xs' : 'translate-y-full py-3 text-xs group-hover:translate-y-0'}`}>

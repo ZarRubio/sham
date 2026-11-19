@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { buildWhatsAppMessageUrl } from '../../config/site'
+import { SOCIAL_LINKS, buildWhatsAppMessageUrl } from '../../config/site'
 
 const quickLinks = [
   ['Inicio', '/'],
@@ -30,24 +30,17 @@ const contactItems = [
 
 const paymentMethods = ['Yape', 'Plin', 'Transferencia', 'Efectivo']
 
+// URLs live in config/site.js (SOCIAL_LINKS); networks without a URL are not rendered.
 const socialLinks = [
-  { label: 'Facebook', href: '#', Icon: FacebookIcon },
-  { label: 'Instagram', href: '#', Icon: InstagramIcon },
-  { label: 'TikTok', href: '#', Icon: TikTokIcon },
-]
+  { label: 'Facebook', href: SOCIAL_LINKS.facebook, Icon: FacebookIcon },
+  { label: 'Instagram', href: SOCIAL_LINKS.instagram, Icon: InstagramIcon },
+  { label: 'LinkedIn', href: SOCIAL_LINKS.linkedin, Icon: LinkedInIcon },
+  { label: 'TikTok', href: SOCIAL_LINKS.tiktok, Icon: TikTokIcon },
+].filter(link => link.href)
 
 export default function PremiumFooter() {
   return (
     <footer className="relative overflow-hidden bg-gradient-to-br from-sahm-purple via-sahm-night/95 to-black px-4 pt-16 text-white sm:px-6">
-      <div className="absolute inset-0 opacity-25" aria-hidden="true">
-        <Image
-          src="/images/catalog-optimized/llantas-motos-110-90-13-56l/detail-3.webp"
-          alt=""
-          fill
-          sizes="100vw"
-          className="object-contain object-right-bottom p-8"
-        />
-      </div>
       <div className="absolute inset-0 bg-gradient-to-br from-sahm-purple via-sahm-night/95 to-black" aria-hidden="true" />
       <div className="absolute left-[-120px] top-12 h-72 w-72 rounded-full bg-sahm-yellow/15 blur-3xl" aria-hidden="true" />
       <div className="absolute right-[-160px] bottom-[-120px] h-96 w-96 rounded-full border border-white/10" aria-hidden="true" />
@@ -123,7 +116,9 @@ export default function PremiumFooter() {
                   <a
                     key={label}
                     href={href}
-                    aria-label={label}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${label} de Grupo NBG (se abre en una pestaña nueva)`}
                     className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/10 text-white transition hover:-translate-y-0.5 hover:border-sahm-yellow hover:text-sahm-yellow"
                   >
                     <Icon />
@@ -204,6 +199,14 @@ function InstagramIcon() {
       <rect x="3" y="3" width="18" height="18" rx="5" />
       <circle cx="12" cy="12" r="4" />
       <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  )
+}
+
+function LinkedInIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor">
+      <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11H3v-11Zm6.5 0h3.83v1.5h.05c.53-1 1.84-2.05 3.79-2.05 4.05 0 4.8 2.67 4.8 6.13v5.42h-4v-4.8c0-1.15-.02-2.62-1.6-2.62-1.6 0-1.84 1.25-1.84 2.54v4.88h-4v-11Z" />
     </svg>
   )
 }

@@ -3,7 +3,6 @@
 import Image from 'next/image'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
 import { useCart } from '../../context/CartContext'
 import { buildWhatsAppMessageUrl } from '../../config/site'
 import { formatPrice, getProductLabel, getProductWhatsAppMessage } from '../../config/catalog'
@@ -113,6 +112,9 @@ export default function ProductDetailClient({ product, related }) {
   const [qty, setQty] = useState(1)
   const [showConfirmation, setShowConfirmation] = useState(false)
   const [stickyVisible, setStickyVisible] = useState(false)
+  // Feedback for the sticky mobile bar: its CartConfirmation lives in the (off-screen) aside
+  const [justAdded, setJustAdded] = useState(false)
+  const justAddedTimerRef = useRef(null)
   const actionsRef = useRef(null)
   const { addToCart, items } = useCart()
   const label = getProductLabel(product, 'es')
@@ -285,10 +287,15 @@ export default function ProductDetailClient({ product, related }) {
   }
 
   const handleAdd = () => {
-    if (!canAddToCart) return
+    if (!canAddToCart || justAdded) return
     addToCart(product.id, qty)
     setShowConfirmation(true)
+    setJustAdded(true)
+    clearTimeout(justAddedTimerRef.current)
+    justAddedTimerRef.current = setTimeout(() => setJustAdded(false), 2000)
   }
+
+  useEffect(() => () => clearTimeout(justAddedTimerRef.current), [])
 
   return (
     <>
@@ -303,13 +310,10 @@ export default function ProductDetailClient({ product, related }) {
           aria-label={`Galería de imágenes de ${label}`}
           onKeyDown={handleGalleryKeyDown}
         >
-          <motion.div
+          {/* No fade on the first image: it is the LCP element and must be visible in the server HTML. */}
+          <div
             key={product.images[activeImage].detail}
-            // No fade on the first image: it is the LCP element and must be visible in the server HTML.
-            initial={activeImage === 0 ? false : { opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.3 }}
-            className="absolute inset-0 cursor-zoom-in"
+            className={`absolute inset-0 cursor-zoom-in ${activeImage === 0 ? '' : 'animate-fade-in'}`}
             onClick={openLightbox}
           >
             <Image
@@ -322,7 +326,7 @@ export default function ProductDetailClient({ product, related }) {
               draggable={false}
               className="object-contain p-5 sm:p-8"
             />
-          </motion.div>
+          </div>
           <button
             type="button"
             onClick={openLightbox}
@@ -533,7 +537,7 @@ export default function ProductDetailClient({ product, related }) {
         className="fixed inset-0 z-[90] flex flex-col bg-black p-3 text-white sm:p-5"
         role="dialog"
         aria-modal="true"
-        aria-label={`Visor de imÃ¡genes de ${label}`}
+        aria-label={`Visor de imágenes de ${label}`}
         tabIndex={-1}
         autoFocus
         onKeyDown={handleLightboxKeyDown}
@@ -686,11 +690,16 @@ export default function ProductDetailClient({ product, related }) {
           <button
             type="button"
             onClick={handleAdd}
-            disabled={!canAddToCart}
-            className="rounded-xl bg-sahm-yellow py-3.5 font-heading text-sm font-bold uppercase tracking-wide text-black transition active:brightness-90 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:text-gray-400"
+            disabled={!canAddToCart || justAdded}
+            className={`rounded-xl py-3.5 font-heading text-sm font-bold uppercase tracking-wide transition active:brightness-90 disabled:cursor-not-allowed ${
+              justAdded ? 'bg-green-600 text-white' : 'bg-sahm-yellow text-black disabled:bg-gray-200 disabled:text-gray-400'
+            }`}
           >
-            {canAddToCart ? 'Agregar' : 'Sin stock'}
+            {!canAddToCart ? 'Sin stock' : justAdded ? `Agregado ✓ (${inCart?.qty ?? qty})` : 'Agregar'}
           </button>
+          <span role="status" className="sr-only">
+            {justAdded ? `${label} agregado al pedido. Total en el pedido: ${inCart?.qty ?? qty}.` : ''}
+          </span>
           <a
             href={buildWhatsAppMessageUrl(getProductWhatsAppMessage(product, 'Hola, quiero consultar precio y disponibilidad de', 'es'))}
             target="_blank"

@@ -25,7 +25,7 @@ No test runner or linter is configured. Verify changes with `npm run build` and 
 
 ## Stack
 
-Next.js 16 App Router (JSX, no TypeScript) · React 19 · Tailwind CSS 3 (brand tokens `sahm-yellow` `#F5C000`, `sahm-purple` `#3D2785`, plus `sahm-cream` etc. in `tailwind.config.js`) · Framer Motion · GSAP + ScrollTrigger · Lenis smooth scroll · Sharp (dev, image script).
+Next.js 16 App Router (JSX, no TypeScript) · React 19 · Tailwind CSS 3 (brand tokens `sahm-yellow` `#F5C000`, `sahm-purple` `#3D2785`, plus `sahm-cream` etc. in `tailwind.config.js`) · GSAP + ScrollTrigger · Lenis smooth scroll · Sharp (dev, image script).
 
 ## Architecture
 
@@ -73,7 +73,7 @@ Pages are Server Components that read catalog config and hand data to `'use clie
 
 `src/context/CartContext.jsx` — cart stores only `{ productId, qty }` items (product data is looked up from the catalog), persisted to `localStorage` key `sahm_cart` after a client-side hydration step (`hasHydrated`); accessed via `useCart()`. All other state is component-local.
 
-All conversion goes through `buildWhatsAppMessageUrl()` in `src/config/site.js` (cart, product detail, contact form, nav, footer, floating button). `FEATURE_FLAGS` in `site.js` is currently not read anywhere.
+All conversion goes through `buildWhatsAppMessageUrl()` in `src/config/site.js` (cart, product detail, contact form, nav, footer, floating button). `FEATURE_FLAGS` in `site.js` is currently not read anywhere. Footer social icons come from `SOCIAL_LINKS` in `site.js` (Grupo NBG profiles; empty values are hidden). Framer Motion was removed — use Tailwind animations (`animate-fade-in`, etc.) instead of adding it back.
 
 ### Legacy code
 
@@ -92,7 +92,7 @@ Because there is no test suite, run `npm run build` locally before pushing — a
 - Do **NOT** delete product data in `catalogData.js`.
 - Keep the **yellow navbar** (`SahmNav`) — SAHM brand identity.
 - Keep `images.unoptimized: true` (catalog images are pre-optimized by the Sharp script) and `trailingSlash: true` (existing URLs/sitemap depend on it).
-- Both fonts use `display: 'optional'` (chosen with the owner to remove a font-swap layout shift on `/productos/`). Above-the-fold content (hero, first product image) must be visible in the server HTML — don't gate it behind a `mounted` state or a Framer Motion `initial={{ opacity: 0 }}`.
+- Both fonts use `display: 'optional'` (chosen with the owner to remove a font-swap layout shift on `/productos/`). Above-the-fold content (hero, first product image) must be visible in the server HTML — don't gate it behind a `mounted` state or an opacity-0 entry animation.
 - Pushing to `main` deploys to production — only push when asked.
 - Run `npm run optimize:images` after adding or changing catalog photos.
 - `CLAUDE.md` mirrors this file for Claude Code — keep the two in sync when editing either.

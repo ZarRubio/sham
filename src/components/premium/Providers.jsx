@@ -39,10 +39,25 @@ export default function Providers({ children }) {
     }
   }, [])
 
+  // Back/forward (popstate) must keep the browser's restored scroll position,
+  // e.g. returning from a product to the same spot in /productos/.
+  const isHistoryNavRef = useRef(false)
   useEffect(() => {
+    const onPopState = () => { isHistoryNavRef.current = true }
+    window.addEventListener('popstate', onPopState)
+    return () => window.removeEventListener('popstate', onPopState)
+  }, [])
+
+  useEffect(() => {
+    const isHistoryNav = isHistoryNavRef.current
+    isHistoryNavRef.current = false
     requestAnimationFrame(() => {
-      lenisRef.current?.scrollTo(0, { immediate: true, force: true })
-      window.scrollTo(0, 0)
+      if (isHistoryNav) {
+        lenisRef.current?.scrollTo(window.scrollY, { immediate: true, force: true })
+      } else {
+        lenisRef.current?.scrollTo(0, { immediate: true, force: true })
+        window.scrollTo(0, 0)
+      }
       ScrollTrigger.refresh()
     })
   }, [pathname])

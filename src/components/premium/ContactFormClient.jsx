@@ -112,7 +112,7 @@ export default function ContactFormClient() {
               name="productType"
               value={form.productType}
               onChange={updateField}
-              className="mt-2 w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800 outline-none transition focus:border-sahm-purple focus:ring-4 focus:ring-sahm-purple/15"
+              className="mt-2 w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3 text-base font-semibold text-slate-800 outline-none transition focus:border-sahm-purple focus:ring-4 focus:ring-sahm-purple/15"
             >
               {productTypes.map(type => (
                 <option key={type} value={type}>
@@ -133,7 +133,7 @@ export default function ContactFormClient() {
                 value={form.reference}
                 onChange={updateField}
                 placeholder="Ej. 110/90-13, PZ19"
-                className="mt-2 w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-sahm-purple focus:ring-4 focus:ring-sahm-purple/15"
+                className="mt-2 w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3 text-base font-semibold text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-sahm-purple focus:ring-4 focus:ring-sahm-purple/15"
               />
             </div>
 
@@ -147,7 +147,7 @@ export default function ContactFormClient() {
                 value={form.name}
                 onChange={updateField}
                 placeholder="Tu nombre"
-                className="mt-2 w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-sahm-purple focus:ring-4 focus:ring-sahm-purple/15"
+                className="mt-2 w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3 text-base font-semibold text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-sahm-purple focus:ring-4 focus:ring-sahm-purple/15"
               />
             </div>
           </div>
@@ -163,7 +163,7 @@ export default function ContactFormClient() {
               onChange={updateField}
               rows={4}
               placeholder="Cuéntanos cantidad, ciudad o cualquier detalle importante."
-              className="mt-2 w-full resize-none rounded-xl border-2 border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-sahm-purple focus:ring-4 focus:ring-sahm-purple/15"
+              className="mt-2 w-full resize-none rounded-xl border-2 border-gray-200 bg-white px-4 py-3 text-base font-semibold text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-sahm-purple focus:ring-4 focus:ring-sahm-purple/15"
             />
           </div>
 

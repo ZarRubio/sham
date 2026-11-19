@@ -51,7 +51,7 @@ export default function ProductsClient({ products }) {
           value={search}
           onChange={event => setSearch(event.target.value)}
           placeholder="Producto, medida o referencia"
-          className="mt-2 w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3 text-sm text-black placeholder-gray-400 outline-none transition focus:border-sahm-yellow sm:max-w-sm"
+          className="mt-2 w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3 text-base text-black placeholder-gray-400 outline-none transition focus:border-sahm-yellow sm:max-w-sm"
         />
       </div>
 
