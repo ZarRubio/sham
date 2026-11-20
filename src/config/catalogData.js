@@ -76,7 +76,7 @@ export const CATALOG_COMMERCE_DATA = {
     unit: 'PZA',
     packageQty: 5,
     retailPrice: 44.8,
-    stock: 8,
+    stock: 0,
   },
   'llantas-moto-electrica-300-8-4pr': {
     sku: '01130000030',
@@ -109,7 +109,7 @@ export const CATALOG_COMMERCE_DATA = {
     unit: 'PZA',
     packageQty: 5,
     retailPrice: 58.4,
-    stock: 191,
+    stock: 0,
   },
   'llantas-cargueros-electricos-300-12-4pr': {
     sku: '01130000029',

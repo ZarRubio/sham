@@ -4,7 +4,7 @@ import HeroSection from './HeroSection'
 import BestSellersCarousel from './BestSellersCarousel'
 import CategoryMosaic from './CategoryMosaic'
 import { availableBestSellers, catalogHighlights, premiumCategories, testimonials } from '../../lib/premiumData'
-import { toCardProduct } from '../../config/catalog'
+import { CATALOG_PRODUCTS, toCardProduct } from '../../config/catalog'
 import { buildWhatsAppMessageUrl } from '../../config/site'
 
 function StarRating() {
@@ -26,7 +26,7 @@ export default function HomeExperience() {
     <>
       {/* ── 3D Hero ── */}
       <section className="relative z-10 overflow-hidden bg-gradient-to-br from-sahm-purple via-sahm-night/95 to-black">
-        <HeroSection />
+        <HeroSection stockLevels={Object.fromEntries(CATALOG_PRODUCTS.map(product => [product.id, product.stockLevel]))} />
 
       {/* ── Stats trust panel (below hero, same purple bg) ── */}
       <div className="relative z-10 px-4 pb-16 sm:px-6">

@@ -8,6 +8,7 @@ import { buildWhatsAppMessageUrl } from '../../config/site'
 /* ── Carrusel slides ─────────────────────────────────────────────── */
 const SLIDES = [
   {
+    productId: 'llantas-moto-electrica-350-10-4pr',
     img: '/images/catalog-optimized/llantas-moto-electrica-350-10-4pr/card.webp',
     fallback: '/images/catalog-optimized/llantas-moto-electrica-350-10-4pr/detail-1.webp',
     label: 'Llantas',
@@ -15,6 +16,7 @@ const SLIDES = [
     href: '/categorias/llantas',
   },
   {
+    productId: 'camaras-motos-400-12-tr13',
     img: '/images/catalog-optimized/camaras-motos-400-12-tr13/card.webp',
     fallback: '/images/catalog-optimized/camaras-motos-400-12-tr13/detail-1.webp',
     label: 'Cámaras',
@@ -22,6 +24,7 @@ const SLIDES = [
     href: '/categorias/camaras',
   },
   {
+    productId: 'carburadores-pz26',
     img: '/images/catalog-optimized/carburadores-pz26/card.webp',
     fallback: '/images/catalog-optimized/carburadores-pz26/detail-1.webp',
     label: 'Carburadores',
@@ -29,6 +32,7 @@ const SLIDES = [
     href: '/categorias/carburadores',
   },
   {
+    productId: 'llantas-cargueros-electricos-400-12-8pr',
     img: '/images/catalog-optimized/llantas-cargueros-electricos-400-12-8pr/card.webp',
     fallback: '/images/catalog-optimized/llantas-cargueros-electricos-400-12-8pr/detail-1.webp',
     label: 'Cargueros Eléctricos',
@@ -36,6 +40,7 @@ const SLIDES = [
     href: '/categorias/llantas',
   },
   {
+    productId: 'camaras-bicicletas-26x2125235',
     img: '/images/catalog-optimized/camaras-bicicletas-26x2125235/card.webp',
     fallback: '/images/catalog-optimized/camaras-bicicletas-26x2125235/detail-1.webp',
     label: 'Cámaras Bicicleta',
@@ -101,7 +106,14 @@ function GlowOrb({ className = '' }) {
 }
 
 /* ── Main Hero ──────────────────────────────────────────────────── */
-export default function HeroSection() {
+const STOCK_BADGE = {
+  available: { text: 'En stock', className: 'bg-green-500 text-white' },
+  low: { text: 'Últimas unidades', className: 'bg-amber-400 text-black' },
+}
+
+// `stockLevels` ({ productId: 'available' | 'low' | 'out' | 'unknown' }) comes from the
+// server so the badge reflects real catalog stock; out-of-stock slides show no badge.
+export default function HeroSection({ stockLevels = {} }) {
   const [current, setCurrent] = useState(0)
   const [paused, setPaused] = useState(false)
   const [activeBenefit, setActiveBenefit] = useState(BENEFITS[0].id)
@@ -298,10 +310,12 @@ export default function HeroSection() {
                     {slide.label}
                   </span>
 
-                  {/* stock badge */}
-                  <span className="absolute right-3 top-3 rounded-full bg-green-500 px-3 py-1 font-heading text-xs font-bold uppercase tracking-widest text-white shadow-lg">
-                    En stock
-                  </span>
+                  {/* stock badge (real stock; hidden when out of stock) */}
+                  {STOCK_BADGE[stockLevels[slide.productId]] && (
+                    <span className={`absolute right-3 top-3 rounded-full px-3 py-1 font-heading text-xs font-bold uppercase tracking-widest shadow-lg ${STOCK_BADGE[stockLevels[slide.productId]].className}`}>
+                      {STOCK_BADGE[stockLevels[slide.productId]].text}
+                    </span>
+                  )}
 
                   {/* sub label */}
                   <span className="absolute bottom-3 left-1/2 -translate-x-1/2 rounded-xl bg-black/50 px-3 py-1 font-heading text-[10px] font-bold uppercase tracking-widest text-white/80 backdrop-blur-sm whitespace-nowrap">
