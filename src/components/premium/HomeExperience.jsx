@@ -3,7 +3,7 @@ import StatsTrustPanel from './StatsTrustPanel'
 import HeroSection from './HeroSection'
 import BestSellersCarousel from './BestSellersCarousel'
 import CategoryMosaic from './CategoryMosaic'
-import { bestSellers, catalogHighlights, premiumCategories, testimonials } from '../../lib/premiumData'
+import { availableBestSellers, catalogHighlights, premiumCategories, testimonials } from '../../lib/premiumData'
 import { toCardProduct } from '../../config/catalog'
 import { buildWhatsAppMessageUrl } from '../../config/site'
 
@@ -52,7 +52,7 @@ export default function HomeExperience() {
             <span className="text-xs font-heading font-bold uppercase tracking-widest text-sahm-purple">Más vendidos</span>
             <h2 className="mt-2 font-heading text-4xl font-extrabold uppercase italic text-black">Referencias listas para salir.</h2>
           </div>
-          <BestSellersCarousel products={bestSellers.map(toCardProduct)} />
+          <BestSellersCarousel products={availableBestSellers.map(toCardProduct)} />
         </div>
       </section>
 

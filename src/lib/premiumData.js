@@ -64,6 +64,15 @@ export const bestSellers = [
   .map(id => CATALOG_PRODUCTS.find(product => product.id === id))
   .filter(Boolean)
 
+// Home "Más vendidos": only products that can be ordered. Out-of-stock picks are
+// skipped and the list is topped up with other in-stock products (catalog order).
+const BEST_SELLERS_COUNT = 8
+const isAvailable = product => product.stockLevel !== 'out'
+export const availableBestSellers = [
+  ...bestSellers.filter(isAvailable),
+  ...CATALOG_PRODUCTS.filter(product => isAvailable(product) && !bestSellers.includes(product)),
+].slice(0, BEST_SELLERS_COUNT)
+
 export const catalogHighlights = [
   'Búsqueda por medida, aro y tipo de uso',
   'Atención para talleres, flotas y compradores directos',
