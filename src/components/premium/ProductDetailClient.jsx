@@ -60,6 +60,8 @@ function clamp(value, min, max) {
 export default function ProductDetailClient({ product }) {
   const [activeImage, setActiveImage] = useState(0)
   const [lightboxOpen, setLightboxOpen] = useState(false)
+  const lightboxRef = useRef(null)
+  const lightboxTriggerRef = useRef(null)
   const [imageZoom, setImageZoom] = useState(MIN_IMAGE_ZOOM)
   const [imageOffset, setImageOffset] = useState({ x: 0, y: 0 })
   const [dragStart, setDragStart] = useState(null)
@@ -114,13 +116,18 @@ export default function ProductDetailClient({ product }) {
     document.body.style.top = `-${scrollY}px`
     document.body.style.width = '100%'
 
+    // Move focus into the dialog so Escape / arrows / zoom keys work immediately.
+    const focusFrame = requestAnimationFrame(() => lightboxRef.current?.focus())
+
     return () => {
+      cancelAnimationFrame(focusFrame)
       document.documentElement.style.overflow = previousHtmlOverflow
       document.body.style.overflow = previousOverflow
       document.body.style.position = previousPosition
       document.body.style.top = previousTop
       document.body.style.width = previousWidth
       window.scrollTo(0, scrollY)
+      lightboxTriggerRef.current?.focus?.({ preventScroll: true })
     }
   }, [lightboxOpen])
 
@@ -139,6 +146,7 @@ export default function ProductDetailClient({ product }) {
   }
 
   const openLightbox = () => {
+    lightboxTriggerRef.current = document.activeElement
     resetImageZoom()
     setLightboxOpen(true)
   }
@@ -214,6 +222,24 @@ export default function ProductDetailClient({ product }) {
   }
 
   const handleLightboxKeyDown = event => {
+    // Keep keyboard focus inside the dialog
+    if (event.key === 'Tab' && lightboxRef.current) {
+      const focusable = Array.from(lightboxRef.current.querySelectorAll('button, [href], [tabindex]:not([tabindex="-1"])'))
+        .filter(element => !element.disabled)
+      if (focusable.length) {
+        const first = focusable[0]
+        const last = focusable[focusable.length - 1]
+        if (event.shiftKey && (document.activeElement === first || document.activeElement === lightboxRef.current)) {
+          event.preventDefault()
+          last.focus()
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault()
+          first.focus()
+        }
+      }
+      return
+    }
+
     if (event.key === 'Escape') {
       event.preventDefault()
       closeLightbox()
@@ -454,8 +480,8 @@ export default function ProductDetailClient({ product }) {
         role="dialog"
         aria-modal="true"
         aria-label={`Visor de imágenes de ${label}`}
+        ref={lightboxRef}
         tabIndex={-1}
-        autoFocus
         onKeyDown={handleLightboxKeyDown}
         onWheel={event => event.stopPropagation()}
         onClick={event => {

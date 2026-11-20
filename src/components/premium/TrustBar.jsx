@@ -15,23 +15,28 @@ export default function TrustBar() {
   return (
     <section className="overflow-hidden border-y border-sahm-yellow/45 bg-gradient-to-r from-sahm-purple via-sahm-night to-black py-2.5 shadow-inner" aria-label="Beneficios SAHM">
       <div className="flex overflow-hidden">
-        <div className="flex w-max shrink-0 animate-marquee items-center">
-          {looped.map((item, index) => (
-            <Fragment key={`${item.text}-${index}`}>
-              <TrustItem item={item} />
-              <span className="mx-1 h-4 w-px shrink-0 bg-white/25" />
-            </Fragment>
-          ))}
+        {/* Pauses on hover/focus. Only the first copy is read by screen readers; the
+            other two exist just to make the marquee loop seamlessly. */}
+        <div className="flex w-max shrink-0 animate-marquee items-center hover:[animation-play-state:paused] focus-within:[animation-play-state:paused]">
+          {looped.map((item, index) => {
+            const isCopy = index >= trustItems.length
+            return (
+              <Fragment key={`${item.text}-${index}`}>
+                <TrustItem item={item} hidden={isCopy} />
+                <span aria-hidden="true" className="mx-1 h-4 w-px shrink-0 bg-white/25" />
+              </Fragment>
+            )
+          })}
         </div>
       </div>
     </section>
   )
 }
 
-function TrustItem({ item }) {
+function TrustItem({ item, hidden = false }) {
   const { Icon, text } = item
   return (
-    <span className="inline-flex shrink-0 items-center gap-2 px-4 py-0.5 font-heading text-[12px] font-bold uppercase tracking-wide text-white/90 sm:px-5">
+    <span aria-hidden={hidden || undefined} className="inline-flex shrink-0 items-center gap-2 px-4 py-0.5 font-heading text-[12px] font-bold uppercase tracking-wide text-white/90 sm:px-5">
       <Icon />
       {text}
     </span>

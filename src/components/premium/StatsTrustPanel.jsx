@@ -1,6 +1,5 @@
-'use client'
-
-import { useEffect, useRef, useState } from 'react'
+// Server Component: the figures are rendered final in the HTML (an animated
+// counter used to ship "0+" / "0h" / "0%" to Google and to users without JS).
 
 const chips = [
   'Stock confirmado antes del pago',
@@ -15,35 +14,14 @@ const stats = [
 ]
 
 export default function StatsTrustPanel() {
-  const ref = useRef(null)
-  const [active, setActive] = useState(false)
-
-  useEffect(() => {
-    const node = ref.current
-    if (!node) return
-
-    const observer = new IntersectionObserver(
-      entries => {
-        if (entries[0]?.isIntersecting) {
-          setActive(true)
-          observer.disconnect()
-        }
-      },
-      { threshold: 0.35 }
-    )
-
-    observer.observe(node)
-    return () => observer.disconnect()
-  }, [])
-
   return (
-    <div ref={ref} className="mx-auto -mt-8 max-w-7xl sm:-mt-10 lg:-mt-12">
+    <div className="mx-auto -mt-8 max-w-7xl sm:-mt-10 lg:-mt-12">
       <div className="grid gap-4 rounded-2xl border border-white/15 bg-white/10 p-4 shadow-2xl shadow-black/15 backdrop-blur-sm lg:grid-cols-[0.82fr_1.18fr] lg:items-stretch">
         <div className="grid content-center gap-2 rounded-xl bg-sahm-night/25 p-4">
           {chips.map(chip => (
             <span
               key={chip}
-              className="inline-flex w-fit items-center gap-2 rounded-full border border-white/12 bg-white/10 px-4 py-2 font-heading text-xs font-extrabold uppercase tracking-wide text-white"
+              className="inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-2 font-heading text-xs font-extrabold uppercase tracking-wide text-white"
             >
               <CheckIcon />
               {chip}
@@ -55,7 +33,7 @@ export default function StatsTrustPanel() {
           {stats.map(stat => (
             <article key={stat.label} className="rounded-xl bg-white px-5 py-6 text-center shadow-sm">
               <p className="font-heading text-4xl font-extrabold uppercase leading-none text-sahm-purple sm:text-5xl">
-                <AnimatedNumber target={stat.value} active={active} />
+                {stat.value.toLocaleString('es-PE')}
                 {stat.suffix}
               </p>
               <p className="mt-2 font-heading text-xs font-extrabold uppercase tracking-widest text-slate-500 sm:text-sm">
@@ -67,30 +45,6 @@ export default function StatsTrustPanel() {
       </div>
     </div>
   )
-}
-
-function AnimatedNumber({ target, active }) {
-  const [value, setValue] = useState(0)
-
-  useEffect(() => {
-    if (!active) return
-
-    const duration = 1100
-    const start = performance.now()
-    let frame = 0
-
-    const tick = now => {
-      const progress = Math.min((now - start) / duration, 1)
-      const eased = 1 - Math.pow(1 - progress, 3)
-      setValue(Math.round(target * eased))
-      if (progress < 1) frame = requestAnimationFrame(tick)
-    }
-
-    frame = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(frame)
-  }, [active, target])
-
-  return value.toLocaleString('es-PE')
 }
 
 function CheckIcon() {

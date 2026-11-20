@@ -286,7 +286,7 @@ export default function HeroSection() {
                       fill
                       sizes="(min-width: 1024px) 384px, 90vw"
                       onError={e => { e.currentTarget.src = slide.fallback }}
-                      priority
+                      priority={current === 0}
                       className="carousel-img-enter object-contain p-4"
                       style={{ animation: prefersReducedMotion ? 'none' : 'slide-in 0.32s ease-out both, hero-float 4s ease-in-out infinite' }}
                     />

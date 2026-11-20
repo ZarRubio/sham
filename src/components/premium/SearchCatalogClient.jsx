@@ -43,13 +43,13 @@ export default function SearchCatalogClient({ products }) {
 
       <div className="reveal rounded-[2rem] border border-white/10 bg-white/[0.035] p-4 sm:p-5">
         <label className="block">
-          <span className="text-[10px] font-black uppercase tracking-[0.18em] text-white/38">Búsqueda de catálogo</span>
+          <span className="text-[10px] font-black uppercase tracking-[0.18em] text-white/40">Búsqueda de catálogo</span>
           <input
             type="search"
             value={query}
             onChange={event => setQuery(event.target.value)}
             placeholder="Medida, referencia o subcategoría"
-            className="mt-3 w-full rounded-2xl border border-white/10 bg-black/45 px-5 py-4 text-base font-bold text-white outline-none placeholder:text-white/22 focus:border-sahm-yellow/70"
+            className="mt-3 w-full rounded-2xl border border-white/10 bg-black/45 px-5 py-4 text-base font-bold text-white outline-none placeholder:text-white/20 focus:border-sahm-yellow/70"
           />
         </label>
         <p className="mt-4 text-sm font-semibold text-white/45">
@@ -59,7 +59,7 @@ export default function SearchCatalogClient({ products }) {
         {results.length > 0 ? (
           <div className="mt-5 grid gap-4 md:grid-cols-2">
             {results.map((product, index) => (
-              <ProductCard key={product.id} product={product} priority={index < 4} />
+              <ProductCard key={product.id} product={product} />
             ))}
           </div>
         ) : (

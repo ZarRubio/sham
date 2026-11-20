@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useId, useState } from 'react'
+import { useEffect, useId, useRef, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useCart } from '../../context/CartContext'
@@ -17,6 +17,37 @@ const navLinks = [
 
 export default function SahmNav() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const menuId = useId()
+  const menuRef = useRef(null)
+  const menuButtonRef = useRef(null)
+  const wasMenuOpenRef = useRef(false)
+
+  // Mobile menu behaves as a modal dialog: focus moves in, Escape closes it,
+  // the page behind does not scroll, and focus returns to the burger button.
+  useEffect(() => {
+    if (!menuOpen) {
+      if (wasMenuOpenRef.current) menuButtonRef.current?.focus({ preventScroll: true })
+      wasMenuOpenRef.current = false
+      return undefined
+    }
+    wasMenuOpenRef.current = true
+
+    const previousOverflow = document.documentElement.style.overflow
+    document.documentElement.style.overflow = 'hidden'
+    const focusFrame = requestAnimationFrame(() => {
+      menuRef.current?.querySelector('button, a')?.focus({ preventScroll: true })
+    })
+    const onKeyDown = event => {
+      if (event.key === 'Escape') setMenuOpen(false)
+    }
+    document.addEventListener('keydown', onKeyDown)
+
+    return () => {
+      cancelAnimationFrame(focusFrame)
+      document.documentElement.style.overflow = previousOverflow
+      document.removeEventListener('keydown', onKeyDown)
+    }
+  }, [menuOpen])
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const dropdownId = useId()
   const pathname = usePathname()
@@ -124,7 +155,7 @@ export default function SahmNav() {
 
           <Link
             href="/carrito"
-            aria-label="Carrito"
+            aria-label={hasHydrated && totalItems > 0 ? `Carrito, ${totalItems} ${totalItems === 1 ? 'producto' : 'productos'}` : 'Carrito'}
             className="relative grid h-11 w-11 place-items-center rounded-full bg-white text-sahm-purple shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
           >
             <CartIcon />
@@ -147,7 +178,7 @@ export default function SahmNav() {
         </div>
 
         <div className="flex items-center gap-2 lg:hidden">
-          <Link href="/carrito" aria-label="Carrito" className="relative grid h-10 w-10 place-items-center rounded-full bg-white text-sahm-purple">
+          <Link href="/carrito" aria-label={hasHydrated && totalItems > 0 ? `Carrito, ${totalItems} ${totalItems === 1 ? 'producto' : 'productos'}` : 'Carrito'} className="relative grid h-10 w-10 place-items-center rounded-full bg-white text-sahm-purple">
             <CartIcon />
             {hasHydrated && totalItems > 0 && (
               <span className="absolute -right-1 -top-1 grid h-5 w-5 place-items-center rounded-full bg-sahm-purple text-[10px] font-black text-white">
@@ -157,7 +188,10 @@ export default function SahmNav() {
           </Link>
           <button
             type="button"
+            ref={menuButtonRef}
             onClick={() => setMenuOpen(true)}
+            aria-expanded={menuOpen}
+            aria-controls={menuId}
             aria-label="Abrir menú"
             className="grid h-10 w-10 place-items-center rounded-full bg-white text-sahm-purple"
           >
@@ -168,6 +202,11 @@ export default function SahmNav() {
 
       {/* Mobile full-screen menu — always in DOM, toggled via translate */}
       <div
+        id={menuId}
+        ref={menuRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menú principal"
         inert={!menuOpen}
         className={`fixed inset-0 z-50 flex flex-col bg-gradient-to-br from-sahm-purple via-sahm-night/95 to-black px-6 py-6 lg:hidden
           transform transition-transform duration-300 ease-out

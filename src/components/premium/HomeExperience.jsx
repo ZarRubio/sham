@@ -100,7 +100,7 @@ export default function HomeExperience() {
             {testimonials.map(item => (
               <article key={item.name} className="rounded-2xl border-2 border-gray-100 bg-white p-6 shadow-sm">
                 <StarRating />
-                <p className="text-base leading-relaxed text-gray-700">"{item.quote}"</p>
+                <p className="text-base leading-relaxed text-gray-700">“{item.quote}”</p>
                 <div className="mt-5 border-t border-gray-100 pt-4">
                   <p className="font-heading text-sm font-extrabold uppercase text-black">{item.name}</p>
                   <p className="text-xs text-gray-400">{item.meta}</p>

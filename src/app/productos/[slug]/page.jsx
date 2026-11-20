@@ -3,7 +3,7 @@ import ProductDetailClient from '../../../components/premium/ProductDetailClient
 import ProductCard from '../../../components/premium/ProductCard'
 import ProductInfoSections from '../../../components/premium/ProductInfoSections'
 import JsonLd from '../../../components/premium/JsonLd'
-import { CATALOG_CATEGORIES, CATALOG_PRODUCTS, getProductById, toCardProduct, toDetailProduct } from '../../../config/catalog'
+import { CATALOG_CATEGORIES, CATALOG_PRODUCTS, getProductById, getProductLabel, toCardProduct, toDetailProduct } from '../../../config/catalog'
 import { breadcrumbJsonLd, pageMetadata, productJsonLd, productSeoDescription, productSeoTitle } from '../../../lib/seo'
 
 export const dynamicParams = false
@@ -35,6 +35,23 @@ export default async function ProductPage({ params }) {
     .slice(0, 4)
 
   const category = CATALOG_CATEGORIES.find(item => item.name === product.category)
+
+  // Same size in another category (e.g. tire 3.00-12 <-> tube 3.00-12) + the category page.
+  const sameMeasure = product.measure
+    ? CATALOG_PRODUCTS.filter(item => item.id !== product.id && item.measure === product.measure && item.category !== product.category)
+    : []
+  const relatedLinks = [
+    ...sameMeasure.map(item => ({
+      href: `${item.productUrl}/`,
+      label: getProductLabel(item, 'es').replace(/\s+/g, ' '),
+      hint: `Misma medida ${product.measure}`,
+    })),
+    ...(category ? [{
+      href: `/categorias/${category.id}/`,
+      label: `Ver todas las ${category.name.toLowerCase()}`,
+      hint: 'Otras medidas y referencias',
+    }] : []),
+  ]
   const breadcrumb = breadcrumbJsonLd([
     { name: 'Inicio', path: '/' },
     { name: 'Productos', path: '/productos/' },
@@ -47,7 +64,7 @@ export default async function ProductPage({ params }) {
       <JsonLd data={[productJsonLd(product), breadcrumb]} />
       <div className="mx-auto w-full max-w-7xl">
         <ProductDetailClient product={toDetailProduct(product)} />
-        <ProductInfoSections product={product} />
+        <ProductInfoSections product={product} relatedLinks={relatedLinks} />
         {related.length > 0 && (
           <section className="mt-16">
             <div className="mb-6">

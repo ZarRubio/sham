@@ -39,7 +39,7 @@ function stockMeta(stock) {
     }
   }
 
-  if (stock >= 3) {
+  if (stock > 0) {
     return {
       stockLabel: 'Últimas unidades',
       stockLevel: 'low',

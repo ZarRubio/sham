@@ -6,7 +6,7 @@ export default function CartConfirmation({ show, onDismiss }) {
   if (!show) return null
 
   return (
-    <div className="mt-3 rounded-xl border-2 border-green-200 bg-green-50 p-4">
+    <div role="status" className="mt-3 rounded-xl border-2 border-green-200 bg-green-50 p-4">
       <div className="flex items-start gap-3">
         <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-green-500 text-white">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>

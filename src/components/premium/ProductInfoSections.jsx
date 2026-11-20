@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 // Server Component: long-form product copy (description, compatibility, FAQ...).
 // Rendered on the server so this text is written once into the HTML instead of
 // also being serialized into the client payload of ProductDetailClient.
@@ -48,7 +50,30 @@ function ProductFaq({ items }) {
   )
 }
 
-export default function ProductInfoSections({ product }) {
+function RelatedLinks({ links }) {
+  if (!links?.length) return null
+
+  return (
+    <ul className="grid gap-2">
+      {links.map(({ href, label, hint }) => (
+        <li key={href}>
+          <Link
+            href={href}
+            className="flex items-center justify-between gap-3 rounded-xl border border-gray-100 bg-gray-50 px-4 py-3 font-semibold text-slate-800 transition hover:border-sahm-yellow hover:bg-white"
+          >
+            <span>
+              {label}
+              {hint && <span className="block text-xs font-normal text-slate-500">{hint}</span>}
+            </span>
+            <span aria-hidden="true" className="text-sahm-purple">→</span>
+          </Link>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+export default function ProductInfoSections({ product, relatedLinks = [] }) {
   const hasContent = product.longDescription || product.compatibility || product.benefits?.length > 0
     || product.recommendation || product.technicalWarning || product.faq?.length > 0
   if (!hasContent) return null
@@ -75,15 +100,9 @@ export default function ProductInfoSections({ product }) {
         {product.technicalWarning}
       </DetailPanel>
 
-      {product.seoKeywords?.length > 0 && (
-        <DetailPanel eyebrow="SEO" title="Búsquedas relacionadas">
-          <div className="flex flex-wrap gap-2">
-            {product.seoKeywords.map(keyword => (
-              <span key={keyword} className="rounded-full bg-gray-100 px-3 py-1 text-xs font-bold text-gray-600">
-                {keyword}
-              </span>
-            ))}
-          </div>
+      {relatedLinks.length > 0 && (
+        <DetailPanel eyebrow="Completa tu pedido" title="También te puede servir">
+          <RelatedLinks links={relatedLinks} />
         </DetailPanel>
       )}
 

@@ -56,7 +56,7 @@ export default function CategoryClient({ products, subcategories }) {
       {filtered.length > 0 ? (
         <div className="mt-4 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {filtered.map((product, index) => (
-            <ProductCard key={product.id} product={product} priority={index < 4} />
+            <ProductCard key={product.id} product={product} priority={index === 0} />
           ))}
         </div>
       ) : (

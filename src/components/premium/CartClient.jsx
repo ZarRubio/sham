@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useCart } from '../../context/CartContext'
@@ -20,6 +21,7 @@ function buildMessage(items, products) {
 
 export default function CartClient({ products }) {
   const { items, removeFromCart, updateQty, clearCart, totalItems, hasHydrated } = useCart()
+  const [confirmClear, setConfirmClear] = useState(false)
   const cartProducts = items.map(item => ({
     ...item,
     product: products.find(product => product.id === item.productId),
@@ -55,15 +57,35 @@ export default function CartClient({ products }) {
         <div>
           <span className="text-xs font-heading font-bold uppercase tracking-widest text-sahm-purple">Pedido</span>
           <h1 className="mt-1 font-heading text-4xl font-extrabold uppercase italic text-black">Mi selección</h1>
-          <p className="mt-1 text-sm text-gray-500">{totalItems} artículo{totalItems !== 1 ? 's' : ''} listos para cotizar.</p>
+          <p className="mt-1 text-sm text-gray-500">{totalItems} {totalItems === 1 ? 'artículo listo' : 'artículos listos'} para cotizar.</p>
         </div>
-        <button
-          type="button"
-          onClick={clearCart}
-          className="w-fit rounded-xl border-2 border-red-100 px-5 py-2 text-xs font-bold uppercase tracking-wide text-red-400 transition hover:border-red-200 hover:text-red-500"
-        >
-          Vaciar pedido
-        </button>
+        {confirmClear ? (
+          <div role="group" aria-label="Confirmar vaciar pedido" className="flex flex-wrap items-center gap-2">
+            <span className="text-sm font-semibold text-slate-700">¿Vaciar todo el pedido?</span>
+            <button
+              type="button"
+              onClick={() => { clearCart(); setConfirmClear(false) }}
+              className="rounded-xl bg-red-500 px-4 py-2 text-xs font-bold uppercase tracking-wide text-white transition hover:bg-red-600"
+            >
+              Sí, vaciar
+            </button>
+            <button
+              type="button"
+              onClick={() => setConfirmClear(false)}
+              className="rounded-xl border-2 border-gray-200 px-4 py-2 text-xs font-bold uppercase tracking-wide text-gray-600 transition hover:border-gray-400"
+            >
+              Cancelar
+            </button>
+          </div>
+        ) : (
+          <button
+            type="button"
+            onClick={() => setConfirmClear(true)}
+            className="w-fit rounded-xl border-2 border-red-100 px-5 py-2 text-xs font-bold uppercase tracking-wide text-red-400 transition hover:border-red-200 hover:text-red-500"
+          >
+            Vaciar pedido
+          </button>
+        )}
       </div>
 
       <div className="mt-6 grid gap-3">

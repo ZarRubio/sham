@@ -21,7 +21,7 @@ No test runner or linter is configured. Verify changes with `npm run build` and 
 
 ## Environment
 
-`NEXT_PUBLIC_WHATSAPP_NUMBER` (digits only, country code, no `+`) in `.env.local`. Read in `src/config/site.js`, which falls back to a hardcoded number. Note: `.env.example` and `README.md` are stale Vite-era files (they still say `VITE_WHATSAPP_NUMBER` / Vite) — the `VITE_` prefix does nothing here.
+`NEXT_PUBLIC_WHATSAPP_NUMBER` (digits only, country code, no `+`) in `.env.local`. Read in `src/config/site.js`, which falls back to a hardcoded number. The `VITE_` prefix (Vite era) does nothing here.
 
 ## Stack
 
@@ -99,5 +99,6 @@ Because there is no test suite, run `npm run build` locally before pushing — a
 - Keep `images.unoptimized: true` (catalog images are pre-optimized by the Sharp script) and `trailingSlash: true` (existing URLs/sitemap depend on it).
 - Both fonts use `display: 'optional'` (chosen with the owner to remove a font-swap layout shift on `/productos/`). Above-the-fold content (hero, first product image) must be visible in the server HTML — don't gate it behind a `mounted` state or an opacity-0 entry animation.
 - Pushing to `main` deploys to production — only push when asked.
+- Stock labels (`stockMeta()` in `catalog.js`): 0 units = "Sin stock" (cannot add to cart), 1–9 = "Últimas unidades", 10+ = "En stock". The JSON-LD availability follows the same levels.
 - Run `npm run optimize:images` after adding or changing catalog photos.
 - `CLAUDE.md` mirrors this file for Claude Code — keep the two in sync when editing either.

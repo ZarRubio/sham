@@ -1,43 +1,46 @@
-﻿# SAHM Landing
+﻿# SAHM PARTS
 
-Landing page built with React, Vite and Tailwind CSS.
+Catálogo web de llantas, cámaras y carburadores para motos en Perú (https://sahmparts.com). Los pedidos se envían por WhatsApp; no hay checkout.
 
-## Requirements
+Construido con Next.js 16 (App Router), React 19 y Tailwind CSS 3.
 
-- Node.js 18+ (recommended 20+)
-- npm 9+
+## Requisitos
 
-## Setup
+- Node.js 20+ (Hostinger compila con Node 22)
+- npm 10+
 
-1. Install dependencies:
+## Instalación
 
 ```bash
 npm install
+cp .env.example .env.local
 ```
 
-2. Create env file:
-
-```bash
-cp .env.example .env
-```
-
-3. Update WhatsApp number in `.env`:
+En `.env.local`, el número de WhatsApp va solo con dígitos, con código de país y sin `+`:
 
 ```env
-VITE_WHATSAPP_NUMBER=51999999999
+NEXT_PUBLIC_WHATSAPP_NUMBER=51987881821
 ```
 
-Use only digits, with country code, without `+`.
+Si no se define, se usa el número de respaldo de `src/config/site.js`.
 
 ## Scripts
 
-- `npm run dev`: start development server
-- `npm run build`: create production build
-- `npm run preview`: preview production build
+- `npm run dev`: servidor de desarrollo en http://localhost:3000
+- `npm run build`: build de producción (`next build --webpack`)
+- `npm run start`: sirve el build de producción (así corre en Hostinger)
+- `npm run optimize:images`: genera las imágenes WebP del catálogo (`card`, `detail-N`, `thumb-N`) con Sharp. Ejecutarlo después de agregar o cambiar fotos y subir las imágenes generadas a git.
 
-## Project structure
+## Despliegue
 
-- `src/pages`: top-level pages
-- `src/components/sahm`: landing sections
-- `src/hooks`: reusable hooks
-- `src/config`: shared app config (navigation and WhatsApp)
+Hostinger publica automáticamente cada push a `main` (build Node.js en el servidor). Antes de hacer push, ejecuta `npm run build` en local: si el build falla en `main`, falla la publicación.
+
+## Estructura
+
+- `src/app`: rutas (App Router)
+- `src/components/premium`: componentes activos
+- `src/config`: datos del catálogo (`catalogData.js`), helpers y configuración del sitio
+- `src/lib`: SEO (`seo.js`) y datos de la portada
+- `src/components/sahm` y `src/hooks`: código antiguo, sin uso en las rutas actuales
+
+Más detalles de arquitectura en `CLAUDE.md`.
