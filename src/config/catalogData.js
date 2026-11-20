@@ -53,7 +53,7 @@ export const CATALOG_COMMERCE_DATA = {
     unit: 'PZA',
     packageQty: 5,
     retailPrice: 98.4,
-    stock: 46,
+    stock: 0,
   },
   'llantas-moto-electrica-250-10-4pr': {
     sku: '01130000025',
@@ -98,7 +98,7 @@ export const CATALOG_COMMERCE_DATA = {
     unit: 'PZA',
     packageQty: 5,
     retailPrice: 57.12,
-    stock: 32,
+    stock: 0,
   },
   'llantas-moto-electrica-350-10-4pr': {
     sku: '01130000033',
@@ -164,7 +164,7 @@ export const CATALOG_COMMERCE_DATA = {
     unit: 'PZA',
     packageQty: 30,
     retailPrice: 15.216,
-    stock: 1,
+    stock: 0,
   },
   'camaras-motos-300-12-tr87': {
     sku: '02030000002',
